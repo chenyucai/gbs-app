@@ -1,7 +1,8 @@
-import React, { Component } form 'react'
+import React, { Component } from 'react'
 import {
   View,
-  Text
+  Text,
+  TouchableHighlight
 } from 'react-native'
 
 export default class MyScene extends Component {
@@ -9,12 +10,22 @@ export default class MyScene extends Component {
     title: 'MyScene'
   }
 
+  static propTypes = {
+    title: React.PropTypes.string.isRequired,
+    onForward: React.PropTypes.func.isRequired,
+    onBack: React.PropTypes.func.isRequired,
+  }
+
   render () {
     return (
-      <View>
-        <Text>
-          hi my name is {this.props.title}.
-        </Text>
+      <View style={{marginTop:30}}>
+        <Text>Current Scene: { this.props.title }</Text>
+        <TouchableHighlight onPress={this.props.onForward}>
+          <Text>点我进入下一场景</Text>
+        </TouchableHighlight>
+        <TouchableHighlight onPress={this.props.onBack}>
+          <Text>点我返回上一场景</Text>
+        </TouchableHighlight>
       </View>
     )
   }

@@ -13,7 +13,8 @@ import {
   Image,
   TextInput,
   ScrollView,
-  ListView
+  ListView,
+  Navigator
 } from 'react-native';
 
 import MyScene from './MyScene'
@@ -159,35 +160,56 @@ export default class AwesomeProject extends Component {
       uri: 'https://avatars3.githubusercontent.com/u/6133685?v=3&s=460'
     };
     return (
-      <View style={styles.container}>
-        {/* <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-        <Image style={styles.pic} source={pic}>
+      // <View style={styles.container}>
+        // {/* <Text style={styles.welcome}>
+        //   Welcome to React Native!
+        // </Text>
+        // <Text style={styles.instructions}>
+        //   To get started, edit index.ios.js
+        // </Text>
+        // <Text style={styles.instructions}>
+        //   Press Cmd+R to reload,{'\n'}
+        //   Cmd+D or shake for dev menu
+        // </Text>
+        // <Image style={styles.pic} source={pic}>
+        //
+        // </Image>
+        // <Greeting name="jack"></Greeting>
+        // <Greeting name="herry"></Greeting>
+        // <Blink text='I love to blink' />
+        // <Blink text='Yes blinking is so great' />
+        // <Blink text='Why did they ever take this out of HTML' />
+        // <Blink text='Look at me look at me look at me' />
+        //
+        // <FlexDimensionsBasics></FlexDimensionsBasics>
+        //
+        // <PizzaTranslator></PizzaTranslator> */}
 
-        </Image>
-        <Greeting name="jack"></Greeting>
-        <Greeting name="herry"></Greeting>
-        <Blink text='I love to blink' />
-        <Blink text='Yes blinking is so great' />
-        <Blink text='Why did they ever take this out of HTML' />
-        <Blink text='Look at me look at me look at me' />
+        // {/* <IScrolledDownAndWhatHappenedNextShockedMe></IScrolledDownAndWhatHappenedNextShockedMe> */}
 
-        <FlexDimensionsBasics></FlexDimensionsBasics>
-
-        <PizzaTranslator></PizzaTranslator> */}
-
-        {/* <IScrolledDownAndWhatHappenedNextShockedMe></IScrolledDownAndWhatHappenedNextShockedMe> */}
-
-        <ListViewBasics></ListViewBasics>
-      </View>
+        // {/* <ListViewBasics></ListViewBasics> */}
+        // <MyScene title="aaa"/>
+      // </View>
+      <Navigator
+        initialRoute = {{ title: 'my initial scene', index: 0 }}
+        renderScene = {(route, navigator) =>
+          <MyScene
+            title={route.title}
+            onForward={() => {
+              const nextIndex = route.index + 1
+              navigator.push({
+                title: 'scene' + nextIndex,
+                index: nextIndex
+              })
+            }}
+            onBack={() => {
+              if (route.index > 0) {
+                navigator.pop()
+              }
+            }}
+          />
+        }
+      />
     );
   }
 }
