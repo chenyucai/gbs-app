@@ -27,7 +27,7 @@ export default class RegComponent extends Component {
   render () {
     return (
       <View style={styles.wrapper}>
-        <TopNavComponent title="注册" bgColor="#23232e"></TopNavComponent>
+        <TopNavComponent title="123" bgColor="#23232e"></TopNavComponent>
         <ScrollView>
           <View style={styles.reg_wrapper}>
             <View style={styles.reg_item}>
