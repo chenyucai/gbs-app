@@ -10,6 +10,8 @@ import {
   ScrollView
 } from 'react-native'
 
+import ScreenUtils from '../../utils/ScreenUtils';
+
 export default class LoginComponent extends Component {
   constructor(props) {
     super(props);
@@ -105,8 +107,8 @@ const styles = StyleSheet.create({
     paddingTop: 50
   },
   login_wrapper: {
-    width: 315,
-    height: 426,
+    width: ScreenUtils.scaleSize(315),
+    height: ScreenUtils.scaleSize(426),
     marginTop: 20,
     alignSelf: 'center',
     backgroundColor: '#fff'
@@ -121,8 +123,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   login_item: {
-    width:255,
-    height: 58,
+    width: ScreenUtils.scaleSize(255),
+    height: ScreenUtils.scaleSize(58),
     paddingTop: 13,
     flexDirection: 'row',
     alignItems: 'center',
@@ -148,12 +150,14 @@ const styles = StyleSheet.create({
     bottom: 10,
   },
   login_footer: {
-    position: 'absolute',
-    left: 30,
-    bottom: 40,
+    marginTop: ScreenUtils.scaleSize(84),
+    alignSelf: 'center'
+    // position: 'absolute',
+    // left: 30,
+    // bottom: 40,
   },
   login_operation_wrapper: {
-    width: 255,
+    width: ScreenUtils.scaleSize(255),
     marginTop: 15,
     flexDirection: 'row',
     alignSelf: 'center'
@@ -194,7 +198,7 @@ const styles = StyleSheet.create({
   // },
   sp_border: {
     backgroundColor: '#65656D',
-    width: 282,
+    width: ScreenUtils.scaleSize(282),
     height: 10,
     alignSelf:'center'
   },
@@ -210,7 +214,7 @@ const styles = StyleSheet.create({
     paddingRight: 10
   },
   login_footer_thirdparty_wrapper: {
-    width: 250,
+    width: ScreenUtils.scaleSize(250),
     flexDirection: 'row',
     alignSelf: 'center',
     justifyContent: 'space-between'
