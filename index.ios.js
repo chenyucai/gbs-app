@@ -19,6 +19,8 @@ import {
 
 import RegComponent from './components/register/Register'
 import LoginComponent from './components/register/Login'
+import HomeComponent from './components/home/Home'
+
 
 
 export default class AwesomeProject extends Component {
