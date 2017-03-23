@@ -18,6 +18,7 @@ import {
 } from 'react-native';
 
 import RegComponent from './components/register/Register'
+import HomeComponent from './components/home/Home'
 
 
 
@@ -27,7 +28,7 @@ export default class AwesomeProject extends Component {
       <Navigator
         initialRoute = {{ name: 'home', component: RegComponent }}
         renderScene = {(route, navigator) =>
-          <RegComponent></RegComponent>
+          <HomeComponent></HomeComponent>
         }
       />
     );
