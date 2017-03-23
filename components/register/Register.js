@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View,
@@ -66,6 +65,8 @@ export default class RegComponent extends Component {
               <View style={styles.reg_item_input_wrapper}>
                 <TextInput
                   style={styles.reg_item_input}
+                  keyboardType="numeric"
+                  underlineColorAndroid="transparent"
                   placeholder="请输入密码"
                 />
               </View>
@@ -73,10 +74,13 @@ export default class RegComponent extends Component {
                 <Image source={require('./image/icon_UNdisplay.png')}/>
               </TouchableOpacity>
             </View>
-            <View style={styles.reg_footer}>
+            {/* <View style={styles.reg_footer}>
               <TouchableOpacity style={styles.reg_footer_btn}>
                 <Text style={styles.reg_footer_btn_text}>确定</Text>
               </TouchableOpacity>
+            </View> */}
+            <View style={styles.reg_footer}>
+              <Image source={require('./image/btn_dis_sign.png')}/>
             </View>
           </View>
           <View style={styles.sp_border}></View>
@@ -165,24 +169,29 @@ const styles = StyleSheet.create({
     bottom: 10,
   },
   reg_footer: {
-    width: 255,
-    height: 48,
-    borderColor: '#B8B8B8',
-    borderWidth: 0.5,
     position: 'absolute',
     left: 30,
     bottom: 20,
-    padding: 2
   },
-  reg_footer_btn:{
-    backgroundColor:'rgb(184,184,184)',
-    flex: 1,
-  },
-  reg_footer_btn_text: {
-    textAlign: 'center',
-    color: '#fff',
-    lineHeight: 42
-  },
+  // reg_footer: {
+  //   width: 255,
+  //   height: 48,
+  //   borderColor: '#B8B8B8',
+  //   borderWidth: 0.5,
+  //   position: 'absolute',
+  //   left: 30,
+  //   bottom: 20,
+  //   padding: 2
+  // },
+  // reg_footer_btn:{
+  //   backgroundColor:'rgb(184,184,184)',
+  //   flex: 1,
+  // },
+  // reg_footer_btn_text: {
+  //   textAlign: 'center',
+  //   color: '#fff',
+  //   lineHeight: 42
+  // },
   sp_border:{
     backgroundColor: '#65656D',
     width: 282,

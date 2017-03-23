@@ -18,16 +18,16 @@ import {
 } from 'react-native';
 
 import RegComponent from './components/register/Register'
-
+import LoginComponent from './components/register/Login'
 
 
 export default class AwesomeProject extends Component {
   render() {
     return (
       <Navigator
-        initialRoute = {{ name: 'home', component: RegComponent }}
+        initialRoute = {{ name: 'home' }}
         renderScene = {(route, navigator) =>
-          <RegComponent></RegComponent>
+          <LoginComponent></LoginComponent>
         }
       />
     );
