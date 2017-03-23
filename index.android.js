@@ -9,24 +9,27 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Image,
+  TextInput,
+  ScrollView,
+  ListView,
+  Navigator
 } from 'react-native';
+
+import RegComponent from './components/register/Register'
+import LoginComponent from './components/register/Login'
+
 
 export default class AwesomeProject extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!324234
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
+      <Navigator
+        initialRoute = {{ name: 'home' }}
+        renderScene = {(route, navigator) =>
+          <LoginComponent></LoginComponent>
+        }
+      />
     );
   }
 }
@@ -48,6 +51,10 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  pic: {
+    width: 100,
+    height: 100
+  }
 });
 
 AppRegistry.registerComponent('AwesomeProject', () => AwesomeProject);
