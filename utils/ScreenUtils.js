@@ -23,7 +23,9 @@ const h2 = 1334 / r2;
 export function setSpText(size : Number) {
     var scaleWidth = screenW / w2;
     var scaleHeight = screenH / h2;
-    var scale = Math.min(scaleWidth, scaleHeight);
+    // var scale = Math.min(scaleWidth, scaleHeight);
+    // 只以宽度作为比例
+    var scale = scaleWidth;
     size = Math.round((size * scale + 0.5) * pixelRatio / fontScale);
     return size;
 }
@@ -36,7 +38,9 @@ export function setSpText(size : Number) {
 export function scaleSize(size : Number) {
     var scaleWidth = screenW / w2;
     var scaleHeight = screenH / h2;
-    var scale = Math.min(scaleWidth, scaleHeight);
+    // var scale = Math.min(scaleWidth, scaleHeight);
+    // 只以宽度作为比例
+    var scale = scaleWidth;
     size = Math.round((size * scale + 0.5));
     return size;
 }
