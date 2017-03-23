@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 
 import TopNavComponent from '../common/TopNav';
+import ScreenUtils from '../../utils/ScreenUtils';
 
 export default class RegComponent extends Component {
   constructor(props) {
@@ -26,9 +27,22 @@ export default class RegComponent extends Component {
   render () {
     return (
       <View style={styles.wrapper}>
-        <TopNavComponent title="123" bgColor="#23232e"></TopNavComponent>
+        <TopNavComponent title="注册" bgColor="#23232e"></TopNavComponent>
         <ScrollView>
           <View style={styles.reg_wrapper}>
+            <View style={styles.reg_item}>
+              <View style={styles.reg_item_icon_wrapper}>
+                <Image source={require('./image/icon_name.png')} style={styles.reg_item_icon}/>
+              </View>
+              <View style={styles.reg_item_input_wrapper}>
+                <TextInput
+                  style={styles.reg_item_input}
+                  keyboardType="numeric"
+                  underlineColorAndroid="transparent"
+                  placeholder="输入名称，开启美丽之旅"
+                />
+              </View>
+            </View>
             <View style={styles.reg_item}>
               <View style={styles.reg_item_icon_wrapper}>
                 <Image source={require('./image/icon_iPhone.png')} style={styles.reg_item_icon}/>
@@ -74,6 +88,9 @@ export default class RegComponent extends Component {
                 <Image source={require('./image/icon_UNdisplay.png')}/>
               </TouchableOpacity>
             </View>
+            <View style={{marginTop: 15,width: ScreenUtils.scaleSize(255),alignSelf: 'center',marginLeft: 10}}>
+              <Text style={{color: '#B8B8B8',fontSize: 12}}>我已阅读，并同意<Text style={{color: '#363334',fontSize: 12}}>《用户注册协议》</Text></Text>
+            </View>
             {/* <View style={styles.reg_footer}>
               <TouchableOpacity style={styles.reg_footer_btn}>
                 <Text style={styles.reg_footer_btn_text}>确定</Text>
@@ -114,7 +131,7 @@ export default class RegComponent extends Component {
 const styles = StyleSheet.create({
   wrapper: {
     backgroundColor: '#23232e',
-    height: Dimensions.get('window').height
+    height: Dimensions.get('window').height,
   },
   text: {
     color: '#fff'
@@ -128,8 +145,8 @@ const styles = StyleSheet.create({
     paddingTop: 20,
   },
   reg_item: {
-    width:255,
-    height: 58,
+    width: ScreenUtils.scaleSize(255),
+    height: ScreenUtils.scaleSize(58),
     paddingTop: 13,
     flexDirection: 'row',
     alignItems: 'center',
@@ -144,6 +161,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   reg_item_input: {
+    marginTop: 3,
     fontSize: 12,
     flex:1,
     padding: 0
@@ -194,7 +212,7 @@ const styles = StyleSheet.create({
   // },
   sp_border:{
     backgroundColor: '#65656D',
-    width: 282,
+    width: ScreenUtils.scaleSize(282),
     height: 10,
     alignSelf:'center'
   },
@@ -232,7 +250,7 @@ const styles = StyleSheet.create({
     fontSize: 12
   },
   invite_wrapper: {
-    width: 315,
+    width: ScreenUtils.scaleSize(315),
     alignSelf:'center',
     borderBottomWidth: 1,
     borderColor: '#fff',
