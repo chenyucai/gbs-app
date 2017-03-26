@@ -19,7 +19,11 @@ import {
 
 import RegComponent from './components/register/Register'
 import LoginComponent from './components/register/Login'
-import HomeComponent from './components/home/Home'
+import HomeComponent from './components/home/Home';
+import HomeSearchComponent from './components/home/HomeSearch'
+import HomeSaleListComponent from './components/home/HomeSaleList';
+import RecommendStoreListComponent from './components/home/RecommendStoreList';
+import SpecialColumnComponent from './components/home/SpecialColumn'
 
 
 
@@ -29,7 +33,7 @@ export default class AwesomeProject extends Component {
       <Navigator
         initialRoute = {{ name: 'home' }}
         renderScene = {(route, navigator) =>
-          <RegComponent></RegComponent>
+          <SpecialColumnComponent></SpecialColumnComponent>
         }
       />
     );

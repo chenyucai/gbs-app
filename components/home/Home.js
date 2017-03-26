@@ -23,9 +23,10 @@ export default class HomeComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      show: true
     };
   }
+
   renderImg(){
     var imageViews=[];
     for(var i=0;i<5;i++){
@@ -99,8 +100,8 @@ export default class HomeComponent extends Component {
   render () {
     const swiperHeight = Dimensions.get('window').width / 1.875;
     let ProductItemInfo = {
-      width: 170,
-      height:150
+      width: ScreenUtils.scaleSize(170),
+      height:ScreenUtils.scaleSize(150)
     }
     return (
       <View style={styles.wrapper}>

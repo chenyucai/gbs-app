@@ -16,11 +16,11 @@ export default class TopNavComponent extends Component {
   }
 
   render () {
-    let bgColor = this.props.bgColor;
+    let bgColor = this.props.bgColor || '#23232E';
 
     return (
       <View style={{
-        height:60,
+        height:64,
         flexDirection: 'row',
         backgroundColor: bgColor,
         justifyContent: 'center',

@@ -14,6 +14,11 @@ export default class ProductItemComponent extends Component {
     };
   }
 
+  static defaultProps = {
+    width: 170,
+    height: 150
+  };
+
   // props 需要传入图片的宽度和高度
   render () {
     return (
