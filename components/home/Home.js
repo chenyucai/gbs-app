@@ -12,6 +12,7 @@ import {
 } from 'react-native'
 
 import Swiper from 'react-native-swiper';
+import TabNavigator from 'react-native-tab-navigator';
 
 import HomeHeaderComponent from './HomeHeader';
 import BottomTabsComponent from '../common/BottomTabs';
@@ -144,7 +145,7 @@ export default class HomeComponent extends Component {
         <HomeHeaderComponent navigator={this.props.navigator}/>
 
         <ScrollView style={{
-          marginBottom: 49
+          marginBottom: 50
         }}>
           <View>
             <Swiper
@@ -242,9 +243,9 @@ export default class HomeComponent extends Component {
           </View>
         </ScrollView>
 
-        <View style={Platform.OS=='android'?styles.tabs_android:styles.tabs}>
-          <BottomTabsComponent/>
-        </View>
+        {/* <View>
+          <BottomTabsComponent />
+        </View> */}
 
       </View>
     )
