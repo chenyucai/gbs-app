@@ -19,13 +19,14 @@ import HomeComponent from './components/home/Home';
 // import SpecialColumnComponent from './components/home/SpecialColumn'
 import PhotoelectricbeautyComponent from './components/beauty/Photoelectricbeauty'
 import BottomTabsComponent from './components/common/BottomTabs';
+import StoreDetailComponent from './components/beauty/StoreDetail'
 
 
 export default class AwesomeProject extends Component {
   render() {
     return (
       <Navigator
-        initialRoute = {{ name: 'login', component: PhotoelectricbeautyComponent }}
+        initialRoute = {{ name: 'login', component: StoreDetailComponent }}
         renderScene={(route, navigator) => {
           let Component = route.component;
           return <Component {...route.params} navigator={navigator} />
