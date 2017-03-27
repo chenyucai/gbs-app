@@ -7,7 +7,8 @@ import {
   TouchableHighlight,
   Dimensions,
   Image,
-  ScrollView
+  ScrollView,
+  Platform
 } from 'react-native'
 
 import Swiper from 'react-native-swiper';
@@ -241,7 +242,7 @@ export default class HomeComponent extends Component {
           </View>
         </ScrollView>
 
-        <View style={styles.tabs}>
+        <View style={Platform.OS=='android'?styles.tabs_android:styles.tabs}>
           <BottomTabsComponent/>
         </View>
 
@@ -251,6 +252,13 @@ export default class HomeComponent extends Component {
 }
 
 const styles = StyleSheet.create({
+  tabs_android:{
+    width: Dimensions.get('window').width,
+    height: 50,
+    position: 'absolute',
+    bottom: 25,
+    left:0
+  },
   wrapper: {
     backgroundColor: '#F0EFF5',
     height: Dimensions.get('window').height
