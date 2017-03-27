@@ -160,7 +160,7 @@ export default class HomeComponent extends Component {
             </Swiper>
           </View>
 
-          <HomeModulesComponent />
+          <HomeModulesComponent navigator={this.props.navigator}/>
 
           {/* 欢乐促销 */}
           <View style={styles.sale_wrapper}>

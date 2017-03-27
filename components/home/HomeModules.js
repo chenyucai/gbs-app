@@ -3,10 +3,12 @@ import {
   StyleSheet,
   View,
   Text,
-  Image
+  Image,
+  TouchableOpacity
 } from 'react-native'
 
 import {scaleSize,setSpText} from '../../utils/ScreenUtils';
+import PhotoelectricbeautyComponent from '../beauty/Photoelectricbeauty';
 
 export default class HomeModulesComponent extends Component {
   constructor(props) {
@@ -16,45 +18,55 @@ export default class HomeModulesComponent extends Component {
     };
   }
 
+  _goPhotoelectricBeauty(){
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'Photoelectricbeauty',
+        component: PhotoelectricbeautyComponent
+      });
+    }
+  }
+
   render () {
     return (
       <View style={styles.wrapper}>
         <View style={styles.item_line}>
-          <View style={styles.item}>
+          <TouchableOpacity style={styles.item} onPress={this._goPhotoelectricBeauty.bind(this)}>
             <Image style={styles.item_icon} source={require('./image/icon_Cosmetology.png')}/>
             <Text style={styles.item_title}>光电美容</Text>
-          </View>
-          <View style={styles.item}>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.item}>
             <Image style={styles.item_icon} source={require('./image/icon_plastic.png')}/>
             <Text style={styles.item_title}>微整形</Text>
-          </View>
-          <View style={styles.item}>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.item}>
             <Image style={styles.item_icon} source={require('./image/icon_beauty.png')}/>
             <Text style={styles.item_title}>丽人</Text>
-          </View>
-          <View style={styles.item}>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.item}>
             <Image style={styles.item_icon} source={require('./image/icon_discount.png')}/>
             <Text style={styles.item_title}>特惠圈</Text>
-          </View>
+          </TouchableOpacity>
         </View>
 
         <View style={styles.item_line}>
-          <View style={styles.item}>
+          <TouchableOpacity style={styles.item}>
             <Image style={styles.item_icon} source={require('./image/icon_shops.png')}/>
             <Text style={styles.item_title}>同城门店</Text>
-          </View>
-          <View style={styles.item}>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.item}>
             <Image style={styles.item_icon} source={require('./image/icon_Community.png')}/>
             <Text style={styles.item_title}>网上社区</Text>
-          </View>
-          <View style={styles.item}>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.item}>
             <Image style={styles.item_icon} source={require('./image/icon_note.png')}/>
             <Text style={styles.item_title}>美丽日记</Text>
-          </View>
-          <View style={styles.item}>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.item}>
             <Image style={styles.item_icon} source={require('./image/icon_Magazine.png')}/>
             <Text style={styles.item_title}>杂志社</Text>
-          </View>
+          </TouchableOpacity>
         </View>
       </View>
     )

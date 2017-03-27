@@ -25,7 +25,7 @@ export default class StoreItemComponent extends Component {
   // props 需要传入图片的宽度和高度
   render () {
     return (
-      <View style={[styles.item]}>
+      <View style={[styles.item,{width: this.props.width}]}>
         <View style={{
           width: this.props.width,
           height: this.props.height
@@ -34,7 +34,7 @@ export default class StoreItemComponent extends Component {
             width: this.props.width,
             height: this.props.height
           }}
-            source={require('../home/image/AF89940B-AB2E-480F-ABF4-F7FE9B3A6C0D.png')}
+            source={require('../../img/888.png')}
             resizeMode="cover"
           />
         </View>
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     alignSelf:'center',
     paddingHorizontal: 10,
     position: 'absolute',
-    top: -10,
+    top: -13,
   },
   item_content:{
     paddingTop:20

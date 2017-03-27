@@ -13,6 +13,7 @@ import {
 // import RegComponent from './components/register/Register'
 import LoginComponent from './components/register/Login'
 import HomeComponent from './components/home/Home';
+import OptoelectronicstoreComponent from './components/beauty/Optoelectronicstore';
 // import HomeSearchComponent from './components/home/HomeSearch'
 // import HomeSaleListComponent from './components/home/HomeSaleList';
 // import RecommendStoreListComponent from './components/home/RecommendStoreList';
@@ -25,7 +26,7 @@ export default class AwesomeProject extends Component {
   render() {
     return (
       <Navigator
-        initialRoute = {{ name: 'login', component: PhotoelectricbeautyComponent }}
+        initialRoute = {{ name: 'login', component: BottomTabsComponent }}
         renderScene={(route, navigator) => {
           let Component = route.component;
           return <Component {...route.params} navigator={navigator} />
