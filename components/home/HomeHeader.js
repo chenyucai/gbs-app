@@ -8,12 +8,23 @@ import {
   Image
 } from 'react-native'
 
+import HomeSearchComponent from './HomeSearch';
+
 export default class HomeHeaderComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
 
     };
+  }
+
+  _goSearch(){
+    if (this.props.navigator) {
+      this.props.navigator.push({
+        name:'homeSearch',
+        component: HomeSearchComponent
+      })
+    }
   }
 
   render () {
@@ -26,7 +37,7 @@ export default class HomeHeaderComponent extends Component {
         <View style={styles.logo}>
           <Image source={require('./image/logo.png')}/>
         </View>
-        <TouchableOpacity style={styles.search}>
+        <TouchableOpacity style={styles.search} onPress={this._goSearch.bind(this)}>
           <Image source={require('./image/icon_search.png')}/>
         </TouchableOpacity>
       </View>

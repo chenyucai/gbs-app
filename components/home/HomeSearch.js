@@ -19,6 +19,13 @@ export default class HomeSearchComponent extends Component {
     };
   }
 
+  _cancel(){
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.pop();
+    }
+  }
+
   render () {
     return (
       <View style={styles.wrapper}>
@@ -36,7 +43,7 @@ export default class HomeSearchComponent extends Component {
             </View>
           </View>
           <View style={styles.header_right}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={this._cancel.bind(this)}>
               <Text style={styles.cancel}>取消</Text>
             </TouchableOpacity>
           </View>

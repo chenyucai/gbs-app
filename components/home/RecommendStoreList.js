@@ -59,7 +59,7 @@ export default class RecommendStoreListComponent extends Component {
 
     return (
       <View style={styles.wrapper}>
-        <TopNavComponent title="推荐商家" />
+        <TopNavComponent title="推荐商家" navigator={this.props.navigator}/>
         <ListView
           dataSource={this.state.dataSource}
           renderRow={this.renderRow}

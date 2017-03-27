@@ -35,7 +35,7 @@ export default class SpecialColumnComponent extends Component {
         <ScrollView>
           <View style={styles.header}>
             <View style={styles.back}>
-              <BackIconComponent />
+              <BackIconComponent navigator={this.props.navigator}/>
             </View>
             <Image source={require('./image/8832F62B-2070-45C5-96E3-2BCB4F5CBE3F.png')}
               style={{

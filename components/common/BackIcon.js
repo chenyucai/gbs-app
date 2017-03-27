@@ -17,9 +17,16 @@ export default class BackIconComponent extends Component {
     };
   }
 
+  _back(){
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.pop();
+    }
+  }
+
   render () {
     return (
-      <TouchableOpacity>
+      <TouchableOpacity onPress={this._back.bind(this)}>
         <Image source={require('./image/icon_Return2.png')}/>
       </TouchableOpacity>
     )

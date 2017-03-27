@@ -3,6 +3,7 @@ import {
   View,
   Text,
   TouchableOpacity,
+  TouchableHighlight,
   Dimensions,
   StyleSheet,
   Image,
@@ -12,12 +13,35 @@ import {
 
 import ScreenUtils from '../../utils/ScreenUtils';
 
+import HomeComponent from '../home/Home';
+import RegComponent from './Register'
+
 export default class LoginComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
 
     };
+  }
+
+  _pressButton(){
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'HomeComponent',
+        component: HomeComponent
+      })
+    }
+  }
+
+  _register(){
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'register',
+        component: RegComponent
+      })
+    }
   }
 
   render () {
@@ -58,8 +82,14 @@ export default class LoginComponent extends Component {
               </TouchableOpacity>
             </View>
             <View style={styles.login_operation_wrapper}>
-              <Text style={styles.login_operation_noaccount}>没有账号？</Text>
-              <Text style={styles.login_operation_reg}>立即注册</Text>
+
+              <TouchableHighlight onPress={this._register.bind(this)}>
+                <Text style={styles.login_operation_noaccount}>没有账号？</Text>
+              </TouchableHighlight>
+              <TouchableHighlight onPress={this._register.bind(this)}>
+                <Text style={styles.login_operation_reg}>立即注册</Text>
+              </TouchableHighlight>
+
               <Text style={styles.login_operation_forget}>忘记密码？</Text>
             </View>
             {/* <View style={styles.login_footer}>
@@ -67,9 +97,9 @@ export default class LoginComponent extends Component {
                 <Text style={styles.login_footer_btn_text}>登陆</Text>
               </TouchableOpacity>
             </View> */}
-            <View style={styles.login_footer}>
+            <TouchableOpacity style={styles.login_footer} onPress={this._pressButton.bind(this)}>
               <Image source={require('./image/btn_dis_sign.png')}/>
-            </View>
+            </TouchableOpacity>
           </View>
           <View style={styles.sp_border}></View>
 

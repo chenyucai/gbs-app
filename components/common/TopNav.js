@@ -11,8 +11,15 @@ export default class TopNavComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '123'
+
     };
+  }
+
+  _back(){
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.pop();
+    }
   }
 
   render () {
@@ -27,7 +34,7 @@ export default class TopNavComponent extends Component {
         paddingTop:25,
         alignItems: 'center',
       }}>
-        <TouchableOpacity style={styles.back}>
+        <TouchableOpacity style={styles.back} onPress={this._back.bind(this)}>
           <Image source={require('./image/icon_Return.png')} />
         </TouchableOpacity>
         <View>

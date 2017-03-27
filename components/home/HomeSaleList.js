@@ -59,7 +59,7 @@ export default class HomeSaleListComponent extends Component {
 
     return (
       <View style={styles.wrapper}>
-        <TopNavComponent title="促销产品" />
+        <TopNavComponent title="促销产品" navigator={this.props.navigator}/>
         <ListView
           dataSource={this.state.dataSource}
           renderRow={this.renderRow}

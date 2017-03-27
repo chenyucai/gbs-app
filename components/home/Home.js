@@ -4,6 +4,7 @@ import {
   View,
   Text,
   TouchableOpacity,
+  TouchableHighlight,
   Dimensions,
   Image,
   ScrollView
@@ -16,6 +17,9 @@ import BottomTabsComponent from '../common/BottomTabs';
 import HomeModulesComponent from './HomeModules';
 import HomeBlockTitleComponent from './HomeBlockTitle';
 import ProductItemComponent from '../common/ProductItem';
+import HomeSaleListComponent from './HomeSaleList';
+import RecommendStoreListComponent from './RecommendStoreList';
+import SpecialColumnComponent from './SpecialColumn';
 
 import ScreenUtils from '../../utils/ScreenUtils';
 
@@ -84,17 +88,48 @@ export default class HomeComponent extends Component {
     let items = [];
     for (var i = 0; i < 3; i++) {
       items.push(
-        <Image source={require('./image/8832F62B-2070-45C5-96E3-2BCB4F5CBE3F.png')}
-          key={i}
-          style={{
-            width: ScreenUtils.scaleSize(375),
-            height: ScreenUtils.scaleSize(230),
-            marginBottom: 10
-          }}
-        />
+        <TouchableHighlight key={i} onPress={this._goSpecialColumn.bind(this)}>
+          <Image source={require('./image/8832F62B-2070-45C5-96E3-2BCB4F5CBE3F.png')}
+            style={{
+              width: ScreenUtils.scaleSize(375),
+              height: ScreenUtils.scaleSize(230),
+              marginBottom: 10
+            }}
+          />
+        </TouchableHighlight>
       )
     }
     return items;
+  }
+
+  _goSale(){
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'recommendStoreList',
+        component: HomeSaleListComponent
+      });
+    }
+  }
+
+  _goRecommendStore(){
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'saleList',
+        component: RecommendStoreListComponent
+      });
+    }
+  }
+
+  _goSpecialColumn(){
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'saleList',
+        component: SpecialColumnComponent
+      });
+    }
   }
 
   render () {
@@ -105,7 +140,7 @@ export default class HomeComponent extends Component {
     }
     return (
       <View style={styles.wrapper}>
-        <HomeHeaderComponent />
+        <HomeHeaderComponent navigator={this.props.navigator}/>
 
         <ScrollView style={{
           marginBottom: 49
@@ -127,9 +162,9 @@ export default class HomeComponent extends Component {
 
           {/* 欢乐促销 */}
           <View style={styles.sale_wrapper}>
-            <View style={styles.block_title_wapper}>
-              <HomeBlockTitleComponent titleEn="Joy and happiness" titleZh="欢乐优促"/>
-            </View>
+            <TouchableHighlight style={styles.block_title_wapper} onPress={this._goSale.bind(this)}>
+              <View><HomeBlockTitleComponent titleEn="Joy and happiness" titleZh="欢乐优促"/></View>
+            </TouchableHighlight>
             <ScrollView horizontal style={styles.sale_body}>
               {this.renderSale()}
             </ScrollView>
@@ -164,9 +199,9 @@ export default class HomeComponent extends Component {
 
           {/* 推荐商家 */}
           <View style={styles.store_wrapper}>
-            <View style={styles.block_title_wapper}>
+            <TouchableOpacity style={styles.block_title_wapper} onPress={this._goRecommendStore.bind(this)}>
               <HomeBlockTitleComponent titleEn="Recommended businesses" titleZh="推荐商家"/>
-            </View>
+            </TouchableOpacity>
             <View style={styles.store_body}>
               {/* {this.renderStore()} */}
               <View style={styles.store_item}>
