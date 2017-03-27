@@ -20,6 +20,7 @@ import OptoelectronicstoreComponent from './components/beauty/Optoelectronicstor
 // import SpecialColumnComponent from './components/home/SpecialColumn'
 import PhotoelectricbeautyComponent from './components/beauty/Photoelectricbeauty'
 import BottomTabsComponent from './components/common/BottomTabs';
+import StoreDetailComponent from './components/beauty/StoreDetail'
 
 
 export default class AwesomeProject extends Component {
