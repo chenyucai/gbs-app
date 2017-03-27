@@ -5,7 +5,8 @@ import {
   Text,
   TouchableOpacity,
   Dimensions,
-  Image
+  Image,
+  Platform
 } from 'react-native'
 
 import HomeSearchComponent from './HomeSearch';
@@ -44,6 +45,7 @@ export default class HomeHeaderComponent extends Component {
     )
   }
 }
+
 
 const styles = StyleSheet.create({
   wrapper: {

@@ -265,8 +265,16 @@ const styles = StyleSheet.create({
   },
   tabs:{
     width: Dimensions.get('window').width,
+    height: 50,
     position: 'absolute',
-    bottom: 0,
+    bottom: 25,
+    left:0
+  },
+  tabs_android:{
+    width: Dimensions.get('window').width,
+    height: 50,
+    position: 'absolute',
+    bottom: 25,
     left:0
   },
   sale_wrapper:{
