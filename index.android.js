@@ -10,9 +10,13 @@ import {
   Navigator
 } from 'react-native';
 
-import RegComponent from './components/register/Register'
+// import RegComponent from './components/register/Register'
 import LoginComponent from './components/register/Login'
-import HomeComponent from './components/home/Home'
+// import HomeComponent from './components/home/Home';
+// import HomeSearchComponent from './components/home/HomeSearch'
+// import HomeSaleListComponent from './components/home/HomeSaleList';
+// import RecommendStoreListComponent from './components/home/RecommendStoreList';
+// import SpecialColumnComponent from './components/home/SpecialColumn'
 
 
 
@@ -20,10 +24,11 @@ export default class AwesomeProject extends Component {
   render() {
     return (
       <Navigator
-        initialRoute = {{ name: 'home' }}
-        renderScene = {(route, navigator) =>
-          <HomeComponent></HomeComponent>
-        }
+        initialRoute = {{ name: 'login', component: LoginComponent }}
+        renderScene={(route, navigator) => {
+          let Component = route.component;
+          return <Component {...route.params} navigator={navigator} />
+        }}
       />
     );
   }
