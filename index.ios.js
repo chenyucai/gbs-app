@@ -33,7 +33,7 @@ export default class AwesomeProject extends Component {
       <Navigator
         initialRoute = {{ name: 'home' }}
         renderScene = {(route, navigator) =>
-          <SpecialColumnComponent></SpecialColumnComponent>
+          <HomeComponent></HomeComponent>
         }
       />
     );

@@ -15,6 +15,7 @@ import ScreenUtils from '../../utils/ScreenUtils';
 
 import TopNavComponent from '../common/TopNav';
 import ProductItemComponent from '../common/ProductItem';
+import BackIconComponent from '../common/BackIcon';
 
 export default class SpecialColumnComponent extends Component {
   constructor(props) {
@@ -22,18 +23,6 @@ export default class SpecialColumnComponent extends Component {
     this.state = {
 
     };
-  }
-
-  renderRow(rowData){
-    let ProductItemInfo = {
-      width: ScreenUtils.scaleSize(170),
-      height:ScreenUtils.scaleSize(130)
-    }
-    return (
-      <View style={styles.item}>
-        <StoreItemComponent {...ProductItemInfo}/>
-      </View>
-    )
   }
 
   render () {
@@ -45,6 +34,9 @@ export default class SpecialColumnComponent extends Component {
       <View style={styles.wrapper}>
         <ScrollView>
           <View style={styles.header}>
+            <View style={styles.back}>
+              <BackIconComponent />
+            </View>
             <Image source={require('./image/8832F62B-2070-45C5-96E3-2BCB4F5CBE3F.png')}
               style={{
                 width: ScreenUtils.scaleSize(375),
@@ -81,6 +73,12 @@ const styles = StyleSheet.create({
   wrapper: {
     backgroundColor: '#F0EFF5',
     height: Dimensions.get('window').height
+  },
+  back:{
+    position: 'absolute',
+    top: 27,
+    left: 12,
+    zIndex: 5000
   },
   header:{
     backgroundColor:'#fff',

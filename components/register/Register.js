@@ -163,23 +163,23 @@ const styles = StyleSheet.create({
   reg_item_input: {
     marginTop: 3,
     fontSize: 12,
-    flex:1,
+    // flex:1,
     padding: 0
   },
   get_code: {
     position: 'absolute',
     right: 0,
     bottom: 10,
-    flex:1,
     width: 70,
     height: 26,
     backgroundColor: '#000',
+    flexDirection: 'row',
+    alignItems: 'center'
   },
   get_code_text: {
     color: '#fff',
     fontSize: 10,
-    lineHeight: 26,
-    textAlign: 'center'
+    marginLeft: 9
   },
   display_pwd: {
     position: 'absolute',
