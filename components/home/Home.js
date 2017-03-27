@@ -252,6 +252,13 @@ export default class HomeComponent extends Component {
 }
 
 const styles = StyleSheet.create({
+  tabs_android:{
+    width: Dimensions.get('window').width,
+    height: 50,
+    position: 'absolute',
+    bottom: 25,
+    left:0
+  },
   wrapper: {
     backgroundColor: '#F0EFF5',
     height: Dimensions.get('window').height
