@@ -163,7 +163,7 @@ export default class HomeComponent extends Component {
 
           {/* 欢乐促销 */}
           <View style={styles.sale_wrapper}>
-            <TouchableHighlight style={styles.block_title_wapper} onPress={this._goSale.bind(this)}>
+            <TouchableHighlight style={styles.block_title_wrapper} onPress={this._goSale.bind(this)}>
               <View><HomeBlockTitleComponent titleEn="Joy and happiness" titleZh="欢乐优促"/></View>
             </TouchableHighlight>
             <ScrollView horizontal style={styles.sale_body}>
@@ -173,7 +173,7 @@ export default class HomeComponent extends Component {
 
           {/* 杂志社 */}
           <View style={styles.magazine_wrapper}>
-            <View style={styles.block_title_wapper}>
+            <View style={styles.block_title_wrapper}>
               <HomeBlockTitleComponent titleEn="Magazine Agency" titleZh="杂志社"/>
             </View>
             <View style={styles.magazine_body}>
@@ -190,7 +190,7 @@ export default class HomeComponent extends Component {
 
           {/* 美丽互生 */}
           <View style={styles.beautiful_wrapper}>
-            <View style={styles.block_title_wapper}>
+            <View style={styles.block_title_wrapper}>
               <HomeBlockTitleComponent titleEn="Beautiful alternate" titleZh="美丽互生"/>
             </View>
             <View style={styles.beautiful_body}>
@@ -200,7 +200,7 @@ export default class HomeComponent extends Component {
 
           {/* 推荐商家 */}
           <View style={styles.store_wrapper}>
-            <TouchableOpacity style={styles.block_title_wapper} onPress={this._goRecommendStore.bind(this)}>
+            <TouchableOpacity style={styles.block_title_wrapper} onPress={this._goRecommendStore.bind(this)}>
               <HomeBlockTitleComponent titleEn="Recommended businesses" titleZh="推荐商家"/>
             </TouchableOpacity>
             <View style={styles.store_body}>
@@ -220,10 +220,10 @@ export default class HomeComponent extends Component {
             </View>
           </View>
 
-          {/* 全面大热购 */}
+          {/* 全球大热购 */}
           <View style={styles.hot_wrapper}>
-            <View style={[styles.block_title_wapper,{backgroundColor:'#F0EFF5'}]}>
-              <HomeBlockTitleComponent titleEn="All the big Tesoo" titleZh="全面大热购"/>
+            <View style={[styles.block_title_wrapper,{backgroundColor:'#F0EFF5'}]}>
+              <HomeBlockTitleComponent titleEn="All the big Tesoo" titleZh="全球大热购"/>
             </View>
             <View style={styles.hot_body}>
               <View style={styles.hot_item}>
@@ -281,7 +281,7 @@ const styles = StyleSheet.create({
     backgroundColor:'#fff',
     marginTop:10
   },
-  block_title_wapper:{
+  block_title_wrapper:{
     paddingTop: 20,
     paddingBottom:20,
     backgroundColor:'#fff'

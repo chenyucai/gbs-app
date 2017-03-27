@@ -17,14 +17,14 @@ import LoginComponent from './components/register/Login'
 // import HomeSaleListComponent from './components/home/HomeSaleList';
 // import RecommendStoreListComponent from './components/home/RecommendStoreList';
 // import SpecialColumnComponent from './components/home/SpecialColumn'
-
+import PhotoelectricbeautyComponent from './components/beauty/Photoelectricbeauty'
 
 
 export default class AwesomeProject extends Component {
   render() {
     return (
       <Navigator
-        initialRoute = {{ name: 'login', component: LoginComponent }}
+        initialRoute = {{ name: 'login', component: PhotoelectricbeautyComponent }}
         renderScene={(route, navigator) => {
           let Component = route.component;
           return <Component {...route.params} navigator={navigator} />
