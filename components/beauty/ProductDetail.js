@@ -5,7 +5,8 @@ import {
   Text,
   Image,
   Dimensions,
-  ScrollView
+  ScrollView,
+  TouchableOpacity
 } from 'react-native'
 
 import ScreenUtils from '../../utils/ScreenUtils';
@@ -146,6 +147,19 @@ export default class StoreDetailComponent extends Component {
             </View>
           </View>
         </ScrollView>
+
+        <View style={styles.cart_wrapper}>
+          <View style={styles.cart_goods}>
+            {/* 此处少了一个购物车的图标 */}
+            <Image source={require('../common/image/icon_dis_Cart.png')}/>
+          </View>
+          <TouchableOpacity style={styles.cart_addCart}>
+            <Text style={styles.cart_text}>加入购物车</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.cart_buyNow}>
+            <Text style={styles.cart_text}>立即购买</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     )
   }
@@ -346,4 +360,30 @@ const styles = StyleSheet.create({
     borderColor:'#D7D7D7',
     borderWidth: 0.5
   },
+  cart_wrapper:{
+    height: ScreenUtils.scaleSize(50),
+    flexDirection:'row',
+  },
+  cart_goods:{
+    flex:1,
+    backgroundColor:'#363334',
+    alignItems:'center',
+    justifyContent:'center'
+  },
+  cart_addCart:{
+    width: ScreenUtils.scaleSize(114),
+    backgroundColor:'#656565',
+    alignItems:'center',
+    justifyContent:'center'
+  },
+  cart_buyNow:{
+    width: ScreenUtils.scaleSize(100),
+    backgroundColor:'#FF6D99',
+    alignItems:'center',
+    justifyContent:'center'
+  },
+  cart_text:{
+    fontSize: 14,
+    color: '#fff'
+  }
 });
