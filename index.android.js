@@ -17,14 +17,15 @@ import LoginComponent from './components/register/Login'
 // import HomeSaleListComponent from './components/home/HomeSaleList';
 // import RecommendStoreListComponent from './components/home/RecommendStoreList';
 // import SpecialColumnComponent from './components/home/SpecialColumn'
-import BottomTabsComponent from './components/common/BottomTabs';
+// import BottomTabsComponent from './components/common/BottomTabs';
+import StoreDetailComponent from './components/beauty/StoreDetail'
 
 
 export default class AwesomeProject extends Component {
   render() {
     return (
       <Navigator
-        initialRoute = {{ name: 'login', component: BottomTabsComponent }}
+        initialRoute = {{ name: 'login', component: StoreDetailComponent }}
         renderScene={(route, navigator) => {
           let Component = route.component;
           return <Component {...route.params} navigator={navigator} />
