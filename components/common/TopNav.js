@@ -27,17 +27,16 @@ export default class TopNavComponent extends Component {
 
     return (
       <View style={{
-        height:64,
+        height:44,
         flexDirection: 'row',
         backgroundColor: bgColor,
         justifyContent: 'center',
-        paddingTop:25,
         alignItems: 'center',
       }}>
         <TouchableOpacity style={styles.back} onPress={this._back.bind(this)}>
           <Image source={require('./image/icon_Return.png')} />
         </TouchableOpacity>
-        <View>
+        <View style={{alignItems: 'center'}}>
             <Text style={styles.title}>{this.props.title}</Text>
         </View>
       </View>
@@ -49,7 +48,7 @@ const styles = StyleSheet.create({
   back: {
     position: 'absolute',
     left: 10,
-    top:32
+    top:12
   },
   title: {
     fontSize: 18,

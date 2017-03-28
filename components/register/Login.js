@@ -129,7 +129,7 @@ export default class LoginComponent extends Component {
 const styles = StyleSheet.create({
   wrapper: {
     backgroundColor: '#23232e',
-    height: Dimensions.get('window').height,
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center'
   },

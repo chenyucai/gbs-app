@@ -128,7 +128,7 @@ export default class RegComponent extends Component {
 const styles = StyleSheet.create({
   wrapper: {
     backgroundColor: '#23232e',
-    height: Dimensions.get('window').height,
+    flex: 1,
   },
   text: {
     color: '#fff'

@@ -72,7 +72,7 @@ export default class SpecialColumnComponent extends Component {
 const styles = StyleSheet.create({
   wrapper: {
     backgroundColor: '#F0EFF5',
-    height: Dimensions.get('window').height
+    flex: 1
   },
   back:{
     position: 'absolute',

@@ -88,7 +88,7 @@ export default class HomeSearchComponent extends Component {
 const styles = StyleSheet.create({
   wrapper: {
     backgroundColor: '#fff',
-    height: Dimensions.get('window').height
+    flex: 1
   },
   header:{
     height: 64,

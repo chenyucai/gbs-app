@@ -73,7 +73,7 @@ export default class HomeSaleListComponent extends Component {
 const styles = StyleSheet.create({
   wrapper: {
     backgroundColor: '#F0EFF5',
-    height: Dimensions.get('window').height
+    flex: 1
   },
   list:{
     flexDirection:'row',

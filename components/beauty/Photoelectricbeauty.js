@@ -150,7 +150,7 @@ export default class PhotoelectricbeautyComponent extends Component {
 const styles = StyleSheet.create({
   wrapper: {
     backgroundColor: '#F0EFF5',
-    height: Dimensions.get('window').height
+    flex: 1
   },
   Photoelectricschool_wrapper: {
     marginTop: 10

@@ -26,11 +26,11 @@ export default class StoreDetailComponent extends Component {
   render () {
     let ProductItemInfo = {
       width: ScreenUtils.scaleSize(170),
-      height:ScreenUtils.scaleSize(150)
+      height: ScreenUtils.scaleSize(150)
     }
     return (
       <View style={styles.wrapper}>
-        <TopNavWidthActionsComponent title="门店详情" navigator={navigator}/>
+        <TopNavWidthActionsComponent title="门店详情" navigator={this.props.navigator}/>
 
         <ScrollView>
           <Image resizeMode="cover" source={require('../../img/25C07421-D400-414E-A865-EF013EC8E9C8.png')} style={{
@@ -178,7 +178,7 @@ export default class StoreDetailComponent extends Component {
 const styles = StyleSheet.create({
   wrapper: {
     backgroundColor: '#F0EFF5',
-    height: Dimensions.get('window').height
+    flex: 1
   },
   header:{
     backgroundColor:'#fff',

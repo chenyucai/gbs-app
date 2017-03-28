@@ -262,7 +262,7 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     backgroundColor: '#F0EFF5',
-    height: Dimensions.get('window').height
+    flex: 1
   },
   tabs:{
     width: Dimensions.get('window').width,

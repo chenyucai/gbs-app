@@ -5,11 +5,15 @@ import {
   Text,
   Image,
   Dimensions,
-  ScrollView
+  ScrollView,
+  TouchableOpacity
 } from 'react-native'
+
+import ScreenUtils from '../../utils/ScreenUtils';
 
 import TopNavComponent from '../common/TopNav';
 import StoreItemComponent from '../common/StoreItem'
+import StoreDetailComponent from './StoreDetail'
 
 export default class OptoelectronicstoreComponent extends Component {
   constructor(props) {
@@ -19,41 +23,49 @@ export default class OptoelectronicstoreComponent extends Component {
     };
   }
 
+  _goStoreDetail() {
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'StoreDetail',
+        component: StoreDetailComponent
+      });
+    }
+  }
+
   render () {
+    let testData = {
+      width: ScreenUtils.scaleSize(170),
+      height: ScreenUtils.scaleSize(130)
+    }
     return (
       <View style={styles.wrapper}>
         <TopNavComponent title="光电门店" navigator={this.props.navigator}/>
-        <View style={styles.store_header}>
-          <View style={styles.store_header_item}>
-            <Text style={styles.store_header_item_text}>距离</Text>
-            <Image style={styles.store_header_item_img} source={require('../home/image/icon_down.png')}/>
+        <View style={styles.header}>
+          <View style={styles.header_item}>
+            <Text style={styles.header_item_text}>距离</Text>
+            <Image style={styles.header_item_img} source={require('../home/image/icon_down.png')}/>
           </View>
-          <View style={styles.store_header_item}>
-            <Text style={styles.store_header_item_text}>星级</Text>
-            <Image style={styles.store_header_item_img} source={require('../home/image/icon_down.png')}/>
+          <View style={styles.header_item}>
+            <Text style={styles.header_item_text}>星级</Text>
+            <Image style={styles.header_item_img} source={require('../home/image/icon_down.png')}/>
           </View>
-          <View style={styles.store_header_item}>
-            <Text style={styles.store_header_item_text}>预约数</Text>
-            <Image style={styles.store_header_item_img} source={require('./image/icon_upper.png')}/>
+          <View style={styles.header_item}>
+            <Text style={styles.header_item_text}>预约数</Text>
+            <Image style={styles.header_item_img} source={require('./image/icon_upper.png')}/>
           </View>
         </View>
         <ScrollView>
           <View style={styles.store_content}>
-            <View style={styles.storeitem_box}>
-              <StoreItemComponent />
-            </View>
-            <View style={styles.storeitem_box}>
-              <StoreItemComponent />
-            </View>
-            <View style={styles.storeitem_box}>
-              <StoreItemComponent />
-            </View>
-            <View style={styles.storeitem_box}>
-              <StoreItemComponent />
-            </View>
-            <View style={styles.storeitem_box}>
-              <StoreItemComponent />
-            </View>
+            <TouchableOpacity style={styles.storeitem_box} onPress={this._goStoreDetail.bind(this)}>
+              <StoreItemComponent {...testData}/>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.storeitem_box} onPress={this._goStoreDetail.bind(this)}>
+              <StoreItemComponent {...testData}/>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.storeitem_box} onPress={this._goStoreDetail.bind(this)}>
+              <StoreItemComponent {...testData}/>
+            </TouchableOpacity>
           </View>
         </ScrollView>
       </View>
@@ -64,20 +76,20 @@ export default class OptoelectronicstoreComponent extends Component {
 const styles = StyleSheet.create({
   wrapper: {
     backgroundColor: '#F0EFF5',
-    height: Dimensions.get('window').height
+    flex: 1
   },
-  store_header: {
+  header: {
     flexDirection: 'row',
     height: 40,
     backgroundColor: '#fff'
   },
-  store_header_item: {
+  header_item: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1
   },
-  store_header_item_text: {
+  header_item_text: {
     fontSize: 14,
     color: '#363334',
     marginRight: 5
