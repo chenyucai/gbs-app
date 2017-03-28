@@ -5,8 +5,11 @@ import {
   Text,
   Image,
   Dimensions,
-  ScrollView
+  ScrollView,
+  // MapView
 } from 'react-native'
+
+import MapView from 'react-native-maps';
 
 import ScreenUtils from '../../utils/ScreenUtils';
 
@@ -142,10 +145,22 @@ export default class StoreDetailComponent extends Component {
             <Text style={styles.map_address}>上海普陀区浦东金沙江路699号月星环球港7号楼5层</Text>
             <View style={{width:11, height:1, backgroundColor:'#363334',alignSelf:'center',marginBottom:20}}></View>
             <View style={styles.map_content}>
-              <Image source={require('../../img/784646AC-7E20-4685-8BD4-FFAC5D78303D.png')} style={{
+              {/* <Image source={require('../../img/784646AC-7E20-4685-8BD4-FFAC5D78303D.png')} style={{
                 width: ScreenUtils.scaleSize(375),
                 height: ScreenUtils.scaleSize(172)
-              }}/>
+              }}/> */}
+              <MapView
+                initialRegion={{
+                   latitude: 37.78825,
+                   longitude: -122.4324,
+                   latitudeDelta: 0.0922,
+                   longitudeDelta: 0.0421,
+                }}
+                style={{
+                  width: ScreenUtils.scaleSize(375),
+                  height: ScreenUtils.scaleSize(172),
+                }}
+              />
             </View>
           </View>
 

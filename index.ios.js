@@ -22,6 +22,8 @@ import PhotoelectricbeautyComponent from './components/beauty/Photoelectricbeaut
 import BottomTabsComponent from './components/common/BottomTabs';
 import StoreDetailComponent from './components/beauty/StoreDetail'
 import PhotoelectricschoollistComponent from './components/beauty/Photoelectricschoollist'
+import ProductDetailComponent from './components/beauty/ProductDetail';
+import CommentItemComponent from './components/common/CommentItem'
 
 
 export default class AwesomeProject extends Component {
