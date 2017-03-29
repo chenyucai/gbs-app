@@ -118,7 +118,8 @@ const styles = StyleSheet.create({
   input:{
     flex:1,
     color:'#B8B8B8',
-    fontSize:14
+    fontSize:14,
+    height:28
   },
   block:{
     paddingLeft:12,
@@ -158,10 +159,11 @@ const styles = StyleSheet.create({
   clear_btn:{
     backgroundColor:'#FF6D99',
     flex: 1,
+    alignItems:'center',
+    justifyContent:'center'
   },
   clear_btn_text: {
     textAlign: 'center',
-    color: '#fff',
-    lineHeight: 42
+    color: '#fff'
   },
 });

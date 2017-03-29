@@ -17,7 +17,8 @@ import {
 import ScreenUtils from '../../utils/ScreenUtils';
 
 import TopNavComponent from '../common/TopNav';
-import PayProductInfoComponent from './PayProductInfo'
+import PayProductInfoComponent from './PayProductInfo';
+import PayCompleteComponent from './PayComplete'
 
 export default class PayComponent extends Component {
   constructor(props) {
@@ -25,6 +26,16 @@ export default class PayComponent extends Component {
     this.state = {
 
     };
+  }
+
+  _pay(){
+    const navigator = this.props.navigator;
+    if (navigator) {
+      navigator.push({
+        name:'payComplete',
+        component: PayCompleteComponent
+      });
+    }
   }
 
   render () {
@@ -58,7 +69,7 @@ export default class PayComponent extends Component {
           </View>
         </ScrollView>
 
-        <TouchableOpacity style={styles.pay_btn}>
+        <TouchableOpacity style={styles.pay_btn} onPress={this._pay.bind(this)}>
           <Text style={styles.pay_btn_text}>支付订单</Text>
         </TouchableOpacity>
       </View>

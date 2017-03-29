@@ -33,13 +33,18 @@ import TechnicianListComponent from './components/beauty/Technician';
 import PayComponent from './components/beauty/Pay';
 import ConfirmOrderComponent from './components/beauty/ConfirmOrder'
 import MicroplasticComponent from './components/microplastic/Microplastic'
-
+import ConfirmOrderComponent from './components/beauty/ConfirmOrder';
+import PayCompleteComponent from './components/beauty/PayComplete';
+import UserListItemComponent from './components/common/UserListItem';
+import ProductFocusUsersComponent from './components/beauty/ProductFocusUsers';
+import DiaryListComponent from './components/beauty/DiaryList'
+import DiaryListDetailComponent from './components/beauty/DiaryListDetail'
 
 export default class AwesomeProject extends Component {
   render() {
     return (
       <Navigator
-        initialRoute = {{ name: 'login', component: BottomTabsComponent }}
+        initialRoute = {{ name: 'login', component: DiaryListDetailComponent }}
         renderScene={(route, navigator) => {
           let Component = route.component;
           return <Component {...route.params} navigator={navigator} />
