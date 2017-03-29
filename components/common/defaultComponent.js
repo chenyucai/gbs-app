@@ -1,3 +1,6 @@
+/**
+ * component name
+ */
 import React, { Component } from 'react'
 import {
   StyleSheet,
