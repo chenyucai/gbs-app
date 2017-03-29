@@ -22,6 +22,8 @@ import ProductItemComponent from '../common/ProductItem';
 import HomeSaleListComponent from './HomeSaleList';
 import RecommendStoreListComponent from './RecommendStoreList';
 import SpecialColumnComponent from './SpecialColumn';
+import ProductDetailComponent from '../beauty/ProductDetail';
+import StoreDetailComponent from '../beauty/StoreDetail';
 
 import ScreenUtils from '../../utils/ScreenUtils';
 
@@ -31,6 +33,26 @@ export default class HomeComponent extends Component {
     this.state = {
       show: true
     };
+  }
+
+  _goProductDetail(){
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'productDetail',
+        component: ProductDetailComponent
+      });
+    }
+  }
+
+  _goStoreDetail(){
+    var { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'storeDetail',
+        component: StoreDetailComponent
+      })
+    }
   }
 
   renderImg(){
@@ -54,9 +76,9 @@ export default class HomeComponent extends Component {
 
   renderSale() {
     let saleItems = [];
-    for (var i = 0; i < 6; i++) {
+    for (var i = 0; i < 4; i++) {
       saleItems.push(
-        <View style={styles.sale_item} key={i}>
+        <TouchableOpacity style={styles.sale_item} key={i} onPress={this._goProductDetail.bind(this)}>
           <View style={styles.sale_img}>
             <Image style={{width:160,height:160,resizeMode:Image.resizeMode.cover}} source={require('./image/40D00A1F-CAC8-47DB-BCB9-D17B59098F1A.png')}/>
           </View>
@@ -67,7 +89,7 @@ export default class HomeComponent extends Component {
               <Text style={styles.sale_price_old}>¥1599.00</Text>
             </View>
           </View>
-        </View>
+        </TouchableOpacity>
       );
     }
     return saleItems;
@@ -145,7 +167,7 @@ export default class HomeComponent extends Component {
         <HomeHeaderComponent navigator={this.props.navigator}/>
 
         <ScrollView style={{
-          marginBottom: 50
+          flex:1
         }}>
           <View>
             <Swiper
@@ -206,18 +228,18 @@ export default class HomeComponent extends Component {
             </TouchableOpacity>
             <View style={styles.store_body}>
               {/* {this.renderStore()} */}
-              <View style={styles.store_item}>
+              <TouchableOpacity style={styles.store_item} onPress={this._goStoreDetail.bind(this)}>
                 <Image style={styles.store_img} source={require('./image/46037860-08A1-4A1B-89BB-9CCB03C63BD5.png')}/>
-              </View>
-              <View style={styles.store_item}>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.store_item} onPress={this._goStoreDetail.bind(this)}>
                 <Image style={styles.store_img} source={require('./image/46037860-08A1-4A1B-89BB-9CCB03C63BD5.png')}/>
-              </View>
-              <View style={styles.store_item}>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.store_item} onPress={this._goStoreDetail.bind(this)}>
                 <Image style={styles.store_img} source={require('./image/46037860-08A1-4A1B-89BB-9CCB03C63BD5.png')}/>
-              </View>
-              <View style={styles.store_item}>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.store_item} onPress={this._goStoreDetail.bind(this)}>
                 <Image style={styles.store_img} source={require('./image/46037860-08A1-4A1B-89BB-9CCB03C63BD5.png')}/>
-              </View>
+              </TouchableOpacity>
             </View>
           </View>
 
@@ -228,16 +250,16 @@ export default class HomeComponent extends Component {
             </View>
             <View style={styles.hot_body}>
               <View style={styles.hot_item}>
-                <ProductItemComponent {...ProductItemInfo}/>
+                <ProductItemComponent {...ProductItemInfo} navigator={this.props.navigator}/>
               </View>
               <View style={styles.hot_item}>
-                <ProductItemComponent {...ProductItemInfo}/>
+                <ProductItemComponent {...ProductItemInfo} navigator={this.props.navigator}/>
               </View>
               <View style={styles.hot_item}>
-                <ProductItemComponent {...ProductItemInfo}/>
+                <ProductItemComponent {...ProductItemInfo} navigator={this.props.navigator}/>
               </View>
               <View style={styles.hot_item}>
-                <ProductItemComponent {...ProductItemInfo}/>
+                <ProductItemComponent {...ProductItemInfo} navigator={this.props.navigator}/>
               </View>
             </View>
           </View>

@@ -3,10 +3,12 @@ import {
   StyleSheet,
   View,
   Text,
-  Image
+  Image,
+  TouchableOpacity
 } from 'react-native'
 
-import StarComponent from './Star'
+import StarComponent from './Star';
+import StoreDetailComponent from '../beauty/StoreDetail'
 
 export default class StoreItemComponent extends Component {
   static defaultProps = {
@@ -21,11 +23,20 @@ export default class StoreItemComponent extends Component {
     };
   }
 
+  _goDetail(){
+    var { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'storeDetail',
+        component: StoreDetailComponent
+      })
+    }
+  }
 
   // props 需要传入图片的宽度和高度
   render () {
     return (
-      <View style={[styles.item,{width: this.props.width}]}>
+      <TouchableOpacity style={[styles.item,{width: this.props.width}]} onPress={this._goDetail.bind(this)}>
         <View style={{
           width: this.props.width,
           height: this.props.height
@@ -52,7 +63,7 @@ export default class StoreItemComponent extends Component {
           </View>
           <Text style={styles.item_count}>预约数：24585</Text>
         </View>
-      </View>
+      </TouchableOpacity>
     )
   }
 }

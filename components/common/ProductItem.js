@@ -3,8 +3,11 @@ import {
   StyleSheet,
   View,
   Text,
-  Image
+  Image,
+  TouchableOpacity
 } from 'react-native'
+
+import ProductDetailComponent from '../beauty/ProductDetail'
 
 export default class ProductItemComponent extends Component {
   constructor(props) {
@@ -19,10 +22,20 @@ export default class ProductItemComponent extends Component {
     height: 150
   };
 
+  _goDetail(){
+    var { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'productDetail',
+        component: ProductDetailComponent
+      })
+    }
+  }
+
   // props 需要传入图片的宽度和高度
   render () {
     return (
-      <View style={[styles.item, {width:this.props.width}]}>
+      <TouchableOpacity style={[styles.item, {width:this.props.width}]} onPress={this._goDetail.bind(this)}>
         <View style={{
           width: this.props.width,
           height: this.props.height
@@ -55,7 +68,7 @@ export default class ProductItemComponent extends Component {
         <View style={styles.item_collection}>
           <Image source={require('./image/icon_dis_love.png')} />
         </View>
-      </View>
+      </TouchableOpacity>
     )
   }
 }

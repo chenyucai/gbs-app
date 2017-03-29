@@ -25,15 +25,18 @@ import PhotoelectricschoollistComponent from './components/beauty/Photoelectrics
 import ProductDetailComponent from './components/beauty/ProductDetail';
 import CommentItemComponent from './components/common/CommentItem'
 import PhotoelectricschoolddetailComponent from './components/beauty/Photoelectricschoolddetail'
-import CommentItemComponent from './components/common/CommentItem';
-import CommentListComponent from './components/beauty/CommentList'
+import CommentListComponent from './components/beauty/CommentList';
+import TechnicianItemComponent from './components/common/TechnicianItem';
+import TechnicianListComponent from './components/beauty/Technician';
+import PayComponent from './components/beauty/Pay';
+import ConfirmOrderComponent from './components/beauty/ConfirmOrder'
 
 
 export default class AwesomeProject extends Component {
   render() {
     return (
       <Navigator
-        initialRoute = {{ name: 'login', component: PhotoelectricschoolddetailComponent }}
+        initialRoute = {{ name: 'login', component: BottomTabsComponent }}
         renderScene={(route, navigator) => {
           let Component = route.component;
           return <Component {...route.params} navigator={navigator} />

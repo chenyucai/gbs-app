@@ -50,7 +50,7 @@ export default class RecommendStoreListComponent extends Component {
     }
     return (
       <View style={styles.item}>
-        <StoreItemComponent {...ProductItemInfo}/>
+        <StoreItemComponent {...ProductItemInfo} navigator={this.props.navigator}/>
       </View>
     )
   }
@@ -62,7 +62,7 @@ export default class RecommendStoreListComponent extends Component {
         <TopNavComponent title="推荐商家" navigator={this.props.navigator}/>
         <ListView
           dataSource={this.state.dataSource}
-          renderRow={this.renderRow}
+          renderRow={this.renderRow.bind(this)}
           contentContainerStyle={styles.list}
         />
       </View>
