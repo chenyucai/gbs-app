@@ -9,7 +9,9 @@ import {
 
 import {scaleSize,setSpText} from '../../utils/ScreenUtils';
 import PhotoelectricbeautyComponent from '../beauty/Photoelectricbeauty';
-import MicroplasticComponent from '../microplastic/Microplastic'
+import MicroplasticComponent from '../microplastic/Microplastic';
+import DiaryListComponent from '../beauty/DiaryList';
+import RecommendStoreListComponent from './RecommendStoreList'
 
 export default class HomeModulesComponent extends Component {
   constructor(props) {
@@ -39,6 +41,29 @@ export default class HomeModulesComponent extends Component {
     }
   }
 
+  _goDairy(){
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'diaryList',
+        component: DiaryListComponent
+      });
+    }
+  }
+
+  _goStore(){
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'sameCityStoreList',
+        component: RecommendStoreListComponent,
+        params:{
+          title:'同城门店'
+        }
+      });
+    }
+  }
+
   render () {
     return (
       <View style={styles.wrapper}>
@@ -62,7 +87,7 @@ export default class HomeModulesComponent extends Component {
         </View>
 
         <View style={styles.item_line}>
-          <TouchableOpacity style={styles.item}>
+          <TouchableOpacity style={styles.item} onPress={this._goStore.bind(this)}>
             <Image style={styles.item_icon} source={require('./image/icon_shops.png')}/>
             <Text style={styles.item_title}>同城门店</Text>
           </TouchableOpacity>
@@ -70,7 +95,7 @@ export default class HomeModulesComponent extends Component {
             <Image style={styles.item_icon} source={require('./image/icon_Community.png')}/>
             <Text style={styles.item_title}>网上社区</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.item}>
+          <TouchableOpacity style={styles.item} onPress={this._goDairy.bind(this)}>
             <Image style={styles.item_icon} source={require('./image/icon_note.png')}/>
             <Text style={styles.item_title}>美丽日记</Text>
           </TouchableOpacity>

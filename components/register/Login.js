@@ -14,7 +14,8 @@ import {
 import ScreenUtils from '../../utils/ScreenUtils';
 
 import HomeComponent from '../home/Home';
-import RegComponent from './Register'
+import RegComponent from './Register';
+import BottomTabsComponent from '../common/BottomTabs';
 
 export default class LoginComponent extends Component {
   constructor(props) {
@@ -29,7 +30,7 @@ export default class LoginComponent extends Component {
     if (navigator) {
       navigator.push({
         name: 'HomeComponent',
-        component: HomeComponent
+        component: BottomTabsComponent
       })
     }
   }

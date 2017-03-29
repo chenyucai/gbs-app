@@ -18,6 +18,9 @@ import TopNavComponent from '../common/TopNav';
 import StoreItemComponent from '../common/StoreItem';
 
 export default class RecommendStoreListComponent extends Component {
+  static defaultProps = {
+    title: '推荐商家'
+  }
   constructor(props) {
     super(props);
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -59,7 +62,7 @@ export default class RecommendStoreListComponent extends Component {
 
     return (
       <View style={styles.wrapper}>
-        <TopNavComponent title="推荐商家" navigator={this.props.navigator}/>
+        <TopNavComponent title={this.props.title} navigator={this.props.navigator}/>
         <ListView
           dataSource={this.state.dataSource}
           renderRow={this.renderRow.bind(this)}

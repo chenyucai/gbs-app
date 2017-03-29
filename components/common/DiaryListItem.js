@@ -12,7 +12,7 @@ import {
 
 import ScreenUtils from '../../utils/ScreenUtils';
 
-import ProductDetailComponent from '../beauty/ProductDetail'
+import DiaryListDetailComponent from '../beauty/DiaryListDetail'
 
 export default class DiaryListItemComponent extends Component {
  constructor(props) {
@@ -31,8 +31,8 @@ export default class DiaryListItemComponent extends Component {
    var { navigator } = this.props;
    if (navigator) {
      navigator.push({
-       name: 'productDetail',
-       component: ProductDetailComponent
+       name: 'diaryListDetail',
+       component: DiaryListDetailComponent
      })
    }
  }
