@@ -9,10 +9,9 @@ import {
 } from 'react-native'
 
 import TopNavComponent from '../common/TopNav'
-import PhotoelectricschoollistPhotoComponent from './PhotoelectricschoollistPhoto'
-import PhotoelectricschoolddetailComponent from './Photoelectricschoolddetail'
+import DiaryItemComponent from './DiaryItem'
 
-export default class PhotoelectricschoollistComponent extends Component {
+export default class UserdiaryComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,20 +19,10 @@ export default class PhotoelectricschoollistComponent extends Component {
     };
   }
 
-  _goPhotoelectricschoolddetail() {
-    const { navigator } = this.props;
-    if (navigator) {
-      navigator.push({
-        name: 'Photoelectricschoolddetail',
-        component: PhotoelectricschoolddetailComponent
-      });
-    }
-  }
-
   render () {
     return (
       <View style={styles.wrapper}>
-        <TopNavComponent title="光电学堂" navigator={this.props.navigator}/>
+        <TopNavComponent title="用户日记" navigator={this.props.navigator}/>
         <View style={styles.header}>
           <View style={styles.header_item}>
             <Text style={styles.header_item_text}>分类</Text>
@@ -43,14 +32,28 @@ export default class PhotoelectricschoollistComponent extends Component {
             <Text style={styles.header_item_text}>浏览量</Text>
             <Image style={styles.header_item_img} source={require('../home/image/icon_down.png')}/>
           </View>
+          <View style={styles.header_item}>
+            <Text style={styles.header_item_text}>点赞量</Text>
+            <Image style={styles.header_item_img} source={require('../home/image/icon_down.png')}/>
+          </View>
+          <View style={styles.header_item}>
+            <Text style={styles.header_item_text}>评论量</Text>
+            <Image style={styles.header_item_img} source={require('../home/image/icon_down.png')}/>
+          </View>
         </View>
         <ScrollView>
-          <TouchableOpacity style={{marginTop: 10}} onPress={this._goPhotoelectricschoolddetail.bind(this)}>
-            <PhotoelectricschoollistPhotoComponent/>
-          </TouchableOpacity>
-          <TouchableOpacity style={{marginTop: 10}}>
-            <PhotoelectricschoollistPhotoComponent/>
-          </TouchableOpacity>
+          <View style={{marginTop: 10}}>
+            <DiaryItemComponent/>
+          </View>
+          <View style={{marginTop: 10}}>
+            <DiaryItemComponent/>
+          </View>
+          <View style={{marginTop: 10}}>
+            <DiaryItemComponent/>
+          </View>
+          <View style={{marginTop: 10}}>
+            <DiaryItemComponent/>
+          </View>
         </ScrollView>
       </View>
     )

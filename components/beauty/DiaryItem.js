@@ -62,8 +62,8 @@ export default class DiaryItemComponent extends Component {
 const styles = StyleSheet.create({
   diary_wrapper: {
     backgroundColor: '#fff',
-    // paddingLeft: 12,
-    // paddingRight: 12,
+    paddingLeft: 12,
+    paddingRight: 12,
     paddingTop: 20,
     paddingBottom: 20
   },

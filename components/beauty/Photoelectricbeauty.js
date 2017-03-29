@@ -16,6 +16,8 @@ import ProductItemComponent from '../common/ProductItem';
 import DiaryItemComponent from './DiaryItem'
 import OptoelectronicstoreComponent from './Optoelectronicstore'
 import PhotoelectricschoollistComponent from './Photoelectricschoollist'
+import PhotoelectricschoolddetailComponent from './Photoelectricschoolddetail'
+import UserdiaryComponent from './Userdiary'
 
 import Swiper from 'react-native-swiper';
 import ScreenUtils from '../../utils/ScreenUtils';
@@ -59,6 +61,26 @@ export default class PhotoelectricbeautyComponent extends Component {
     }
   }
 
+  _goPhotoelectricschoolddetail() {
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'Photoelectricschoolddetail',
+        component: PhotoelectricschoolddetailComponent
+      });
+    }
+  }
+
+  _goUserdiary() {
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'Userdiary',
+        component: UserdiaryComponent
+      });
+    }
+  }
+
   render() {
     let swiperHeight = {
       width: ScreenUtils.scaleSize(375),
@@ -94,12 +116,12 @@ export default class PhotoelectricbeautyComponent extends Component {
             <TouchableOpacity style={styles.block_title_wrapper} onPress={this._goPhotoelectricschoollist.bind(this)}>
               <HomeBlockTitleComponent titleEn="Photoelectric school" titleZh="光电学堂"/>
             </TouchableOpacity>
-            <View>
+            <TouchableOpacity onPress={this._goPhotoelectricschoolddetail.bind(this)}>
               <Image source={require('./image/WX20170327-144846.png')} style={{
                 width: ScreenUtils.scaleSize(375),
                 height: ScreenUtils.scaleSize(180)
               }}/>
-            </View>
+            </TouchableOpacity>
           </View>
 
           {/* 全球大热购 */}
@@ -113,25 +135,25 @@ export default class PhotoelectricbeautyComponent extends Component {
             </View>
             <View style={styles.hot_body}>
               <View style={styles.hot_item}>
-                <ProductItemComponent {...ProductItemInfo}/>
+                <ProductItemComponent {...ProductItemInfo} navigator={this.props.navigator}/>
               </View>
               <View style={styles.hot_item}>
-                <ProductItemComponent {...ProductItemInfo}/>
+                <ProductItemComponent {...ProductItemInfo} navigator={this.props.navigator}/>
               </View>
               <View style={styles.hot_item}>
-                <ProductItemComponent {...ProductItemInfo}/>
+                <ProductItemComponent {...ProductItemInfo} navigator={this.props.navigator}/>
               </View>
               <View style={styles.hot_item}>
-                <ProductItemComponent {...ProductItemInfo}/>
+                <ProductItemComponent {...ProductItemInfo} navigator={this.props.navigator}/>
               </View>
             </View>
           </View>
 
           {/* 用户日记 */}
           <View style={styles.diary_wrapper}>
-            <View style={styles.block_title_wrapper}>
+            <TouchableOpacity style={styles.block_title_wrapper} onPress={this._goUserdiary.bind(this)}>
               <HomeBlockTitleComponent titleEn="User diary" titleZh="用户日记"/>
-            </View>
+            </TouchableOpacity>
             <View style={[styles.diary_box,styles.border_bottom]}>
               <DiaryItemComponent/>
             </View>
@@ -188,8 +210,8 @@ const styles = StyleSheet.create({
     marginTop: 10
   },
   diary_box: {
-    marginLeft: 12,
-    marginRight: 12
+    // marginLeft: 12,
+    // marginRight: 12
   },
   border_bottom: {
     borderBottomWidth: 0.5,
