@@ -65,7 +65,7 @@ export default class CommentItemComponent extends Component {
 
 const styles = StyleSheet.create({
   wrapper:{
-    marginTop: 30
+
   },
   header:{
     flexDirection: 'row',
