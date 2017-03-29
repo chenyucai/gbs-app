@@ -62,7 +62,7 @@ export default class TechnicianListComponent extends Component {
 
     return (
       <View style={styles.wrapper}>
-        <TopNavComponent title="技师" navigator={this.props.navigator}/>
+        <TopNavComponent title={this.props.title} navigator={this.props.navigator}/>
         <ListView
           dataSource={this.state.dataSource}
           renderRow={this.renderRow}

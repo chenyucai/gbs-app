@@ -101,7 +101,7 @@ export default class PhotoelectricbeautyComponent extends Component {
             </Swiper>
           </View>
 
-          <PhotoelectricbeautyModulesComponent/>
+          <PhotoelectricbeautyModulesComponent navigator={this.props.navigator}/>
 
           <TouchableOpacity onPress={this._goOptoelectronicstore.bind(this)}>
             <Image source={require('./image/123.png')} style={{
@@ -186,7 +186,8 @@ const styles = StyleSheet.create({
     flex: 1
   },
   Photoelectricschool_wrapper: {
-    marginTop: 10
+    marginTop: 10,
+    backgroundColor: '#fff'
   },
   block_title_wrapper: {
     paddingTop: 20,

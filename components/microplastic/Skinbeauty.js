@@ -13,7 +13,7 @@ import ScreenUtils from '../../utils/ScreenUtils';
 import TopNavComponent from '../common/TopNav'
 import ProductItemComponent from '../common/ProductItem';
 
-export default class FacialshapingComponent extends Component {
+export default class SkinbeautyComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,7 +32,7 @@ export default class FacialshapingComponent extends Component {
         <View style={styles.header}>
           <View style={styles.header_item}>
             <Text style={styles.header_item_text}>分类</Text>
-            <Image style={styles.header_item_img} source={require('./image/icon_drop-down.png')}/>
+            <Image style={styles.header_item_img} source={require('../beauty/image/icon_drop-down.png')}/>
           </View>
           <View style={styles.header_item}>
             <Text style={styles.header_item_text}>价格</Text>

@@ -3,10 +3,13 @@ import {
   StyleSheet,
   View,
   Text,
-  Image
+  Image,
+  TouchableOpacity
 } from 'react-native'
 
 import {scaleSize,setSpText} from '../../utils/ScreenUtils';
+
+import FacialshapingComponent from './Facialshaping'
 
 export default class PhotoelectricbeautyModulesComponent extends Component {
   constructor(props) {
@@ -16,26 +19,39 @@ export default class PhotoelectricbeautyModulesComponent extends Component {
     };
   }
 
+  _goFacialshaping(title) {
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'Facialshaping',
+        component: FacialshapingComponent,
+        params: {
+          title: title
+        }
+      });
+    }
+  }
+
   render () {
     return (
       <View style={styles.wrapper}>
         <View style={styles.item_line}>
-          <View style={styles.item}>
+          <TouchableOpacity style={styles.item} onPress={this._goFacialshaping.bind(this,'全部')}>
             <Image style={styles.item_icon} source={require('./image/icon_all.png')}/>
             <Text style={styles.item_title}>全部</Text>
-          </View>
-          <View style={styles.item}>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.item} onPress={this._goFacialshaping.bind(this,'面部塑形')}>
             <Image style={styles.item_icon} source={require('./image/icon_face.png')}/>
             <Text style={styles.item_title}>面部塑形</Text>
-          </View>
-          <View style={styles.item}>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.item} onPress={this._goFacialshaping.bind(this,'皮肤管理')}>
             <Image style={styles.item_icon} source={require('./image/icon_skin.png')}/>
             <Text style={styles.item_title}>皮肤管理</Text>
-          </View>
-          <View style={styles.item}>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.item} onPress={this._goFacialshaping.bind(this,'身体塑形')}>
             <Image style={styles.item_icon} source={require('./image/icon_body.png')}/>
             <Text style={styles.item_title}>身体塑形</Text>
-          </View>
+          </TouchableOpacity>
         </View>
       </View>
     )

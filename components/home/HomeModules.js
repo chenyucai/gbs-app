@@ -9,6 +9,7 @@ import {
 
 import {scaleSize,setSpText} from '../../utils/ScreenUtils';
 import PhotoelectricbeautyComponent from '../beauty/Photoelectricbeauty';
+import MicroplasticComponent from '../microplastic/Microplastic'
 
 export default class HomeModulesComponent extends Component {
   constructor(props) {
@@ -28,6 +29,16 @@ export default class HomeModulesComponent extends Component {
     }
   }
 
+  _goMicroplastic(){
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'Microplastic',
+        component: MicroplasticComponent
+      });
+    }
+  }
+
   render () {
     return (
       <View style={styles.wrapper}>
@@ -36,7 +47,7 @@ export default class HomeModulesComponent extends Component {
             <Image style={styles.item_icon} source={require('./image/icon_Cosmetology.png')}/>
             <Text style={styles.item_title}>光电美容</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.item}>
+          <TouchableOpacity style={styles.item} onPress={this._goMicroplastic.bind(this)}>
             <Image style={styles.item_icon} source={require('./image/icon_plastic.png')}/>
             <Text style={styles.item_title}>微整形</Text>
           </TouchableOpacity>

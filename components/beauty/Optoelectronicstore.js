@@ -33,6 +33,10 @@ export default class OptoelectronicstoreComponent extends Component {
     }
   }
 
+  static defaultProps = {
+    title: '光电门店'
+  };
+
   render () {
     let testData = {
       width: ScreenUtils.scaleSize(170),
@@ -40,7 +44,7 @@ export default class OptoelectronicstoreComponent extends Component {
     }
     return (
       <View style={styles.wrapper}>
-        <TopNavComponent title="光电门店" navigator={this.props.navigator}/>
+        <TopNavComponent title={this.props.title} navigator={this.props.navigator}/>
         <View style={styles.header}>
           <View style={styles.header_item}>
             <Text style={styles.header_item_text}>距离</Text>
@@ -58,13 +62,13 @@ export default class OptoelectronicstoreComponent extends Component {
         <ScrollView>
           <View style={styles.store_content}>
             <TouchableOpacity style={styles.storeitem_box} onPress={this._goStoreDetail.bind(this)}>
-              <StoreItemComponent {...testData}/>
+              <StoreItemComponent {...testData} navigator={this.props.navigator}/>
             </TouchableOpacity>
             <TouchableOpacity style={styles.storeitem_box} onPress={this._goStoreDetail.bind(this)}>
-              <StoreItemComponent {...testData}/>
+              <StoreItemComponent {...testData} navigator={this.props.navigator}/>
             </TouchableOpacity>
             <TouchableOpacity style={styles.storeitem_box} onPress={this._goStoreDetail.bind(this)}>
-              <StoreItemComponent {...testData}/>
+              <StoreItemComponent {...testData} navigator={this.props.navigator}/>
             </TouchableOpacity>
           </View>
         </ScrollView>

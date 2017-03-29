@@ -30,10 +30,14 @@ export default class PhotoelectricschoollistComponent extends Component {
     }
   }
 
+  static defaultProps = {
+    title: '光电学堂'
+  };
+
   render () {
     return (
       <View style={styles.wrapper}>
-        <TopNavComponent title="光电学堂" navigator={this.props.navigator}/>
+        <TopNavComponent title={this.props.title} navigator={this.props.navigator}/>
         <View style={styles.header}>
           <View style={styles.header_item}>
             <Text style={styles.header_item_text}>分类</Text>
