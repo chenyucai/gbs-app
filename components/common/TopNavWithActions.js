@@ -7,7 +7,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-export default class TopNavComponent extends Component {
+export default class TopNavWithActionsComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,11 +27,10 @@ export default class TopNavComponent extends Component {
 
     return (
       <View style={{
-        height:64,
+        height:44,
         flexDirection: 'row',
         backgroundColor: bgColor,
         justifyContent: 'center',
-        paddingTop:25,
         alignItems: 'center',
       }}>
         <TouchableOpacity style={styles.back} onPress={this._back.bind(this)}>
@@ -49,7 +48,7 @@ const styles = StyleSheet.create({
   back: {
     position: 'absolute',
     left: 10,
-    top:32
+    top:12
   },
   title: {
     fontSize: 18,

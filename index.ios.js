@@ -24,13 +24,14 @@ import StoreDetailComponent from './components/beauty/StoreDetail'
 import PhotoelectricschoollistComponent from './components/beauty/Photoelectricschoollist'
 import ProductDetailComponent from './components/beauty/ProductDetail';
 import CommentItemComponent from './components/common/CommentItem'
+import PhotoelectricschoolddetailComponent from './components/beauty/Photoelectricschoolddetail'
 
 
 export default class AwesomeProject extends Component {
   render() {
     return (
       <Navigator
-        initialRoute = {{ name: 'login', component: PhotoelectricschoollistComponent }}
+        initialRoute = {{ name: 'login', component: PhotoelectricschoolddetailComponent }}
         renderScene={(route, navigator) => {
           let Component = route.component;
           return <Component {...route.params} navigator={navigator} />

@@ -15,6 +15,7 @@ import HomeBlockTitleComponent from '../home/HomeBlockTitle'
 import ProductItemComponent from '../common/ProductItem';
 import DiaryItemComponent from './DiaryItem'
 import OptoelectronicstoreComponent from './Optoelectronicstore'
+import PhotoelectricschoollistComponent from './Photoelectricschoollist'
 
 import Swiper from 'react-native-swiper';
 import ScreenUtils from '../../utils/ScreenUtils';
@@ -42,8 +43,18 @@ export default class PhotoelectricbeautyComponent extends Component {
     const { navigator } = this.props;
     if (navigator) {
       navigator.push({
-        name: 'StoreItem',
+        name: 'Optoelectronicstore',
         component: OptoelectronicstoreComponent
+      });
+    }
+  }
+
+  _goPhotoelectricschoollist() {
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'Photoelectricschoollist',
+        component: PhotoelectricschoollistComponent
       });
     }
   }
@@ -80,9 +91,9 @@ export default class PhotoelectricbeautyComponent extends Component {
 
           {/* 光电学堂 */}
           <View style={styles.Photoelectricschool_wrapper}>
-            <View style={styles.block_title_wrapper}>
+            <TouchableOpacity style={styles.block_title_wrapper} onPress={this._goPhotoelectricschoollist.bind(this)}>
               <HomeBlockTitleComponent titleEn="Photoelectric school" titleZh="光电学堂"/>
-            </View>
+            </TouchableOpacity>
             <View>
               <Image source={require('./image/WX20170327-144846.png')} style={{
                 width: ScreenUtils.scaleSize(375),

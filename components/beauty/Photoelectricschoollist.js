@@ -4,11 +4,13 @@ import {
   View,
   Text,
   Image,
-  ScrollView
+  ScrollView,
+  TouchableOpacity
 } from 'react-native'
 
 import TopNavComponent from '../common/TopNav'
 import PhotoelectricschoollistPhotoComponent from './PhotoelectricschoollistPhoto'
+import PhotoelectricschoolddetailComponent from './Photoelectricschoolddetail'
 
 export default class PhotoelectricschoollistComponent extends Component {
   constructor(props) {
@@ -16,6 +18,16 @@ export default class PhotoelectricschoollistComponent extends Component {
     this.state = {
 
     };
+  }
+
+  _goPhotoelectricschoolddetail() {
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'Photoelectricschoolddetail',
+        component: PhotoelectricschoolddetailComponent
+      });
+    }
   }
 
   render () {
@@ -33,12 +45,12 @@ export default class PhotoelectricschoollistComponent extends Component {
           </View>
         </View>
         <ScrollView>
-          <View style={{marginTop: 10}}>
+          <TouchableOpacity style={{marginTop: 10}} onPress={this._goPhotoelectricschoolddetail.bind(this)}>
             <PhotoelectricschoollistPhotoComponent/>
-          </View>
-          <View style={{marginTop: 10}}>
+          </TouchableOpacity>
+          <TouchableOpacity style={{marginTop: 10}}>
             <PhotoelectricschoollistPhotoComponent/>
-          </View>
+          </TouchableOpacity>
         </ScrollView>
       </View>
     )
