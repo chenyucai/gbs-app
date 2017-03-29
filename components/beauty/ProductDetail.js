@@ -14,6 +14,7 @@ import ScreenUtils from '../../utils/ScreenUtils';
 import TopNavWidthActionsComponent from '../common/TopNavWithActions';
 import BlockTitleComponent from '../common/BlockTitle';
 import ProductItemComponent from '../common/ProductItem';
+import ConfirmOrderComponent from './ConfirmOrder'
 
 export default class StoreDetailComponent extends Component {
   constructor(props) {
@@ -23,6 +24,16 @@ export default class StoreDetailComponent extends Component {
     };
   }
 
+  _buy(){
+    var { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'confirmOrder',
+        component: ConfirmOrderComponent
+      })
+    }
+  }
+
   render () {
     let ProductItemInfo = {
       width: ScreenUtils.scaleSize(170),
@@ -30,7 +41,7 @@ export default class StoreDetailComponent extends Component {
     }
     return (
       <View style={styles.wrapper}>
-        <TopNavWidthActionsComponent title="产品详情" navigator={navigator}/>
+        <TopNavWidthActionsComponent title="产品详情" navigator={this.props.navigator}/>
 
         <ScrollView>
           <Image resizeMode="cover" source={require('../../img/25C07421-D400-414E-A865-EF013EC8E9C8.png')} style={{
@@ -156,7 +167,7 @@ export default class StoreDetailComponent extends Component {
           <TouchableOpacity style={styles.cart_addCart}>
             <Text style={styles.cart_text}>加入购物车</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.cart_buyNow}>
+          <TouchableOpacity style={styles.cart_buyNow} onPress={this._buy.bind(this)}>
             <Text style={styles.cart_text}>立即购买</Text>
           </TouchableOpacity>
         </View>
