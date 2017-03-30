@@ -37,13 +37,17 @@ import PayCompleteComponent from './components/beauty/PayComplete';
 import UserListItemComponent from './components/common/UserListItem';
 import ProductFocusUsersComponent from './components/beauty/ProductFocusUsers';
 import DiaryListComponent from './components/beauty/DiaryList'
-import DiaryListDetailComponent from './components/beauty/DiaryListDetail'
+import DiaryListDetailComponent from './components/beauty/DiaryListDetail';
+import ShopcartItemComponent from './components/common/ShopcartItem';
+import ShopcartComponent from './components/shopcart/Shopcart';
+import CalendarComponent from './components/common/Calendar';
+import ScheduleComponent from './components/schedule/Schedule'
 
 export default class AwesomeProject extends Component {
   render() {
     return (
       <Navigator
-        initialRoute = {{ name: 'login', component: LoginComponent }}
+        initialRoute = {{ name: 'login', component: BottomTabsComponent }}
         renderScene={(route, navigator) => {
           let Component = route.component;
           return <Component {...route.params} navigator={navigator} />
