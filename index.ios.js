@@ -39,6 +39,10 @@ import ProductFocusUsersComponent from './components/beauty/ProductFocusUsers';
 import DiaryListComponent from './components/beauty/DiaryList'
 import DiaryListDetailComponent from './components/beauty/DiaryListDetail'
 import PreferentialcircleComponent from './components/preferential/Preferentialcircle'
+import ShopcartItemComponent from './components/common/ShopcartItem';
+import ShopcartComponent from './components/shopcart/Shopcart';
+import CalendarComponent from './components/common/Calendar';
+import ScheduleComponent from './components/schedule/Schedule'
 
 export default class AwesomeProject extends Component {
   render() {

@@ -9,6 +9,8 @@ import {
 import TabNavigator from 'react-native-tab-navigator';
 import HomeComponent from '../home/Home'
 import HomeSaleListComponent from '../home/HomeSaleList';
+import ShopcartComponent from '../shopcart/Shopcart';
+import ScheduleComponent from '../schedule/Schedule'
 
 export default class BottomTabsComponent extends Component {
   constructor(props) {
@@ -63,7 +65,7 @@ export default class BottomTabsComponent extends Component {
                 renderIcon={() => <Image style={styles.icon} source={require("./image/icon_dis_Cart.png")} />}
                 renderSelectedIcon={() => <Image style={styles.icon} source={require("./image/icon_n_Cart.png")} />}
                 onPress={() => this.setState({ selectedTab: 'cart' })}>
-                <HomeSaleListComponent navigator={this.props.navigator}/>
+                <ShopcartComponent navigator={this.props.navigator}/>
             </TabNavigator.Item>
             <TabNavigator.Item
                 selected={this.state.selectedTab === 'release'}
@@ -83,7 +85,7 @@ export default class BottomTabsComponent extends Component {
                 renderIcon={() => <Image style={styles.icon} source={require("./image/icon_dis_schedule.png")} />}
                 renderSelectedIcon={() => <Image style={styles.icon} source={require("./image/icon_n_schedule.png")} />}
                 onPress={() => this.setState({ selectedTab: 'schedule' })}>
-                <HomeSaleListComponent navigator={this.props.navigator} />
+                <ScheduleComponent navigator={this.props.navigator} />
             </TabNavigator.Item>
             <TabNavigator.Item
                 selected={this.state.selectedTab === 'personal'}

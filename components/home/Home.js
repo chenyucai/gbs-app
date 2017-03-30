@@ -189,7 +189,7 @@ export default class HomeComponent extends Component {
             <TouchableHighlight style={styles.block_title_wrapper} onPress={this._goSale.bind(this)}>
               <View><HomeBlockTitleComponent titleEn="Joy and happiness" titleZh="欢乐优促"/></View>
             </TouchableHighlight>
-            <ScrollView horizontal style={styles.sale_body}>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.sale_body}>
               {this.renderSale()}
             </ScrollView>
           </View>
@@ -205,7 +205,7 @@ export default class HomeComponent extends Component {
                   style={{width:ScreenUtils.scaleSize(375), height:ScreenUtils.scaleSize(230)}}
                 />
               </View>
-              <ScrollView horizontal style={styles.magazine_list}>
+              <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.magazine_list}>
                 {this.renderMagazine()}
               </ScrollView>
             </View>
