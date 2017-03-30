@@ -1,6 +1,3 @@
-/**
- * component name
- */
 import React, { Component } from 'react'
 import {
   StyleSheet,
@@ -11,7 +8,7 @@ import {
 
 import ScreenUtils from '../../utils/ScreenUtils';
 
-export default class PackageItemComponent extends Component {
+export default class GrouppurchaseItemComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,22 +19,6 @@ export default class PackageItemComponent extends Component {
   render () {
     return (
       <View style={styles.wrapper}>
-        <View style={styles.package_header}>
-          <View style={styles.package_header_top}>
-            <View style={styles.package_header_topL}>
-              <Text style={styles.package_header_topL_text}>3合一</Text>
-            </View>
-            <View style={styles.package_header_topR}>
-              <Text style={styles.package_header_topR_text}>冰霜夏热醒肤系列</Text>
-            </View>
-          </View>
-          <Text style={styles.package_header_center} numberOfLines={2}>
-            <Text style={styles.package_header_centerL_text}>【紧肤系列】</Text>
-            <Text style={styles.package_header_centerR_text}>保加利亚玫瑰精油36ml+伊肤泉无菌修复美颜 /</Text>
-            <Text style={styles.package_header_centerL_text}>【紧肤系列】</Text>
-            <Text style={styles.package_header_centerR_text}>保加利亚玫瑰精油36ml+伊肤泉无菌修复美颜 /</Text>
-          </Text>
-        </View>
         <Image style={styles.package_img} source={require('../../img/WX20170330-164651.png')}/>
         <View style={styles.price_box}>
           <Text style={styles.price_new}>¥998</Text>

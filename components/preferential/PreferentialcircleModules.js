@@ -8,8 +8,11 @@ import {
 } from 'react-native'
 
 import {scaleSize,setSpText} from '../../utils/ScreenUtils';
+import SpecialComponent from './Special'
+import PackagelistComponent from './Packagelist'
+import GrouppurchaseComponent from './Grouppurchase'
 
-export default class MicroplasticModulesComponent extends Component {
+export default class PreferentialcircleComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,19 +20,49 @@ export default class MicroplasticModulesComponent extends Component {
     };
   }
 
+  _goSpecial() {
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'Special',
+        component: SpecialComponent
+      });
+    }
+  }
+
+  _goPackagelist() {
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'Packagelist',
+        component: PackagelistComponent
+      });
+    }
+  }
+
+  _goGrouppurchase() {
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'Grouppurchase',
+        component: GrouppurchaseComponent
+      });
+    }
+  }
+
   render () {
     return (
       <View style={styles.wrapper}>
         <View style={styles.item_line}>
-          <TouchableOpacity style={styles.item}>
+          <TouchableOpacity style={styles.item} onPress={this._goSpecial.bind(this)}>
             <Image style={styles.item_icon} source={require('../beauty/image/icon_all.png')}/>
             <Text style={styles.item_title}>专场</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.item}>
+          <TouchableOpacity style={styles.item} onPress={this._goGouppurchase.bind(this)}>
             <Image style={styles.item_icon} source={require('../beauty/image/icon_face.png')}/>
             <Text style={styles.item_title}>团购</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.item}>
+          <TouchableOpacity style={styles.item} onPress={this._goPackagelist.bind(this)}>
             <Image style={styles.item_icon} source={require('../beauty/image/icon_skin.png')}/>
             <Text style={styles.item_title}>套餐</Text>
           </TouchableOpacity>

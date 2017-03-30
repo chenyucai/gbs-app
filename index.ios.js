@@ -43,12 +43,15 @@ import ShopcartItemComponent from './components/common/ShopcartItem';
 import ShopcartComponent from './components/shopcart/Shopcart';
 import CalendarComponent from './components/common/Calendar';
 import ScheduleComponent from './components/schedule/Schedule'
+import SpecialComponent from './components/preferential/Special'
+import PackagelistComponent from './components/preferential/Packagelist'
+import GrouppurchaseComponent from './components/preferential/Grouppurchase'
 
 export default class AwesomeProject extends Component {
   render() {
     return (
       <Navigator
-        initialRoute = {{ name: 'login', component: PreferentialcircleComponent }}
+        initialRoute = {{ name: 'login', component: GrouppurchaseComponent }}
         renderScene={(route, navigator) => {
           let Component = route.component;
           return <Component {...route.params} navigator={navigator} />

@@ -12,6 +12,7 @@ import PhotoelectricbeautyComponent from '../beauty/Photoelectricbeauty';
 import MicroplasticComponent from '../microplastic/Microplastic';
 import DiaryListComponent from '../beauty/DiaryList';
 import RecommendStoreListComponent from './RecommendStoreList'
+import PreferentialcircleComponent from '../preferential/Preferentialcircle'
 
 export default class HomeModulesComponent extends Component {
   constructor(props) {
@@ -64,6 +65,16 @@ export default class HomeModulesComponent extends Component {
     }
   }
 
+  _goPreferentialcircle(){
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'Preferentialcircle',
+        component: PreferentialcircleComponent
+      });
+    }
+  }
+
   render () {
     return (
       <View style={styles.wrapper}>
@@ -80,7 +91,7 @@ export default class HomeModulesComponent extends Component {
             <Image style={styles.item_icon} source={require('./image/icon_beauty.png')}/>
             <Text style={styles.item_title}>丽人</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.item}>
+          <TouchableOpacity style={styles.item} onPress={this._goPreferentialcircle.bind(this)}>
             <Image style={styles.item_icon} source={require('./image/icon_discount.png')}/>
             <Text style={styles.item_title}>特惠圈</Text>
           </TouchableOpacity>
