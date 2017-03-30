@@ -1,5 +1,5 @@
 /**
- * page 产品详情页面
+ * page 套餐详情
  */
 import React, { Component } from 'react'
 import {
@@ -16,8 +16,7 @@ import ScreenUtils from '../../utils/ScreenUtils';
 
 import TopNavWidthActionsComponent from '../common/TopNavWithActions';
 import BlockTitleComponent from '../common/BlockTitle';
-import ProductItemComponent from '../common/ProductItem';
-import ConfirmOrderComponent from './ConfirmOrder';
+import ConfirmOrderComponent from '../beauty/ConfirmOrder';
 import CommentItemComponent from '../common/CommentItem';
 
 export default class StoreDetailComponent extends Component {
@@ -45,10 +44,10 @@ export default class StoreDetailComponent extends Component {
     }
     return (
       <View style={styles.wrapper}>
-        <TopNavWidthActionsComponent title="产品详情" navigator={this.props.navigator}/>
+        <TopNavWidthActionsComponent title="套餐详情" navigator={this.props.navigator}/>
 
-        <ScrollView>
-          <Image resizeMode="cover" source={require('../../img/25C07421-D400-414E-A865-EF013EC8E9C8.png')} style={{
+        <ScrollView style={{flex:1}}>
+          <Image resizeMode="cover" source={require('../../img/888.png')} style={{
             width: ScreenUtils.scaleSize(375),
             height: ScreenUtils.scaleSize(287)
           }}/>
@@ -62,46 +61,39 @@ export default class StoreDetailComponent extends Component {
               润百颜水光针2ml＋伊肤泉无菌修复美颜＋润百颜水光针2ml＋伊肤泉无菌修复美颜＋保加利亚玫瑰精油36ml+润百颜水光针2ml
             </Text>
 
-            <View style={styles.header_price}>
-              <Text style={styles.header_price_now}>¥ 699.00</Text>
-              <Text style={styles.header_price_old}>¥ 1599.00</Text>
+            {/* 选择套餐 */}
+            <View style={styles.combo_wrapper}>
+              <View style={styles.combo_item}>
+                <View style={styles.combo_item_header}>
+                  <Image source={require('./image/check_n.png')} style={styles.combo_item_checkbox}/>
+                  <Text style={styles.combo_item_title}>套餐一</Text>
+                  <Text style={styles.combo_item_price}>¥ 699</Text>
+                </View>
+                <View style={styles.combo_item_content}>
+                  <Text style={styles.combo_item_desc}>【紧肤系列】润白颜水光针2ml</Text>
+                  <Text style={styles.combo_item_desc}>【紧肤系列】润白颜水光针2ml</Text>
+                  <Text style={styles.combo_item_desc}>【紧肤系列】润白颜水光针2ml</Text>
+                  <Text style={styles.combo_item_desc}>【紧肤系列】润白颜水光针2ml</Text>
+                </View>
+              </View>
+              <View style={styles.combo_item}>
+                <View style={styles.combo_item_header}>
+                  <Image source={require('./image/check_dis.png')} style={styles.combo_item_checkbox}/>
+                  <Text style={styles.combo_item_title}>套餐二</Text>
+                </View>
+              </View>
+              <View style={styles.combo_item}>
+                <View style={styles.combo_item_header}>
+                  <Image source={require('./image/check_dis.png')} style={styles.combo_item_checkbox}/>
+                  <Text style={styles.combo_item_title}>套餐三</Text>
+                </View>
+              </View>
             </View>
 
-            <View style={styles.header_items}>
-              <View style={styles.header_item}>
-                <Image source={require('./image/icon_message3.png')}/>
-                <Text style={styles.header_item_title}>在线留言</Text>
-              </View>
-              <View style={styles.header_item}>
-                <Image source={require('./image/icon_Diary.png')}/>
-                <Text style={styles.header_item_title}>日记本</Text>
-              </View>
-            </View>
             <Text style={styles.remark}>
               本产品适用于光电美容的所有门店
             </Text>
           </View>
-
-          <ScrollView horizontal style={styles.coupon_wrapper}>
-            <View style={styles.coupon_item}>
-              <View style={styles.coupon_item_content}>
-                <Text style={styles.coupon_item_desc}>满1000减50</Text>
-                <Text style={styles.coupon_item_value}>￥ 50</Text>
-              </View>
-            </View>
-            <View style={styles.coupon_item}>
-              <View style={styles.coupon_item_content}>
-                <Text style={styles.coupon_item_desc}>满1000减50</Text>
-                <Text style={styles.coupon_item_value}>￥ 50</Text>
-              </View>
-            </View>
-            <View style={styles.coupon_item}>
-              <View style={styles.coupon_item_content}>
-                <Text style={styles.coupon_item_desc}>满1000减50</Text>
-                <Text style={styles.coupon_item_value}>￥ 50</Text>
-              </View>
-            </View>
-          </ScrollView>
 
           {/* 推荐 */}
           <View style={styles.recommend_wrapper}>
@@ -139,29 +131,6 @@ export default class StoreDetailComponent extends Component {
               <View style={styles.comment_item}><CommentItemComponent /></View>
               <View style={styles.comment_item}><CommentItemComponent /></View>
               <View style={styles.comment_item}><CommentItemComponent /></View>
-            </View>
-          </View>
-
-          {/* 相关单品推荐 */}
-          <View style={styles.hot_wrapper}>
-            <View style={[styles.recommend_footer]}>
-              <View style={styles.recommend_left}><Image source={require('../common/image/line_left.png')}/></View>
-              <Text style={styles.recommend_title}>相关单品推荐</Text>
-              <View style={styles.recommend_right}><Image source={require('../common/image/line_right.png')}/></View>
-            </View>
-            <View style={styles.hot_body}>
-              <View style={styles.hot_item}>
-                <ProductItemComponent {...ProductItemInfo}/>
-              </View>
-              <View style={styles.hot_item}>
-                <ProductItemComponent {...ProductItemInfo}/>
-              </View>
-              <View style={styles.hot_item}>
-                <ProductItemComponent {...ProductItemInfo}/>
-              </View>
-              <View style={styles.hot_item}>
-                <ProductItemComponent {...ProductItemInfo}/>
-              </View>
             </View>
           </View>
         </ScrollView>
@@ -212,44 +181,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 6,
     paddingVertical: 2
   },
-  header_price:{
-    flexDirection:'row',
-    marginTop:20,
-    marginBottom:20,
-    alignItems:'center',
-    justifyContent:'center'
-  },
-  header_price_now:{
-    fontSize: 18,
-    fontWeight: '500',
-    textAlign:'center',
-    color:'#FF6D99',
-    marginRight: 15
-  },
-  header_price_old:{
-    fontSize: 12,
-    color:'#B8B8B8',
-    textDecorationLine:'line-through'
-  },
   header_intro:{
     fontSize: 12,
     color:'#656565',
     lineHeight: 20,
     paddingHorizontal: 12
-  },
-  header_items:{
-    flexDirection: 'row',
-    borderBottomWidth: 1,
-    borderTopWidth: 1,
-    borderColor: '#B8B8B8',
-    paddingTop: 15,
-    paddingBottom:15,
-    marginLeft: 12,
-    marginRight: 12,
-  },
-  header_item: {
-    flex:1,
-    alignItems:'center'
   },
   item_border:{
     borderRightWidth: 1,
@@ -267,36 +203,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color:'#656565',
     textAlign: 'center'
-  },
-  coupon_wrapper: {
-    height: 94,
-    backgroundColor:'#fff',
-    paddingLeft:12,
-    flexDirection:'row'
-  },
-  coupon_item:{
-    marginRight:10,
-    alignSelf:'center',
-    backgroundColor: '#CAA76B',
-    paddingHorizontal: 5,
-    paddingTop: 5,
-    paddingBottom: 5,
-  },
-  coupon_item_content:{
-    borderColor:'#fff',
-    borderWidth: 0.5,
-    paddingVertical: 5,
-    paddingHorizontal: 10
-  },
-  coupon_item_desc:{
-    fontSize: 12,
-    color: '#fff',
-    textAlign:'center'
-  },
-  coupon_item_value:{
-    fontSize: 16,
-    color: '#fff',
-    textAlign:'center'
   },
   recommend_body:{
     flexDirection:'row',
@@ -358,25 +264,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.5,
     borderColor:'#D7D7D7'
   },
-  hot_wrapper:{
-    backgroundColor:'#fff'
-  },
-  hot_body:{
-    flexDirection:'row',
-    flexWrap:'wrap',
-    justifyContent:'space-between',
-    alignItems:'center',
-    paddingLeft:12,
-    paddingRight:12,
-    paddingTop:5,
-    paddingBottom:5,
-    backgroundColor:'#fff'
-  },
-  hot_item:{
-    marginBottom:10,
-    borderColor:'#D7D7D7',
-    borderWidth: 0.5
-  },
   cart_wrapper:{
     height: ScreenUtils.scaleSize(50),
     flexDirection:'row',
@@ -402,6 +289,43 @@ const styles = StyleSheet.create({
   cart_text:{
     fontSize: 14,
     color: '#fff'
+  },
+  combo_wrapper:{
+    paddingHorizontal: 15,
+    marginTop: 20,
+    marginBottom: 30
+  },
+  combo_item:{
+    marginBottom: 12
+  },
+  combo_item_checkbox:{
+    marginRight:13,
+    alignSelf:'flex-start'
+  },
+  combo_item_header:{
+    flexDirection:"row",
+    alignItems:'center',
+    marginBottom: 10,
+  },
+  combo_item_title:{
+    fontSize: 14,
+    fontWeight:'500',
+    marginRight: 8,
+    justifyContent:'center'
+  },
+  combo_item_price:{
+    fontSize: 16,
+    color:'#FF6D99'
+  },
+  combo_item_content:{
+    flexDirection:'row',
+    flexWrap:'wrap',
+    alignItems:'center',
+    marginLeft:28
+  },
+  combo_item_desc:{
+    fontSize:11,
+    color:'#292929'
   },
   comment_item:{
     marginHorizontal: 12,

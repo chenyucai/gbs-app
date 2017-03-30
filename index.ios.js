@@ -46,6 +46,10 @@ import ScheduleComponent from './components/schedule/Schedule'
 import SpecialComponent from './components/preferential/Special'
 import PackagelistComponent from './components/preferential/Packagelist'
 import GrouppurchaseComponent from './components/preferential/Grouppurchase'
+import ScheduleComponent from './components/schedule/Schedule';
+import ComboDetailComponent from './components/preferential/ComboDetail';
+import GroupDetailComponent from './components/preferential/GroupDetail';
+import MagazineComponent from './components/magazine/Magazine'
 
 export default class AwesomeProject extends Component {
   render() {
