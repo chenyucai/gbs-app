@@ -1,5 +1,5 @@
 /**
- * page 产品详情页面
+ * page 团购详情
  */
 import React, { Component } from 'react'
 import {
@@ -17,8 +17,7 @@ import ScreenUtils from '../../utils/ScreenUtils';
 import TopNavWidthActionsComponent from '../common/TopNavWithActions';
 import BlockTitleComponent from '../common/BlockTitle';
 import ProductItemComponent from '../common/ProductItem';
-import ConfirmOrderComponent from './ConfirmOrder';
-import CommentItemComponent from '../common/CommentItem';
+import ConfirmOrderComponent from '../beauty/ConfirmOrder';
 
 export default class StoreDetailComponent extends Component {
   constructor(props) {
@@ -45,10 +44,10 @@ export default class StoreDetailComponent extends Component {
     }
     return (
       <View style={styles.wrapper}>
-        <TopNavWidthActionsComponent title="产品详情" navigator={this.props.navigator}/>
+        <TopNavWidthActionsComponent title="套餐详情" navigator={this.props.navigator}/>
 
         <ScrollView>
-          <Image resizeMode="cover" source={require('../../img/25C07421-D400-414E-A865-EF013EC8E9C8.png')} style={{
+          <Image resizeMode="cover" source={require('../../img/888.png')} style={{
             width: ScreenUtils.scaleSize(375),
             height: ScreenUtils.scaleSize(287)
           }}/>
@@ -67,41 +66,44 @@ export default class StoreDetailComponent extends Component {
               <Text style={styles.header_price_old}>¥ 1599.00</Text>
             </View>
 
-            <View style={styles.header_items}>
-              <View style={styles.header_item}>
-                <Image source={require('./image/icon_message3.png')}/>
-                <Text style={styles.header_item_title}>在线留言</Text>
+            <View style={{
+              marginHorizontal: 12,
+              borderTopWidth: 0.5,
+              borderColor:'#d7d7d7',
+              paddingTop:20
+            }}>
+              <View style={styles.group_wrapper}>
+                <Text style={styles.group_count}>已参团3人  |  剩2人</Text>
               </View>
-              <View style={styles.header_item}>
-                <Image source={require('./image/icon_Diary.png')}/>
-                <Text style={styles.header_item_title}>日记本</Text>
-              </View>
+
+              <Text style={styles.deadline}>
+                截止日期：2016.10.20 24:00
+              </Text>
+
+              <Text style={styles.remark}>
+                本产品适用于光电美容的所有门店
+              </Text>
             </View>
-            <Text style={styles.remark}>
-              本产品适用于光电美容的所有门店
-            </Text>
           </View>
 
-          <ScrollView horizontal style={styles.coupon_wrapper}>
-            <View style={styles.coupon_item}>
-              <View style={styles.coupon_item_content}>
-                <Text style={styles.coupon_item_desc}>满1000减50</Text>
-                <Text style={styles.coupon_item_value}>￥ 50</Text>
-              </View>
+          {/* 拼团规则 */}
+          <View style={{
+            marginTop: 10,
+            backgroundColor:'#fff'
+          }}>
+            <View style={{
+              paddingVertical: 20
+            }}>
+              <BlockTitleComponent titleZh="拼团规则" titleEn="Group-buying rules"/>
             </View>
-            <View style={styles.coupon_item}>
-              <View style={styles.coupon_item_content}>
-                <Text style={styles.coupon_item_desc}>满1000减50</Text>
-                <Text style={styles.coupon_item_value}>￥ 50</Text>
-              </View>
-            </View>
-            <View style={styles.coupon_item}>
-              <View style={styles.coupon_item_content}>
-                <Text style={styles.coupon_item_desc}>满1000减50</Text>
-                <Text style={styles.coupon_item_value}>￥ 50</Text>
-              </View>
-            </View>
-          </ScrollView>
+            <Text style={{
+              paddingHorizontal:12,
+              fontSize:12,
+              lineHeight:20
+            }}>
+              每个商品都有单独购买价格和拼团价格，选择拼团购买进行商品下单，开团支付成功后获取转发链接，邀请好友参团，参团成员也可以将该团分享出去邀约更多的团员参团，在规定时间内在规定时...
+            </Text>
+          </View>
 
           {/* 推荐 */}
           <View style={styles.recommend_wrapper}>
@@ -135,33 +137,7 @@ export default class StoreDetailComponent extends Component {
               </View>
             </View>
             <View style={styles.body_content}>
-              <View style={styles.comment_item}><CommentItemComponent /></View>
-              <View style={styles.comment_item}><CommentItemComponent /></View>
-              <View style={styles.comment_item}><CommentItemComponent /></View>
-              <View style={styles.comment_item}><CommentItemComponent /></View>
-            </View>
-          </View>
 
-          {/* 相关单品推荐 */}
-          <View style={styles.hot_wrapper}>
-            <View style={[styles.recommend_footer]}>
-              <View style={styles.recommend_left}><Image source={require('../common/image/line_left.png')}/></View>
-              <Text style={styles.recommend_title}>相关单品推荐</Text>
-              <View style={styles.recommend_right}><Image source={require('../common/image/line_right.png')}/></View>
-            </View>
-            <View style={styles.hot_body}>
-              <View style={styles.hot_item}>
-                <ProductItemComponent {...ProductItemInfo}/>
-              </View>
-              <View style={styles.hot_item}>
-                <ProductItemComponent {...ProductItemInfo}/>
-              </View>
-              <View style={styles.hot_item}>
-                <ProductItemComponent {...ProductItemInfo}/>
-              </View>
-              <View style={styles.hot_item}>
-                <ProductItemComponent {...ProductItemInfo}/>
-              </View>
             </View>
           </View>
         </ScrollView>
@@ -186,7 +162,6 @@ export default class StoreDetailComponent extends Component {
 const styles = StyleSheet.create({
   wrapper: {
     backgroundColor: '#F0EFF5',
-    // height: Dimensions.get('window').height
     flex: 1
   },
   header:{
@@ -237,20 +212,6 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     paddingHorizontal: 12
   },
-  header_items:{
-    flexDirection: 'row',
-    borderBottomWidth: 1,
-    borderTopWidth: 1,
-    borderColor: '#B8B8B8',
-    paddingTop: 15,
-    paddingBottom:15,
-    marginLeft: 12,
-    marginRight: 12,
-  },
-  header_item: {
-    flex:1,
-    alignItems:'center'
-  },
   item_border:{
     borderRightWidth: 1,
     borderLeftWidth: 1,
@@ -267,36 +228,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color:'#656565',
     textAlign: 'center'
-  },
-  coupon_wrapper: {
-    height: 94,
-    backgroundColor:'#fff',
-    paddingLeft:12,
-    flexDirection:'row'
-  },
-  coupon_item:{
-    marginRight:10,
-    alignSelf:'center',
-    backgroundColor: '#CAA76B',
-    paddingHorizontal: 5,
-    paddingTop: 5,
-    paddingBottom: 5,
-  },
-  coupon_item_content:{
-    borderColor:'#fff',
-    borderWidth: 0.5,
-    paddingVertical: 5,
-    paddingHorizontal: 10
-  },
-  coupon_item_desc:{
-    fontSize: 12,
-    color: '#fff',
-    textAlign:'center'
-  },
-  coupon_item_value:{
-    fontSize: 16,
-    color: '#fff',
-    textAlign:'center'
   },
   recommend_body:{
     flexDirection:'row',
@@ -358,25 +289,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.5,
     borderColor:'#D7D7D7'
   },
-  hot_wrapper:{
-    backgroundColor:'#fff'
-  },
-  hot_body:{
-    flexDirection:'row',
-    flexWrap:'wrap',
-    justifyContent:'space-between',
-    alignItems:'center',
-    paddingLeft:12,
-    paddingRight:12,
-    paddingTop:5,
-    paddingBottom:5,
-    backgroundColor:'#fff'
-  },
-  hot_item:{
-    marginBottom:10,
-    borderColor:'#D7D7D7',
-    borderWidth: 0.5
-  },
   cart_wrapper:{
     height: ScreenUtils.scaleSize(50),
     flexDirection:'row',
@@ -403,10 +315,21 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#fff'
   },
-  comment_item:{
-    marginHorizontal: 12,
-    borderBottomWidth: 1,
-    borderColor: '#B8B8B8',
-    paddingVertical: 20
+  group_wrapper:{
+    width: 130,
+    height:30,
+    backgroundColor:'#FF5D94',
+    justifyContent:'center',
+    alignItems:'center',
+    alignSelf:"center",
+    marginBottom:10
+  },
+  group_count:{
+    fontSize: 12,
+    color:'#fff'
+  },
+  deadline:{
+    fontSize: 12,
+    alignSelf:'center'
   }
 });

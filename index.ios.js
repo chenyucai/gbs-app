@@ -42,13 +42,16 @@ import PreferentialcircleComponent from './components/preferential/Preferentialc
 import ShopcartItemComponent from './components/common/ShopcartItem';
 import ShopcartComponent from './components/shopcart/Shopcart';
 import CalendarComponent from './components/common/Calendar';
-import ScheduleComponent from './components/schedule/Schedule'
+import ScheduleComponent from './components/schedule/Schedule';
+import ComboDetailComponent from './components/preferential/ComboDetail';
+import GroupDetailComponent from './components/preferential/GroupDetail';
+import MagazineComponent from './components/magazine/Magazine'
 
 export default class AwesomeProject extends Component {
   render() {
     return (
       <Navigator
-        initialRoute = {{ name: 'login', component: PreferentialcircleComponent }}
+        initialRoute = {{ name: 'login', component: MagazineComponent }}
         renderScene={(route, navigator) => {
           let Component = route.component;
           return <Component {...route.params} navigator={navigator} />
