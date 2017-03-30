@@ -38,12 +38,13 @@ import UserListItemComponent from './components/common/UserListItem';
 import ProductFocusUsersComponent from './components/beauty/ProductFocusUsers';
 import DiaryListComponent from './components/beauty/DiaryList'
 import DiaryListDetailComponent from './components/beauty/DiaryListDetail'
+import PreferentialcircleComponent from './components/preferential/Preferentialcircle'
 
 export default class AwesomeProject extends Component {
   render() {
     return (
       <Navigator
-        initialRoute = {{ name: 'login', component: LoginComponent }}
+        initialRoute = {{ name: 'login', component: PreferentialcircleComponent }}
         renderScene={(route, navigator) => {
           let Component = route.component;
           return <Component {...route.params} navigator={navigator} />
