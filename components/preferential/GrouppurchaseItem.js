@@ -20,6 +20,22 @@ export default class GrouppurchaseItemComponent extends Component {
     return (
       <View style={styles.wrapper}>
         <Image style={styles.package_img} source={require('../../img/WX20170330-164651.png')}/>
+        <View style={styles.group_box}>
+          <View style={styles.time}>
+            <Text style={styles.time_text}>
+              仅剩：3天 09小时 24分
+            </Text>
+          </View>
+          <View style={styles.count}>
+            <Text style={styles.count_text}>
+              5人团 | 已参团2人
+            </Text>
+          </View>
+        </View>
+        <Text numberOfLines={1} style={{marginTop:13,marginBottom:10}}>
+          【紧肤系列】
+          <Text style={{color:'#656565', fontSize:14}}>白颜水光针2ml+伊肤泉无菌修复美</Text>
+        </Text>
         <View style={styles.price_box}>
           <Text style={styles.price_new}>¥998</Text>
           <Text style={styles.price_old}>¥3599.00</Text>
@@ -35,6 +51,31 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingHorizontal: 12,
     paddingVertical: 15
+  },
+  group_box:{
+    height:30,
+    flexDirection:'row'
+  },
+  time:{
+    flex:1,
+    backgroundColor:'#363334',
+    opacity: 0.8,
+    justifyContent:'center'
+  },
+  time_text:{
+    fontSize:14,
+    color:"#fff",
+    paddingLeft:10
+  },
+  count:{
+    backgroundColor:'#FF6D99',
+    justifyContent:'center',
+    width:130
+  },
+  count_text:{
+    fontSize:12,
+    color:"#fff",
+    paddingLeft:10
   },
   package_img: {
     width: ScreenUtils.scaleSize(351),
