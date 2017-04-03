@@ -49,12 +49,14 @@ import GrouppurchaseComponent from './components/preferential/Grouppurchase'
 import ComboDetailComponent from './components/preferential/ComboDetail';
 import GroupDetailComponent from './components/preferential/GroupDetail';
 import MagazineComponent from './components/magazine/Magazine';
+import CommunityComponent from './components/community/Community';
+import PublishComponent from './components/community/Publish'
 
 export default class AwesomeProject extends Component {
   render() {
     return (
       <Navigator
-        initialRoute = {{ name: 'login', component: GrouppurchaseComponent }}
+        initialRoute = {{ name: 'login', component: BottomTabsComponent }}
         renderScene={(route, navigator) => {
           let Component = route.component;
           return <Component {...route.params} navigator={navigator} />

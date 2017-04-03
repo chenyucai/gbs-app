@@ -13,6 +13,7 @@ import MicroplasticComponent from '../microplastic/Microplastic';
 import DiaryListComponent from '../beauty/DiaryList';
 import RecommendStoreListComponent from './RecommendStoreList'
 import PreferentialcircleComponent from '../preferential/Preferentialcircle'
+import CommunityComponent from '../community/Community';
 
 export default class HomeModulesComponent extends Component {
   constructor(props) {
@@ -74,6 +75,15 @@ export default class HomeModulesComponent extends Component {
       });
     }
   }
+  _goCommunity(){
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'Community',
+        component: CommunityComponent
+      });
+    }
+  }
 
   render () {
     return (
@@ -102,7 +112,7 @@ export default class HomeModulesComponent extends Component {
             <Image style={styles.item_icon} source={require('./image/icon_shops.png')}/>
             <Text style={styles.item_title}>同城门店</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.item}>
+          <TouchableOpacity style={styles.item} onPress={this._goCommunity.bind(this)}>
             <Image style={styles.item_icon} source={require('./image/icon_Community.png')}/>
             <Text style={styles.item_title}>网上社区</Text>
           </TouchableOpacity>
