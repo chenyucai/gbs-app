@@ -49,8 +49,9 @@ import BottomTabsComponent from './components/common/BottomTabs';
 // import ComboDetailComponent from './components/preferential/ComboDetail';
 // import GroupDetailComponent from './components/preferential/GroupDetail';
 // import MagazineComponent from './components/magazine/Magazine'
-import PreferentialcircleComponent from './components/preferential/Preferentialcircle'
-import RequiredpackagesComponent from './components/preferential/Requiredpackages'
+// import PreferentialcircleComponent from './components/preferential/Preferentialcircle'
+// import RequiredpackagesComponent from './components/preferential/Requiredpackages'
+// import PublishComponent from './components/community/Publish'
 
 
 export default class AwesomeProject extends Component {
