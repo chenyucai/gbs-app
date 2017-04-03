@@ -16,6 +16,7 @@ import PreferentialcircleModulesComponent from './PreferentialcircleModules'
 import OptoelectronicstoreComponent from '../beauty/Optoelectronicstore'
 import HomeBlockTitleComponent from '../home/HomeBlockTitle'
 import PackageItemComponent from './PackageItem'
+import RequiredpackagesComponent from './Requiredpackages'
 
 import Swiper from 'react-native-swiper';
 import ScreenUtils from '../../utils/ScreenUtils';
@@ -50,6 +51,16 @@ export default class PreferentialcircleComponent extends Component {
         params: {
           title: title
         }
+      });
+    }
+  }
+
+  _goRequiredpackages() {
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'Requiredpackages',
+        component: RequiredpackagesComponent
       });
     }
   }
@@ -204,13 +215,13 @@ export default class PreferentialcircleComponent extends Component {
 
           {/* 必点套餐 */}
           <View style={styles.package_wrapper}>
-            <View style={[
+            <TouchableOpacity style={[
               styles.block_title_wrapper, {
                 backgroundColor: '#F0EFF5'
               }
-            ]}>
+            ]} onPress={this._goRequiredpackages.bind(this)}>
               <HomeBlockTitleComponent titleEn="Package" titleZh="必点套餐"/>
-            </View>
+            </TouchableOpacity>
             <View style={styles.package_box}>
               <PackageItemComponent />
             </View>
