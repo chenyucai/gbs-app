@@ -15,6 +15,7 @@ import RecommendStoreListComponent from './RecommendStoreList'
 import PreferentialcircleComponent from '../preferential/Preferentialcircle'
 import MagazineComponent from '../magazine/Magazine'
 import BeautifulwomanComponent from '../beautifulwoman/Beautifulwoman'
+import CommunityComponent from '../community/Community';
 
 export default class HomeModulesComponent extends Component {
   constructor(props) {
@@ -86,6 +87,15 @@ export default class HomeModulesComponent extends Component {
       });
     }
   }
+  _goCommunity(){
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'Community',
+        component: CommunityComponent
+      });
+    }
+  }
 
   _goMagazine(){
     const { navigator } = this.props;
@@ -124,7 +134,7 @@ export default class HomeModulesComponent extends Component {
             <Image style={styles.item_icon} source={require('./image/icon_shops.png')}/>
             <Text style={styles.item_title}>同城门店</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.item}>
+          <TouchableOpacity style={styles.item} onPress={this._goCommunity.bind(this)}>
             <Image style={styles.item_icon} source={require('./image/icon_Community.png')}/>
             <Text style={styles.item_title}>网上社区</Text>
           </TouchableOpacity>
