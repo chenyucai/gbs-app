@@ -6,10 +6,12 @@ import {
   StyleSheet,
   View,
   Text,
-  Image
+  Image,
+  TouchableOpacity
 } from 'react-native'
 
 import ScreenUtils from '../../utils/ScreenUtils';
+import ComboDetailComponent from './ComboDetail'
 
 export default class PackageItemComponent extends Component {
   constructor(props) {
@@ -19,9 +21,19 @@ export default class PackageItemComponent extends Component {
     };
   }
 
+  _goComboDetail() {
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'ComboDetail',
+        component: ComboDetailComponent
+      });
+    }
+  }
+
   render () {
     return (
-      <View style={styles.wrapper}>
+      <TouchableOpacity style={styles.wrapper} onPress={this._goComboDetail.bind(this)}>
         <View style={styles.package_header}>
           <View style={styles.package_header_top}>
             <View style={styles.package_header_topL}>
@@ -44,7 +56,7 @@ export default class PackageItemComponent extends Component {
           <Text style={styles.price_old}>¥3599.00</Text>
           <Text style={styles.purchased}>已购买1234</Text>
         </View>
-      </View>
+      </TouchableOpacity>
     )
   }
 }

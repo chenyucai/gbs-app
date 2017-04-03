@@ -58,7 +58,7 @@ export default class PreferentialcircleComponent extends Component {
             <Image style={styles.item_icon} source={require('../beauty/image/icon_all.png')}/>
             <Text style={styles.item_title}>专场</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.item} onPress={this._goGouppurchase.bind(this)}>
+          <TouchableOpacity style={styles.item} onPress={this._goGrouppurchase.bind(this)}>
             <Image style={styles.item_icon} source={require('../beauty/image/icon_face.png')}/>
             <Text style={styles.item_title}>团购</Text>
           </TouchableOpacity>

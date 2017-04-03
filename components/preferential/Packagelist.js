@@ -51,10 +51,10 @@ export default class PackagelistComponent extends Component {
         </View>
         <ScrollView>
           <View style={{marginTop: 10}}>
-            <PackageItemComponent/>
+            <PackageItemComponent navigator={this.props.navigator}/>
           </View>
           <View style={{marginTop: 10}}>
-            <PackageItemComponent/>
+            <PackageItemComponent navigator={this.props.navigator}/>
           </View>
         </ScrollView>
       </View>

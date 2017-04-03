@@ -19,7 +19,7 @@ import BlockTitleComponent from '../common/BlockTitle';
 import ConfirmOrderComponent from '../beauty/ConfirmOrder';
 import CommentItemComponent from '../common/CommentItem';
 
-export default class StoreDetailComponent extends Component {
+export default class ComboDetailComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {

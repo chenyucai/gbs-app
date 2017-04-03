@@ -19,7 +19,7 @@ import BlockTitleComponent from '../common/BlockTitle';
 import ProductItemComponent from '../common/ProductItem';
 import ConfirmOrderComponent from '../beauty/ConfirmOrder';
 
-export default class StoreDetailComponent extends Component {
+export default class GroupDetailComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -44,7 +44,7 @@ export default class StoreDetailComponent extends Component {
     }
     return (
       <View style={styles.wrapper}>
-        <TopNavWidthActionsComponent title="套餐详情" navigator={this.props.navigator}/>
+        <TopNavWidthActionsComponent title="团购详情" navigator={this.props.navigator}/>
 
         <ScrollView>
           <Image resizeMode="cover" source={require('../../img/888.png')} style={{

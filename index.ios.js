@@ -19,7 +19,7 @@ import OptoelectronicstoreComponent from './components/beauty/Optoelectronicstor
 // import RecommendStoreListComponent from './components/home/RecommendStoreList';
 // import SpecialColumnComponent from './components/home/SpecialColumn'
 // import PhotoelectricbeautyComponent from './components/beauty/Photoelectricbeauty'
-// import BottomTabsComponent from './components/common/BottomTabs';
+import BottomTabsComponent from './components/common/BottomTabs';
 // import StoreDetailComponent from './components/beauty/StoreDetail'
 // import PhotoelectricschoollistComponent from './components/beauty/Photoelectricschoollist'
 // import ProductDetailComponent from './components/beauty/ProductDetail';
@@ -57,7 +57,7 @@ export default class AwesomeProject extends Component {
   render() {
     return (
       <Navigator
-        initialRoute = {{ name: 'login', component: PreferentialcircleComponent }}
+        initialRoute = {{ name: 'login', component: BottomTabsComponent }}
         renderScene={(route, navigator) => {
           let Component = route.component;
           return <Component {...route.params} navigator={navigator} />

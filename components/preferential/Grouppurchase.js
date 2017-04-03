@@ -51,7 +51,7 @@ export default class GrouppurchaseComponent extends Component {
         </View>
         <ScrollView>
           <View style={{marginTop: 10}}>
-            <GrouppurchaseItemComponent/>
+            <GrouppurchaseItemComponent navigator={this.props.navigator}/>
           </View>
         </ScrollView>
       </View>

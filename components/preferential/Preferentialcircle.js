@@ -17,6 +17,8 @@ import OptoelectronicstoreComponent from '../beauty/Optoelectronicstore'
 import HomeBlockTitleComponent from '../home/HomeBlockTitle'
 import PackageItemComponent from './PackageItem'
 import RequiredpackagesComponent from './Requiredpackages'
+import PurchaserequiredComponent from './Purchaserequired'
+import RequiredspecialComponent from './Requiredspecial'
 
 import Swiper from 'react-native-swiper';
 import ScreenUtils from '../../utils/ScreenUtils';
@@ -65,6 +67,26 @@ export default class PreferentialcircleComponent extends Component {
     }
   }
 
+  _goPurchaserequired() {
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'Purchaserequired',
+        component: PurchaserequiredComponent
+      });
+    }
+  }
+
+  _goRequiredspecial() {
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'Requiredspecial',
+        component: RequiredspecialComponent
+      });
+    }
+  }
+
   render () {
     let swiperHeight = {
       width: ScreenUtils.scaleSize(375),
@@ -93,13 +115,13 @@ export default class PreferentialcircleComponent extends Component {
 
           {/* 必逛专场 */}
           <View style={styles.concert_wrapper}>
-            <View style={[
+            <TouchableOpacity style={[
               styles.block_title_wrapper, {
                 backgroundColor: '#fff'
               }
-            ]}>
+            ]} onPress={this._goRequiredspecial.bind(this)}>
               <HomeBlockTitleComponent titleEn="Will go special" titleZh="必逛专场"/>
-            </View>
+            </TouchableOpacity>
             <View style={styles.concert_box}>
               <View style={styles.left_box}>
                 <View style={styles.concert_img_left}>
@@ -151,13 +173,13 @@ export default class PreferentialcircleComponent extends Component {
 
           {/* 必参团购 */}
           <View style={styles.concert_wrapper}>
-            <View style={[
+            <TouchableOpacity style={[
               styles.block_title_wrapper, {
                 backgroundColor: '#fff'
               }
-            ]}>
+            ]} onPress={this._goPurchaserequired.bind(this)}>
               <HomeBlockTitleComponent titleEn="Groupon" titleZh="必参团购"/>
-            </View>
+            </TouchableOpacity>
             <View style={styles.concert_box}>
               <View style={styles.left_box}>
                 <View style={styles.concert_img_left}>

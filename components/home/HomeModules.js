@@ -13,6 +13,8 @@ import MicroplasticComponent from '../microplastic/Microplastic';
 import DiaryListComponent from '../beauty/DiaryList';
 import RecommendStoreListComponent from './RecommendStoreList'
 import PreferentialcircleComponent from '../preferential/Preferentialcircle'
+import MagazineComponent from '../magazine/Magazine'
+import BeautifulwomanComponent from '../beautifulwoman/Beautifulwoman'
 
 export default class HomeModulesComponent extends Component {
   constructor(props) {
@@ -38,6 +40,16 @@ export default class HomeModulesComponent extends Component {
       navigator.push({
         name: 'Microplastic',
         component: MicroplasticComponent
+      });
+    }
+  }
+
+  _goBeautifulwoman(){
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'Beautifulwoman',
+        component: BeautifulwomanComponent
       });
     }
   }
@@ -75,6 +87,16 @@ export default class HomeModulesComponent extends Component {
     }
   }
 
+  _goMagazine(){
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'Magazine',
+        component: MagazineComponent
+      });
+    }
+  }
+
   render () {
     return (
       <View style={styles.wrapper}>
@@ -87,7 +109,7 @@ export default class HomeModulesComponent extends Component {
             <Image style={styles.item_icon} source={require('./image/icon_plastic.png')}/>
             <Text style={styles.item_title}>微整形</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.item}>
+          <TouchableOpacity style={styles.item} onPress={this._goBeautifulwoman.bind(this)}>
             <Image style={styles.item_icon} source={require('./image/icon_beauty.png')}/>
             <Text style={styles.item_title}>丽人</Text>
           </TouchableOpacity>
@@ -110,7 +132,7 @@ export default class HomeModulesComponent extends Component {
             <Image style={styles.item_icon} source={require('./image/icon_note.png')}/>
             <Text style={styles.item_title}>美丽日记</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.item}>
+          <TouchableOpacity style={styles.item} onPress={this._goMagazine.bind(this)}>
             <Image style={styles.item_icon} source={require('./image/icon_Magazine.png')}/>
             <Text style={styles.item_title}>杂志社</Text>
           </TouchableOpacity>

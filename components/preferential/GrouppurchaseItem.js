@@ -3,10 +3,12 @@ import {
   StyleSheet,
   View,
   Text,
-  Image
+  Image,
+  TouchableOpacity
 } from 'react-native'
 
 import ScreenUtils from '../../utils/ScreenUtils';
+import GroupDetailComponent from './GroupDetail'
 
 export default class GrouppurchaseItemComponent extends Component {
   constructor(props) {
@@ -16,22 +18,34 @@ export default class GrouppurchaseItemComponent extends Component {
     };
   }
 
+  _goGroupDetail() {
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'GroupDetail',
+        component: GroupDetailComponent
+      });
+    }
+  }
+
   render () {
     return (
       <View style={styles.wrapper}>
-        <Image style={styles.package_img} source={require('../../img/WX20170330-164651.png')}/>
-        <View style={styles.group_box}>
-          <View style={styles.time}>
-            <Text style={styles.time_text}>
-              仅剩：3天 09小时 24分
-            </Text>
+        <TouchableOpacity onPress={this._goGroupDetail.bind(this)}>
+          <Image style={styles.package_img} source={require('../../img/WX20170330-164651.png')}/>
+          <View style={styles.group_box}>
+            <View style={styles.time}>
+              <Text style={styles.time_text}>
+                仅剩：3天 09小时 24分
+              </Text>
+            </View>
+            <View style={styles.count}>
+              <Text style={styles.count_text}>
+                5人团 | 已参团2人
+              </Text>
+            </View>
           </View>
-          <View style={styles.count}>
-            <Text style={styles.count_text}>
-              5人团 | 已参团2人
-            </Text>
-          </View>
-        </View>
+        </TouchableOpacity>
         <Text numberOfLines={1} style={{marginTop:13,marginBottom:10}}>
           【紧肤系列】
           <Text style={{color:'#656565', fontSize:14}}>白颜水光针2ml+伊肤泉无菌修复美</Text>
