@@ -12,6 +12,7 @@ import {
 } from 'react-native'
 
 import ScreenUtils from '../../utils/ScreenUtils';
+import ProductDetailComponent from './ProductDetail'
 
 export default class PayCompleteComponent extends Component {
   constructor(props) {
@@ -25,6 +26,16 @@ export default class PayCompleteComponent extends Component {
     const navigator = this.props.navigator;
     if (navigator) {
       navigator.pop();
+    }
+  }
+
+  _goProductDetail(){
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'ProductDetail',
+        component: ProductDetailComponent
+      });
     }
   }
 
@@ -83,7 +94,7 @@ export default class PayCompleteComponent extends Component {
         </ScrollView>
 
         <View style={styles.btns}>
-          <TouchableOpacity style={[styles.btn, {borderRightWidth:0.5, borderColor:'#d7d7d7'}]}>
+          <TouchableOpacity style={[styles.btn, {borderRightWidth:0.5, borderColor:'#d7d7d7'}]} onPress={this._goProductDetail.bind(this)}>
             <Text style={styles.btn_text}>返回产品详情页</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.btn}>
