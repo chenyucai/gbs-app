@@ -50,8 +50,19 @@ import BottomTabsComponent from './components/common/BottomTabs';
 // import GroupDetailComponent from './components/preferential/GroupDetail';
 // import MagazineComponent from './components/magazine/Magazine'
 import PreferentialcircleComponent from './components/preferential/Preferentialcircle'
+import ShopcartItemComponent from './components/common/ShopcartItem';
+import ShopcartComponent from './components/shopcart/Shopcart';
+import CalendarComponent from './components/common/Calendar';
+import ScheduleComponent from './components/schedule/Schedule'
+import SpecialComponent from './components/preferential/Special'
+import PackagelistComponent from './components/preferential/Packagelist'
+import GrouppurchaseComponent from './components/preferential/Grouppurchase'
+import ComboDetailComponent from './components/preferential/ComboDetail';
+import GroupDetailComponent from './components/preferential/GroupDetail';
+import MagazineComponent from './components/magazine/Magazine';
+import CommunityComponent from './components/community/Community';
+import PublishComponent from './components/community/Publish'
 import RequiredpackagesComponent from './components/preferential/Requiredpackages'
-
 
 export default class AwesomeProject extends Component {
   render() {
