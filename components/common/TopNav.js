@@ -24,6 +24,9 @@ export default class TopNavComponent extends Component {
 
   render () {
     let bgColor = this.props.bgColor || '#23232E';
+    let borderBottomWidth = this.props.bottomWidth || 0.5;
+    let borderBottomColor = this.props.borderBottomColor || '#23232E';
+    let fontColor = this.props.fontColor || '#fff';
 
     return (
       <View style={{
@@ -32,12 +35,14 @@ export default class TopNavComponent extends Component {
         backgroundColor: bgColor,
         justifyContent: 'center',
         alignItems: 'center',
+        borderBottomColor: borderBottomColor,
+        borderBottomWidth: borderBottomWidth
       }}>
         <TouchableOpacity style={styles.back} onPress={this._back.bind(this)}>
           <Image source={require('./image/icon_Return.png')} />
         </TouchableOpacity>
         <View style={{alignItems: 'center'}}>
-            <Text style={styles.title}>{this.props.title}</Text>
+            <Text style={[styles.title, {color:fontColor}]}>{this.props.title}</Text>
         </View>
       </View>
     )

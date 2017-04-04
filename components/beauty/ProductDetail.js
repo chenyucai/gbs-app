@@ -19,6 +19,7 @@ import BlockTitleComponent from '../common/BlockTitle';
 import ProductItemComponent from '../common/ProductItem';
 import ConfirmOrderComponent from './ConfirmOrder';
 import CommentItemComponent from '../common/CommentItem';
+import MessageComponent from './Message'
 
 export default class StoreDetailComponent extends Component {
   constructor(props) {
@@ -26,6 +27,15 @@ export default class StoreDetailComponent extends Component {
     this.state = {
 
     };
+  }
+
+  _goMesaage(){
+    if (this.props.navigator) {
+      this.props.navigator.push({
+        name:"Message",
+        component: MessageComponent
+      })
+    }
   }
 
   _buy(){
@@ -68,10 +78,10 @@ export default class StoreDetailComponent extends Component {
             </View>
 
             <View style={styles.header_items}>
-              <View style={styles.header_item}>
+              <TouchableOpacity style={styles.header_item} onPress={this._goMesaage.bind(this)}>
                 <Image source={require('./image/icon_message3.png')}/>
                 <Text style={styles.header_item_title}>在线留言</Text>
-              </View>
+              </TouchableOpacity>
               <View style={styles.header_item}>
                 <Image source={require('./image/icon_Diary.png')}/>
                 <Text style={styles.header_item_title}>日记本</Text>
