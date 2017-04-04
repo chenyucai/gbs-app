@@ -18,16 +18,69 @@ export default class ShopcartComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      goods:[
+        {
+          id: 1,
+          selected: false
+        },
+        {
+          id: 2,
+          selected: true
+        },
+        {
+          id: 3,
+          selected: false
+        },
+      ],
+      goods2:[
+        {
+          id: 1,
+          selected: false
+        },
+        {
+          id: 2,
+          selected: true
+        },
+        {
+          id: 3,
+          selected: false
+        },
+      ]
     };
+
+    // this._renderProduct = this._renderProduct.bind(this);
+  }
+
+  _select(i){
+    var goods = this.state.goods;
+    goods[i].selected = !goods[i].selected;
+    this.setState({goods: goods});
+  }
+
+  _select2(i){
+    var goods = this.state.goods2;
+    goods[i].selected = !goods[i].selected;
+    this.setState({goods2: goods});
   }
 
   _renderProduct(){
     let items = [];
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < this.state.goods.length; i++) {
       items.push(
-        <TouchableOpacity style={styles.item} key={i}>
-          <ShopcartItemComponent />
+        <TouchableOpacity style={styles.item} key={i} onPress={this._select.bind(this,i)}>
+          <ShopcartItemComponent selected={this.state.goods[i].selected}/>
+        </TouchableOpacity>
+      )
+    }
+    return items;
+  }
+
+  _renderProduct2(){
+    let items = [];
+    for (var i = 0; i < this.state.goods2.length; i++) {
+      items.push(
+        <TouchableOpacity style={styles.item} key={i} onPress={this._select2.bind(this,i)}>
+          <ShopcartItemComponent selected={this.state.goods2[i].selected}/>
         </TouchableOpacity>
       )
     }
@@ -70,7 +123,7 @@ export default class ShopcartComponent extends Component {
                 <Text style={styles.block_header_edit}>编辑</Text>
               </View>
               <View style={styles.block_list}>
-                {this._renderProduct()}
+                {this._renderProduct2()}
               </View>
             </View>
           </View>

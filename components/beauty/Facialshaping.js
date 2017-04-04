@@ -5,8 +5,11 @@ import {
   Text,
   Image,
   ScrollView,
-  TouchableOpacity
+  TouchableOpacity,
+  Dimensions
 } from 'react-native'
+
+import ModalDropdown from 'react-native-modal-dropdown';
 
 import ScreenUtils from '../../utils/ScreenUtils';
 
@@ -21,6 +24,13 @@ export default class FacialshapingComponent extends Component {
     };
   }
 
+  _back(){
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.pop();
+    }
+  }
+
   render () {
     let ProductItemInfo = {
       width: ScreenUtils.scaleSize(170),
@@ -28,7 +38,47 @@ export default class FacialshapingComponent extends Component {
     }
     return (
       <View style={styles.wrapper}>
-        <TopNavComponent title={this.props.title} navigator={this.props.navigator}/>
+        {/* <TopNavComponent title={this.props.title} navigator={this.props.navigator}/> */}
+
+        <TouchableOpacity style={styles.back} onPress={this._back.bind(this)}>
+          <Image source={require('../common/image/icon_Return.png')} />
+        </TouchableOpacity>
+
+        <ModalDropdown
+          options={['全部', '面部塑形', '皮肤管理', '身体塑形']}
+          defaultIndex={1}
+          defaultValue="面部塑形"
+          style={{
+            height:44,
+            backgroundColor: '#23232E',
+            justifyContent: 'center',
+          }}
+          textStyle={{
+            fontSize: 18,
+            color: '#fff',
+            textAlign:'center'
+          }}
+          dropdownStyle={{
+            width:Dimensions.get('window').width,
+            height:47*4
+          }}
+          renderRow={(option) => {
+            return <View style={{
+              height:47,
+              alignItems:'center',
+              justifyContent:'center',
+              backgroundColor:'#23232E',
+            }}>
+              <Text style={{
+                color:'#fff',
+                fontSize:16
+              }}>{option}</Text>
+            </View>
+          }}
+        >
+
+        </ModalDropdown>
+
         <View style={styles.header}>
           <View style={styles.header_item}>
             <Text style={styles.header_item_text}>分类</Text>
@@ -97,5 +147,11 @@ const styles = StyleSheet.create({
   },
   hot_item: {
     marginBottom: 10
+  },
+  back: {
+    position: 'absolute',
+    left: 10,
+    top:12,
+    zIndex:10
   },
 });

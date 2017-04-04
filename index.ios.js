@@ -26,7 +26,7 @@ import ProductDetailComponent from './components/beauty/ProductDetail';
 // import CommentItemComponent from './components/common/CommentItem'
 // import PhotoelectricschoolddetailComponent from './components/beauty/Photoelectricschoolddetail'
 // import UserdiaryComponent from './components/beauty/Userdiary'
-// import FacialshapingComponent from './components/beauty/Facialshaping'
+import FacialshapingComponent from './components/beauty/Facialshaping'
 // import CommentListComponent from './components/beauty/CommentList';
 // import TechnicianItemComponent from './components/common/TechnicianItem';
 // import TechnicianListComponent from './components/beauty/Technician';
@@ -63,12 +63,13 @@ import MagazineComponent from './components/magazine/Magazine';
 import CommunityComponent from './components/community/Community';
 import PublishComponent from './components/community/Publish'
 import RequiredpackagesComponent from './components/preferential/Requiredpackages'
+import DefaultComponent from './components/common/defaultComponent'
 
 export default class AwesomeProject extends Component {
   render() {
     return (
       <Navigator
-        initialRoute = {{ name: 'login', component: BottomTabsComponent }}
+        initialRoute = {{ name: 'login', component: DefaultComponent }}
         renderScene={(route, navigator) => {
           let Component = route.component;
           return <Component {...route.params} navigator={navigator} />

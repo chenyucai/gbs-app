@@ -21,7 +21,11 @@ export default class ShopcartItemComponent extends Component {
   render () {
     return (
       <View style={styles.wrapper}>
-        <Image source={require('./image/check_n.png')} style={styles.check}/>
+        {this.props.selected
+          ? <Image source={require('./image/check_n.png')} style={styles.check}/>
+          : <Image source={require('./image/check_dis.png')} style={styles.check}/>
+        }
+
         <Image source={require('../../img/888.png')} style={styles.img}/>
         <View style={styles.info}>
           <View style={styles.title_wrapper}>
