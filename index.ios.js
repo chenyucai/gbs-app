@@ -68,7 +68,7 @@ export default class AwesomeProject extends Component {
   render() {
     return (
       <Navigator
-        initialRoute = {{ name: 'login', component: BottomTabsComponent }}
+        initialRoute = {{ name: 'login', component: CommunityComponent }}
         renderScene={(route, navigator) => {
           let Component = route.component;
           return <Component {...route.params} navigator={navigator} />

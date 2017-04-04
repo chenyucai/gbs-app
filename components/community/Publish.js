@@ -48,7 +48,8 @@ export default class CommunityComponent extends Component {
                 placeholder="日记标题"
                 placeholderTextColor="#D7D7D7"
                 multiline={true}
-                numberOfLines={1}
+                // numberOfLines={1}
+                underlineColorAndroid="transparent"
               />
             </View>
             <View style={styles.content_box}>
@@ -56,6 +57,7 @@ export default class CommunityComponent extends Component {
                 style={styles.content}
                 placeholder="详细写下体验经历，传播给更多的光博士用户"
                 placeholderTextColor="#D7D7D7"
+                underlineColorAndroid="transparent"
                 multiline={true}
               />
             </View>
@@ -106,7 +108,9 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     paddingTop:12,
     fontSize:14,
-    paddingLeft: 10
+    paddingLeft: 10,
+    flex:1,
+    width:Dimensions.get('window').width - 12*3
   },
   content_box:{
     height:164,
@@ -114,15 +118,13 @@ const styles = StyleSheet.create({
     marginHorizontal:12,
     marginTop:12,
     marginBottom:10,
-    alignItems:'center',
-    justifyContent:'center'
   },
   content:{
     height:164,
-    justifyContent:'center',
     paddingTop:12,
     fontSize:14,
-    paddingLeft: 10
+    paddingLeft: 10,
+    width:Dimensions.get('window').width - 12*3
   },
   images_box:{
     marginVertical: 18
