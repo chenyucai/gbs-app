@@ -37,6 +37,8 @@ export default class ProductDetailComponent extends Component {
         name:"Message",
         component: MessageComponent
       })
+    }
+  }
 
   _goDairy(){
     const { navigator } = this.props;
