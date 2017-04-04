@@ -14,6 +14,7 @@ import {
   ListView,
   Dimensions
 } from 'react-native'
+import ScrollableTabView from 'react-native-scrollable-tab-view';
 
 import ScreenUtils from '../../utils/ScreenUtils';
 
@@ -73,47 +74,70 @@ export default class CommunityComponent extends Component {
     return (
       <View style={styles.wrapper}>
         <TopNavComponent title="网上社区" navigator={this.props.navigator}/>
-        <View style={styles.tabs}>
+        {/* <View style={styles.tabs}>
           <Text style={styles.tab}>达人活动</Text>
           <Text style={styles.tab}>社区话题</Text>
-        </View>
-        <View style={styles.sec_tabs}>
-          <View style={styles.sec_tab}>
-            <Text style={styles.sec_tab_title}>浏览量</Text>
-            <Image source={require('./image/icon_down.png')}/>
+        </View> */}
+
+
+        <ScrollableTabView
+          tabBarUnderlineStyle={{
+            backgroundColor:'#23232E'
+          }}
+          tabBarBackgroundColor='#23232E'
+          tabBarActiveTextColor='#ffffff'
+          tabBarInactiveTextColor='#45454E'
+          tabBarTextStyle={{fontSize: 14,fontWeight:'400'}}
+        >
+          <View tabLabel='达人活动' style={{flex:1}}>
+            <View style={styles.sec_tabs}>
+              <View style={styles.sec_tab}>
+                <Text style={styles.sec_tab_title}>浏览量</Text>
+                <Image source={require('./image/icon_down.png')}/>
+              </View>
+              <View style={styles.sec_tab}>
+                <Text style={styles.sec_tab_title}>参与量</Text>
+                <Image source={require('./image/icon_down.png')}/>
+              </View>
+              <View style={styles.sec_tab}>
+                <Text style={styles.sec_tab_title}>最新</Text>
+                <Image source={require('./image/icon_down.png')}/>
+              </View>
+            </View>
+            <ListView
+              dataSource={this.state.dataSource}
+              renderRow={this.renderRow.bind(this)}
+              style={{flex:1}}
+            />
+            
+            <TouchableOpacity onPress={this._goPublish.bind(this)} style={{
+              width:50,
+              height:50,
+              position:'absolute',
+              bottom:35,
+              right:20,
+              zIndex: 1000,
+              backgroundColor:'#FF6D99',
+              alignItems:'center',
+              justifyContent:'center',
+              borderRadius:50
+            }}>
+              <Text style={{
+                fontSize:30,
+                color:'#fff'
+              }}>＋</Text>
+            </TouchableOpacity>
           </View>
-          <View style={styles.sec_tab}>
-            <Text style={styles.sec_tab_title}>参与量</Text>
-            <Image source={require('./image/icon_down.png')}/>
-          </View>
-          <View style={styles.sec_tab}>
-            <Text style={styles.sec_tab_title}>最新</Text>
-            <Image source={require('./image/icon_down.png')}/>
-          </View>
-        </View>
-        <ListView
+
+          <Text tabLabel='社区话题'>favorite</Text>
+        </ScrollableTabView>
+
+        {/* <ListView
           dataSource={this.state.dataSource}
           renderRow={this.renderRow.bind(this)}
           style={{flex:1}}
-        />
+        /> */}
 
-        <TouchableOpacity onPress={this._goPublish.bind(this)} style={{
-          width:50,
-          height:50,
-          position:'absolute',
-          bottom:35,
-          right:20,
-          zIndex: 1000,
-          backgroundColor:'#FF6D99',
-          alignItems:'center',
-          justifyContent:'center',
-          borderRadius:50
-        }}>
-          <Text style={{
-            fontSize:30,
-            color:'#fff'
-          }}>＋</Text>
-        </TouchableOpacity>
       </View>
     )
   }
