@@ -62,7 +62,9 @@ import MagazineComponent from './components/magazine/Magazine';
 import CommunityComponent from './components/community/Community';
 import PublishComponent from './components/community/Publish'
 import RequiredpackagesComponent from './components/preferential/Requiredpackages'
-import DefaultComponent from './components/common/defaultComponent'
+import DefaultComponent from './components/common/defaultComponent';
+import UserDetail from './components/beauty/UserDetail';
+import Message from './components/beauty/Message'
 
 export default class AwesomeProject extends Component {
   render() {

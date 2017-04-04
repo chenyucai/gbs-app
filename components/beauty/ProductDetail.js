@@ -20,6 +20,7 @@ import BlockTitleComponent from '../common/BlockTitle';
 import ProductItemComponent from '../common/ProductItem';
 import ConfirmOrderComponent from './ConfirmOrder';
 import CommentItemComponent from '../common/CommentItem';
+import MessageComponent from './Message'
 import DiaryListComponent from '../beauty/DiaryList';
 
 export default class ProductDetailComponent extends Component {
@@ -29,6 +30,13 @@ export default class ProductDetailComponent extends Component {
 
     };
   }
+
+  _goMesaage(){
+    if (this.props.navigator) {
+      this.props.navigator.push({
+        name:"Message",
+        component: MessageComponent
+      })
 
   _goDairy(){
     const { navigator } = this.props;
@@ -80,10 +88,10 @@ export default class ProductDetailComponent extends Component {
             </View>
 
             <View style={styles.header_items}>
-              <View style={styles.header_item}>
+              <TouchableOpacity style={styles.header_item} onPress={this._goMesaage.bind(this)}>
                 <Image source={require('./image/icon_message3.png')}/>
                 <Text style={styles.header_item_title}>在线留言</Text>
-              </View>
+              </TouchableOpacity>
               <TouchableOpacity style={styles.header_item} onPress={this._goDairy.bind(this)}>
                 <Image source={require('./image/icon_Diary.png')}/>
                 <Text style={styles.header_item_title}>日记本</Text>

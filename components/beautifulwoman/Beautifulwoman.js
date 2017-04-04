@@ -20,6 +20,7 @@ import UserdiaryComponent from '../beauty/Userdiary'
 import TechnicianComponent from '../beauty/Technician'
 import RecommendStoreListComponent from '../home/RecommendStoreList';
 import StoreDetailComponent from '../beauty/StoreDetail';
+import UserDetailComponent from '../beauty/UserDetail'
 
 import Swiper from 'react-native-swiper';
 import ScreenUtils from '../../utils/ScreenUtils';
@@ -127,6 +128,16 @@ export default class BeautifulwomanComponent extends Component {
     }
   }
 
+  _goUserDetail(){
+    var { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'UserDetail',
+        component: UserDetailComponent
+      })
+    }
+  }
+
   render () {
     let swiperHeight = {
       width: ScreenUtils.scaleSize(375),
@@ -202,34 +213,34 @@ export default class BeautifulwomanComponent extends Component {
               <HomeBlockTitleComponent titleEn="Gold Practitioner" titleZh="推荐手艺人"/>
             </TouchableOpacity>
             <ScrollView horizontal>
-              <View style={styles.doctor_box}>
+              <TouchableOpacity style={styles.doctor_box} onPress={this._goUserDetail.bind(this)}>
                 <Image style={styles.doctor_img} source={require('../../img/g.jpg')}/>
                 <Text style={{color: '#363334',fontSize: 16,marginTop: 10}}>anra</Text>
                 <View style={{borderBottomColor: '#363334',borderBottomWidth: 0.5,width: 10,marginTop: 12}}></View>
                 <Text style={{color: '#FF6D99',fontSize: 14,marginTop: 15}}>3214</Text>
                 <Text style={{color: '#B8B8B8',fontSize: 10,marginTop: 3}}>服务次数</Text>
-              </View>
-              <View style={styles.doctor_box}>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.doctor_box} onPress={this._goUserDetail.bind(this)}>
                 <Image style={styles.doctor_img} source={require('../../img/g.jpg')}/>
                 <Text style={{color: '#363334',fontSize: 16,marginTop: 10}}>test</Text>
                 <View style={{borderBottomColor: '#363334',borderBottomWidth: 0.5,width: 10,marginTop: 12}}></View>
                 <Text style={{color: '#FF6D99',fontSize: 14,marginTop: 15}}>2222</Text>
                 <Text style={{color: '#B8B8B8',fontSize: 10,marginTop: 3}}>服务次数</Text>
-              </View>
-              <View style={styles.doctor_box}>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.doctor_box} onPress={this._goUserDetail.bind(this)}>
                 <Image style={styles.doctor_img} source={require('../../img/g.jpg')}/>
                 <Text style={{color: '#363334',fontSize: 16,marginTop: 10}}>alsk</Text>
                 <View style={{borderBottomColor: '#363334',borderBottomWidth: 0.5,width: 10,marginTop: 12}}></View>
                 <Text style={{color: '#FF6D99',fontSize: 14,marginTop: 15}}>3214</Text>
                 <Text style={{color: '#B8B8B8',fontSize: 10,marginTop: 3}}>服务次数</Text>
-              </View>
-              <View style={[styles.doctor_box,{marginRight: 0}]}>
+              </TouchableOpacity>
+              <TouchableOpacity style={[styles.doctor_box,{marginRight: 0}]} onPress={this._goUserDetail.bind(this)}>
                 <Image style={styles.doctor_img} source={require('../../img/g.jpg')}/>
                 <Text style={{color: '#363334',fontSize: 16,marginTop: 10}}>ceshi</Text>
                 <View style={{borderBottomColor: '#363334',borderBottomWidth: 0.5,width: 10,marginTop: 12}}></View>
                 <Text style={{color: '#FF6D99',fontSize: 14,marginTop: 15}}>3214</Text>
                 <Text style={{color: '#B8B8B8',fontSize: 10,marginTop: 3}}>服务次数</Text>
-              </View>
+              </TouchableOpacity>
             </ScrollView>
           </View>
 

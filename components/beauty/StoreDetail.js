@@ -6,7 +6,8 @@ import {
   Image,
   Dimensions,
   ScrollView,
-  // MapView
+  // MapView,
+  TouchableOpacity
 } from 'react-native'
 
 import MapView from 'react-native-maps';
@@ -18,6 +19,7 @@ import TopNavWidthActionsComponent from '../common/TopNavWithActions';
 import StarComponent from '../common/Star';
 import BlockTitleComponent from '../common/BlockTitle';
 import ProductItemComponent from '../common/ProductItem';
+import MessageComponent from './Message'
 
 export default class StoreDetailComponent extends Component {
   constructor(props) {
@@ -25,6 +27,16 @@ export default class StoreDetailComponent extends Component {
     this.state = {
 
     };
+  }
+
+  _goMesaage(){
+    var { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name:"Message",
+        component: MessageComponent
+      })
+    }
   }
 
   render () {
@@ -53,10 +65,10 @@ export default class StoreDetailComponent extends Component {
               上海月星环球港,一座欧式的顶级商业综合体购物商场,其建筑灯光工程融合了弧形玻璃穹顶点缀着整体的特色,采自然之光,赋予了建筑生命、阳光和活力。在这繁华的上海月星环球港,一座欧式购
             </Text>
             <View style={styles.header_items}>
-              <View style={styles.header_item}>
+              <TouchableOpacity style={styles.header_item} onPress={this._goMesaage.bind(this)}>
                 <Image source={require('./image/icon_message2.png')}/>
                 <Text style={styles.header_item_title}>在线留言</Text>
-              </View>
+              </TouchableOpacity>
               <View style={[styles.header_item, styles.item_border]}>
                 <Image source={require('./image/icon_Complaint.png')}/>
                 <Text style={styles.header_item_title}>投诉</Text>
