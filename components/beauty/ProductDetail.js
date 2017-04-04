@@ -13,19 +13,31 @@ import {
 } from 'react-native'
 
 import ScreenUtils from '../../utils/ScreenUtils';
+import ScrollableTabView from 'react-native-scrollable-tab-view';
 
 import TopNavWidthActionsComponent from '../common/TopNavWithActions';
 import BlockTitleComponent from '../common/BlockTitle';
 import ProductItemComponent from '../common/ProductItem';
 import ConfirmOrderComponent from './ConfirmOrder';
 import CommentItemComponent from '../common/CommentItem';
+import DiaryListComponent from '../beauty/DiaryList';
 
-export default class StoreDetailComponent extends Component {
+export default class ProductDetailComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
 
     };
+  }
+
+  _goDairy(){
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'diaryList',
+        component: DiaryListComponent
+      });
+    }
   }
 
   _buy(){
@@ -72,10 +84,10 @@ export default class StoreDetailComponent extends Component {
                 <Image source={require('./image/icon_message3.png')}/>
                 <Text style={styles.header_item_title}>在线留言</Text>
               </View>
-              <View style={styles.header_item}>
+              <TouchableOpacity style={styles.header_item} onPress={this._goDairy.bind(this)}>
                 <Image source={require('./image/icon_Diary.png')}/>
                 <Text style={styles.header_item_title}>日记本</Text>
-              </View>
+              </TouchableOpacity>
             </View>
             <Text style={styles.remark}>
               本产品适用于光电美容的所有门店
@@ -119,8 +131,19 @@ export default class StoreDetailComponent extends Component {
           </View>
 
           {/* 图文详情 购买须知 评价 */}
-          <View style={styles.body_wrapper}>
-            <View style={styles.body_header}>
+          <ScrollableTabView
+            tabBarUnderlineStyle={{
+              backgroundColor:'#363334',
+              height: 2,
+              width: 10,
+              marginLeft: 55
+            }}
+            tabBarBackgroundColor='#fff'
+            tabBarActiveTextColor='#3a3738'
+            tabBarInactiveTextColor='#B8B8B8'
+            tabBarTextStyle={{fontSize: 12}}
+          >
+            {/* <View style={styles.body_header}>
               <View style={styles.body_header_item}>
                 <Text style={styles.body_header_item_title}>图文详情</Text>
                 <View style={styles.body_header_item_icon}></View>
@@ -133,14 +156,19 @@ export default class StoreDetailComponent extends Component {
                 <Text style={styles.body_header_item_title}>评价</Text>
                 <View style={styles.body_header_item_icon}></View>
               </View>
+            </View> */}
+
+            <View style={styles.body_header_item} tabLabel='图文详情'><Text style={{flex: 1}}>图文详情</Text></View>
+            <View style={styles.body_header_item} tabLabel='购买须知'><Text>购买须知</Text></View>
+            <View style={styles.body_header_item} tabLabel='评价'>
+              <View style={styles.body_content}>
+                <View style={styles.comment_item}><CommentItemComponent /></View>
+                <View style={styles.comment_item}><CommentItemComponent /></View>
+                <View style={styles.comment_item}><CommentItemComponent /></View>
+                <View style={styles.comment_item}><CommentItemComponent /></View>
+              </View>
             </View>
-            <View style={styles.body_content}>
-              <View style={styles.comment_item}><CommentItemComponent /></View>
-              <View style={styles.comment_item}><CommentItemComponent /></View>
-              <View style={styles.comment_item}><CommentItemComponent /></View>
-              <View style={styles.comment_item}><CommentItemComponent /></View>
-            </View>
-          </View>
+          </ScrollableTabView>
 
           {/* 相关单品推荐 */}
           <View style={styles.hot_wrapper}>
@@ -355,11 +383,13 @@ const styles = StyleSheet.create({
     backgroundColor:'#363334'
   },
   body_content:{
+    backgroundColor: '#fff',
     borderBottomWidth: 0.5,
     borderColor:'#D7D7D7'
   },
   hot_wrapper:{
-    backgroundColor:'#fff'
+    backgroundColor:'#fff',
+    marginTop: 10
   },
   hot_body:{
     flexDirection:'row',

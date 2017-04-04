@@ -10,6 +10,7 @@ import {
 } from 'react-native'
 
 import MapView from 'react-native-maps';
+import ScrollableTabView from 'react-native-scrollable-tab-view';
 
 import ScreenUtils from '../../utils/ScreenUtils';
 
@@ -70,7 +71,7 @@ export default class StoreDetailComponent extends Component {
             </Text>
           </View>
 
-          <View style={styles.ctg_wrapper}>
+          {/* <View style={styles.ctg_wrapper}>
             <ScrollView horizontal style={styles.ctg_header}>
               <View style={styles.ctg_header_item}>
                 <Text style={styles.ctg_header_item_text}>面部塑形</Text>
@@ -93,9 +94,77 @@ export default class StoreDetailComponent extends Component {
                 <Text style={styles.ctg_body_item_text}>嫩肤系列</Text>
               </View>
             </ScrollView>
-          </View>
+          </View> */}
 
-          <ScrollView horizontal style={styles.coupon_wrapper}>
+          <ScrollableTabView
+            tabBarUnderlineStyle={{
+              backgroundColor:'#363334',
+              height: 2,
+              width: 10,
+              marginLeft: 40
+            }}
+            tabBarBackgroundColor='#fff'
+            tabBarActiveTextColor='#3a3738'
+            tabBarInactiveTextColor='#B8B8B8'
+            tabBarTextStyle={{fontSize: 12}}
+          >
+            <View tabLabel='全部'>
+              <View style={styles.ctg_body}>
+                <View style={styles.ctg_body_item}>
+                  <Text style={styles.ctg_body_item_text}>全部</Text>
+                </View>
+                <View style={styles.ctg_body_item}>
+                  <Text style={styles.ctg_body_item_text}>slkfjlsd</Text>
+                </View>
+                <View style={styles.ctg_body_item}>
+                  <Text style={styles.ctg_body_item_text}>234i23i4</Text>
+                </View>
+              </View>
+            </View>
+            <View tabLabel='面部塑形'>
+              <View style={styles.ctg_body}>
+                <View style={styles.ctg_body_item}>
+                  <Text style={styles.ctg_body_item_text}>全部</Text>
+                </View>
+                <View style={styles.ctg_body_item}>
+                  <Text style={styles.ctg_body_item_text}>23123</Text>
+                </View>
+                <View style={styles.ctg_body_item}>
+                  <Text style={styles.ctg_body_item_text}>嫩肤5646456456系列</Text>
+                </View>
+              </View>
+            </View>
+            <View tabLabel='皮肤管理'>
+              <View style={styles.ctg_body}>
+                <View style={styles.ctg_body_item}>
+                  <Text style={styles.ctg_body_item_text}>全部</Text>
+                </View>
+                <View style={styles.ctg_body_item}>
+                  <Text style={styles.ctg_body_item_text}>净浮系列</Text>
+                </View>
+                <View style={styles.ctg_body_item}>
+                  <Text style={styles.ctg_body_item_text}>嫩肤系列</Text>
+                </View>
+              </View>
+            </View>
+            <View tabLabel='身体塑形'>
+              <View style={styles.ctg_body}>
+                <View style={styles.ctg_body_item}>
+                  <Text style={styles.ctg_body_item_text}>全部</Text>
+                </View>
+                <View style={styles.ctg_body_item}>
+                  <Text style={styles.ctg_body_item_text}>123</Text>
+                </View>
+                <View style={styles.ctg_body_item}>
+                  <Text style={styles.ctg_body_item_text}>嫩肤345系列</Text>
+                </View>
+              </View>
+            </View>
+          </ScrollableTabView>
+
+
+
+          {/* <ScrollView horizontal style={styles.coupon_wrapper}>
             <View style={styles.coupon_item}>
               <View style={styles.coupon_item_content}>
                 <Text style={styles.coupon_item_desc}>满1000减50</Text>
@@ -114,7 +183,7 @@ export default class StoreDetailComponent extends Component {
                 <Text style={styles.coupon_item_value}>￥ 50</Text>
               </View>
             </View>
-          </ScrollView>
+          </ScrollView> */}
 
           {/* 门店特色 */}
           <View style={styles.store_wrapper}>
@@ -330,7 +399,8 @@ const styles = StyleSheet.create({
   },
   store_wrapper:{
     backgroundColor:'#fff',
-    marginBottom: 10
+    marginBottom: 10,
+    marginTop: 10
   },
   store_title:{
     paddingTop: 20,
