@@ -4,7 +4,8 @@ import {
   View,
   Text,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  TouchableHighlight
 } from 'react-native'
 
 import ProductDetailComponent from '../beauty/ProductDetail'
@@ -13,7 +14,7 @@ export default class ProductItemComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      collection: false
     };
   }
 
@@ -30,6 +31,13 @@ export default class ProductItemComponent extends Component {
         component: ProductDetailComponent
       })
     }
+  }
+
+  _changeState(){
+    // 用this.setState方法去改变state
+    this.setState({
+      collection: !this.state.collection
+    })
   }
 
   // props 需要传入图片的宽度和高度
@@ -65,9 +73,13 @@ export default class ProductItemComponent extends Component {
           </View>
         </View>
 
-        <View style={styles.item_collection}>
-          <Image source={require('./image/icon_dis_love.png')} />
-        </View>
+        <TouchableHighlight style={styles.item_collection} onPress={this._changeState.bind(this)}>
+          {this.state.collection
+            ? <Image source={require('./image/icon_n_love.png')} style={styles.collection_img}/>
+            : <Image source={require('./image/icon_dis_love.png')} />
+          }
+          {/* <Image source={require('./image/icon_dis_love.png')} /> */}
+        </TouchableHighlight>
       </TouchableOpacity>
     )
   }
@@ -117,6 +129,14 @@ const styles = StyleSheet.create({
   item_collection:{
     position: 'absolute',
     right: 10,
-    top: 10
+    top: 10,
+    width: 26,
+    height: 26,
+    borderRadius: 13,
+  },
+  collection_img:{
+    width: 26,
+    height: 26,
+    borderRadius: 13,
   }
 });

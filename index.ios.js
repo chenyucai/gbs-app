@@ -38,7 +38,6 @@ import FacialshapingComponent from './components/beauty/Facialshaping'
 // import ProductFocusUsersComponent from './components/beauty/ProductFocusUsers';
 // import DiaryListComponent from './components/beauty/DiaryList'
 // import DiaryListDetailComponent from './components/beauty/DiaryListDetail'
-//
 // import ShopcartItemComponent from './components/common/ShopcartItem';
 // import ShopcartComponent from './components/shopcart/Shopcart';
 // import CalendarComponent from './components/common/Calendar';
@@ -69,7 +68,7 @@ export default class AwesomeProject extends Component {
   render() {
     return (
       <Navigator
-        initialRoute = {{ name: 'login', component: DefaultComponent }}
+        initialRoute = {{ name: 'login', component: BottomTabsComponent }}
         renderScene={(route, navigator) => {
           let Component = route.component;
           return <Component {...route.params} navigator={navigator} />

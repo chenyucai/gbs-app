@@ -24,8 +24,40 @@ export default class PayComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      userye: false,
+      userwx: true,
+      userzfb: false
     };
+  }
+
+  _changeyeState(){
+    // 用this.setState方法去改变state
+    //使用余额
+    this.setState({
+      userye: true,
+      userwx: false,
+      userzfb: false
+    })
+  }
+
+  _changewxState(){
+    // 用this.setState方法去改变state
+    //使用wx
+    this.setState({
+      userye: false,
+      userwx: true,
+      userzfb: false
+    })
+  }
+
+  _changezfbState(){
+    // 用this.setState方法去改变state
+    //使用支付宝
+    this.setState({
+      userye: false,
+      userwx: false,
+      userzfb: true
+    })
   }
 
   _pay(){
@@ -46,26 +78,35 @@ export default class PayComponent extends Component {
         <ScrollView style={{flex:1}}>
           <PayProductInfoComponent />
 
-          <View style={styles.myaccount_wrapper}>
+          <TouchableOpacity style={styles.myaccount_wrapper} onPress={this._changeyeState.bind(this)}>
             <Text style={styles.myaccount_label}>我的会员余额：</Text>
             <Text style={styles.myaccount_count}>￥100.00</Text>
-            <Image source={require('./image/check_dis.png')}/>
-          </View>
+            {this.state.userye
+              ? <Image source={require('./image/check_n.png')} style={styles.check}/>
+              : <Image source={require('./image/check_dis.png')} style={styles.check}/>
+            }
+          </TouchableOpacity>
 
           <View style={styles.pay_ways}>
             <View style={styles.pay_ways_title}>
               <Text style={styles.pay_ways_title_text}>请选择支付方式</Text>
             </View>
-            <View style={[styles.pay_ways_item, {borderBottomWidth: 0.5,borderColor:'#D7D7D7',}]}>
+            <TouchableOpacity style={[styles.pay_ways_item, {borderBottomWidth: 0.5,borderColor:'#D7D7D7',}]} onPress={this._changewxState.bind(this)}>
               <Image source={require('./image/icon_weix2.png')}/>
               <Text style={styles.pay_ways_item_name}>微信</Text>
-              <Image source={require('./image/check_n.png')}/>
-            </View>
-            <View style={styles.pay_ways_item}>
+              {this.state.userwx
+                ? <Image source={require('./image/check_n.png')} style={styles.check}/>
+                : <Image source={require('./image/check_dis.png')} style={styles.check}/>
+              }
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.pay_ways_item} onPress={this._changezfbState.bind(this)}>
               <Image source={require('./image/icon_zhifu.png')}/>
               <Text style={styles.pay_ways_item_name}>支付宝</Text>
-              <Image source={require('./image/check_dis.png')}/>
-            </View>
+              {this.state.userzfb
+                ? <Image source={require('./image/check_n.png')} style={styles.check}/>
+                : <Image source={require('./image/check_dis.png')} style={styles.check}/>
+              }
+            </TouchableOpacity>
           </View>
         </ScrollView>
 

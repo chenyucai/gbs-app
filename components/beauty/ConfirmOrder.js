@@ -23,8 +23,15 @@ export default class ConfirmOrderComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      userintegral: false
     };
+  }
+
+  _changeState(){
+    // 用this.setState方法去改变state
+    this.setState({
+      userintegral: !this.state.userintegral
+    })
   }
 
   _pay(){
@@ -56,11 +63,15 @@ export default class ConfirmOrderComponent extends Component {
               <Text style={{fontSize:14,color:'#D9BD8C'}} numberOfLines={1}>15.00元</Text>
               <Image source={require('./image/icon_Get into3.png')}/>
             </View>
-            <View style={styles.pay_info_item}>
+            <TouchableOpacity style={styles.pay_info_item} onPress={this._changeState.bind(this)}>
               <Text style={styles.pay_info_item_label}>使用积分</Text>
               <Text numberOfLines={1} style={{fontSize:12,color:'#363334',marginRight:8}}>共2100积分，可抵消20元</Text>
-              <Image source={require('./image/check_dis.png')}/>
-            </View>
+              {this.state.userintegral
+                ? <Image source={require('./image/check_n.png')} style={styles.check}/>
+                : <Image source={require('./image/check_dis.png')} style={styles.check}/>
+              }
+              {/* <Image source={require('./image/check_dis.png')}/> */}
+            </TouchableOpacity>
             <View style={[styles.pay_info_item, {borderBottomWidth:0}]}>
               <Text style={styles.pay_info_item_label}>本单合计</Text>
               <Text numberOfLines={1} style={{fontSize:14,color:'#FF5D94'}}>¥ 85.00</Text>
