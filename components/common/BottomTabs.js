@@ -11,6 +11,7 @@ import HomeComponent from '../home/Home'
 import HomeSaleListComponent from '../home/HomeSaleList';
 import ShopcartComponent from '../shopcart/Shopcart';
 import ScheduleComponent from '../schedule/Schedule'
+import PersoncenterComponent from '../personcenter/Personcenter'
 
 export default class BottomTabsComponent extends Component {
   constructor(props) {
@@ -95,7 +96,7 @@ export default class BottomTabsComponent extends Component {
                 renderIcon={() => <Image style={styles.icon} source={require("./image/icon_dis_personal.png")} />}
                 renderSelectedIcon={() => <Image style={styles.icon} source={require("./image/icon_n_personal.png")} />}
                 onPress={() => this.setState({ selectedTab: 'personal' })}>
-                <HomeSaleListComponent navigator={this.props.navigator} />
+                <PersoncenterComponent navigator={this.props.navigator} />
             </TabNavigator.Item>
         </TabNavigator>
       </View>
