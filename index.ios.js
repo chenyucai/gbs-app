@@ -65,12 +65,14 @@ import RequiredpackagesComponent from './components/preferential/Requiredpackage
 import DefaultComponent from './components/common/defaultComponent';
 import UserDetail from './components/beauty/UserDetail';
 import Message from './components/beauty/Message'
+import PersoncenterComponent from './components/personcenter/Personcenter'
+import UserDetailComponent from './components/beauty/UserDetail'
 
 export default class AwesomeProject extends Component {
   render() {
     return (
       <Navigator
-        initialRoute = {{ name: 'login', component: BottomTabsComponent }}
+        initialRoute = {{ name: 'login', component: PersoncenterComponent }}
         renderScene={(route, navigator) => {
           let Component = route.component;
           return <Component {...route.params} navigator={navigator} />
