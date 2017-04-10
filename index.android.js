@@ -62,15 +62,19 @@ import MagazineComponent from './components/magazine/Magazine';
 import CommunityComponent from './components/community/Community';
 import PublishComponent from './components/community/Publish'
 import RequiredpackagesComponent from './components/preferential/Requiredpackages'
+// import PreferentialcircleComponent from './components/preferential/Preferentialcircle'
+// import RequiredpackagesComponent from './components/preferential/Requiredpackages'
+// import PublishComponent from './components/community/Publish'
+import Message from './components/beauty/Message';
+import PersonalInfo from './src/Action/PersonalCenter/PersonalInfo/PersonalInfo'
 import DefaultComponent from './components/common/defaultComponent';
 import UserDetail from './components/beauty/UserDetail';
-import Message from './components/beauty/Message'
 
 export default class AwesomeProject extends Component {
   render() {
     return (
       <Navigator
-        initialRoute = {{ name: 'login', component: BottomTabsComponent }}
+        initialRoute = {{ name: 'login', component: PersonalInfo }}
         renderScene={(route, navigator) => {
           let Component = route.component;
           return <Component {...route.params} navigator={navigator} />

@@ -10,7 +10,7 @@ import {
   TouchableOpacity
 } from 'react-native'
 
-import MapView from 'react-native-maps';
+// import MapView from 'react-native-maps';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 
 import ScreenUtils from '../../utils/ScreenUtils';
@@ -230,7 +230,7 @@ export default class StoreDetailComponent extends Component {
                 width: ScreenUtils.scaleSize(375),
                 height: ScreenUtils.scaleSize(172)
               }}/> */}
-              <MapView
+              {/* <MapView
                 initialRegion={{
                    latitude: 37.78825,
                    longitude: -122.4324,
@@ -241,7 +241,7 @@ export default class StoreDetailComponent extends Component {
                   width: ScreenUtils.scaleSize(375),
                   height: ScreenUtils.scaleSize(172),
                 }}
-              />
+              /> */}
             </View>
           </View>
 
