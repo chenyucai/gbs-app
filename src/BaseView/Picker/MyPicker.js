@@ -84,7 +84,7 @@ export default class PickerWidget extends Component {
       offset: new Animated.Value(0),
       opacity: new Animated.Value(0),
       choice:this.props.defaultVal,
-      hide: true,
+      hide: this.props.hide,
     };
     this.options = this.props.options;
     this.callback = function () {};//回调方法
@@ -96,11 +96,11 @@ export default class PickerWidget extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // this.setState({
-    //   hide: nextProps.hide
-    // });
-    // this.in()
-    this.show(this.props.parent, this.props.callback)
+    this.setState({
+      hide: nextProps.hide
+    });
+    this.in()
+    // this.show(this.props.parent, this.props.callback)
   }
 
   render() {
@@ -201,10 +201,10 @@ export default class PickerWidget extends Component {
     if(!this.state.hide){
       this.out();
       // this.callback.apply(this.parent,[this.state.choice]);
-      setTimeout(() => {
-        this.props.callback();
-      }, 1000);
-
+      // setTimeout(() => {
+      //   this.props.callback(this.state.choice);
+      // }, 1000);
+      // this.props.callback(this.state.choice);
     }
   }
 

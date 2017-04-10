@@ -9,8 +9,9 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
-  Picker
+  // Picker
 } from 'react-native'
+import Picker from 'react-native-picker';
 
 import BaseNavigationBar from '../../../BaseView/BaseNavigationBar/BaseNavigationBar';
 import MyPicker from '../../../BaseView/Picker/MyPicker';
@@ -23,8 +24,32 @@ export default class PersonalInfo extends Component {
       opt:'1'
     };
   }
+  componentDidMount(){
+
+
+  }
 
   render () {
+    let data = [];
+    for(var i=0;i<100;i++){
+        data.push(i);
+    }
+
+    Picker.init({
+        pickerData: data,
+        selectedValue: [59],
+        onPickerConfirm: data => {
+            console.log(data);
+            this.setState({opt:data})
+        },
+        onPickerCancel: data => {
+            console.log(data);
+        },
+        onPickerSelect: data => {
+            console.log(data);
+        }
+    });
+    Picker.hide();
     return (
       <View style={styles.container}>
         <BaseNavigationBar
@@ -103,7 +128,7 @@ export default class PersonalInfo extends Component {
                 邀请码是为您唯一定制的身份标识，把邀请码分享给您的朋友前来注册后，您可以丰厚获奖励
               </Text>
             </View>
-            <TouchableOpacity style={[styles.item]} onPress={() => {this.setState({hide:false})}}>
+            <TouchableOpacity style={[styles.item]} onPress={() => {Picker.show()}}>
               <Text style={styles.item_label}>意向服务</Text>
               <View style={{flex:1,alignItems:'flex-end',paddingRight:8}}>
                 <Text style={{fontSize:12, color:"#B8B8B8"}}>鼻部  面部整形  美甲</Text>
@@ -114,14 +139,14 @@ export default class PersonalInfo extends Component {
 
           <Text>{this.state.opt}</Text>
         </ScrollView>
-        <MyPicker options={['1','2','3']} hide={this.state.hide} callback={() => {this.setState({opt:'11'})}}/>
+        <MyPicker options={['1','2','3']} hide={this.state.hide} callback={this.change.bind(this)}/>
       </View>
     )
   }
 
-  change(){
+  change(opt){
     this.setState({
-      opt:'11'
+      opt:opt
     })
   }
 }
