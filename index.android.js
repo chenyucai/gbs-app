@@ -66,13 +66,14 @@ import RequiredpackagesComponent from './components/preferential/Requiredpackage
 // import PreferentialcircleComponent from './components/preferential/Preferentialcircle'
 // import RequiredpackagesComponent from './components/preferential/Requiredpackages'
 // import PublishComponent from './components/community/Publish'
-import Message from './components/beauty/Message'
+import Message from './components/beauty/Message';
+import PersonalInfo from './src/Action/PersonalCenter/PersonalInfo/PersonalInfo'
 
 export default class AwesomeProject extends Component {
   render() {
     return (
       <Navigator
-        initialRoute = {{ name: 'login', component: Message }}
+        initialRoute = {{ name: 'login', component: PersonalInfo }}
         renderScene={(route, navigator) => {
           let Component = route.component;
           return <Component {...route.params} navigator={navigator} />
