@@ -12,6 +12,8 @@ import {
 } from 'react-native'
 
 import ScreenUtils from '../../utils/ScreenUtils';
+import TabNavigator from 'react-native-tab-navigator';
+import OrderstatusComponent from './Orderstatus'
 
 export default class PersoncenterComponent extends Component {
   constructor(props) {
@@ -19,6 +21,16 @@ export default class PersoncenterComponent extends Component {
     this.state = {
 
     };
+  }
+
+  _goOrderstatus() {
+    const { navigator } = this.props;
+    if (navigator) {
+      navigator.push({
+        name: 'Orderstatus',
+        component: OrderstatusComponent
+      });
+    }
   }
 
   render () {
@@ -47,10 +59,10 @@ export default class PersoncenterComponent extends Component {
           <View style={styles.content_header_box}>
             <View style={styles.content_header}>
               <View style={styles.content_header_list}>
-                <View style={styles.content_header_list_item}>
+                <TouchableOpacity style={styles.content_header_list_item} onPress={this._goOrderstatus.bind(this)}>
                   <Image source={require('./image/icon_allOrder.png')}/>
                   <Text style={styles.content_header_list_item_text}>全部订单</Text>
-                </View>
+                </TouchableOpacity>
                 <View style={styles.content_header_list_item}>
                   <Image source={require('./image/icon_Not start.png')}/>
                   <Text style={styles.content_header_list_item_text}>未开始</Text>
