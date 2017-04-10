@@ -93,7 +93,7 @@ export default class PersonalInfo extends Component {
   }
 
   _showDatePicker() {
-    this.setState({maskShow:true},this.in);
+    // this.setState({maskShow:true},this.in);
     Picker.init({
         pickerData: this._createDateData(),
         pickerConfirmBtnText:'确定',
@@ -104,12 +104,12 @@ export default class PersonalInfo extends Component {
         pickerBg:[240,239,245,1],
         onPickerConfirm: (pickedValue, pickedIndex) => {
             console.log('date', pickedValue, pickedIndex);
-            this.out();
+            // this.out();
             this.setState({birth: pickedValue});
         },
         onPickerCancel: (pickedValue, pickedIndex) => {
             console.log('date', pickedValue, pickedIndex);
-            this.out()
+            // this.out()
         },
         onPickerSelect: (pickedValue, pickedIndex) => {
             console.log('date', pickedValue, pickedIndex);
@@ -119,7 +119,7 @@ export default class PersonalInfo extends Component {
   }
 
   _showAreaPicker() {
-    this.setState({maskShow:true},this.in);
+    // this.setState({maskShow:true},this.in);
     Picker.init({
         pickerData: this._createAreaData(),
         selectedValue: ['河北', '唐山', '古冶区'],
@@ -147,7 +147,7 @@ export default class PersonalInfo extends Component {
   }
 
   _showSexPicker() {
-    this.setState({maskShow:true},this.in);
+    // this.setState({maskShow:true},this.in);
     let data = [
       '男',
       '女',
@@ -178,7 +178,7 @@ export default class PersonalInfo extends Component {
   }
 
   _showJobPicker() {
-    this.setState({maskShow:true},this.in);
+    // this.setState({maskShow:true},this.in);
     let data = [
       '自由职业装',
       '普通员工',
@@ -211,7 +211,7 @@ export default class PersonalInfo extends Component {
   }
 
   _showPosPicker() {
-    this.setState({maskShow:true},this.in);
+    // this.setState({maskShow:true},this.in);
     let data = [
       '自由职业装',
       '普通员工',
@@ -244,7 +244,7 @@ export default class PersonalInfo extends Component {
   }
 
   _showIncomePicker() {
-    this.setState({maskShow:true},this.in);
+    // this.setState({maskShow:true},this.in);
     let data = [
       '0-10万',
       '10-15万',

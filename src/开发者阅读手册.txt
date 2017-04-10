@@ -1,0 +1,25 @@
+
+  1.根目录结构
+  src ------Action(业务View和业务代码)
+        |---Base(常用工具，包括配置类、工具类等常用业务)
+        |---Utils(工具类，太频繁使用的放去Base)
+        |---BaseView(封装的基础视图)
+        |---App.js(是程序的入口，统一管理nav、全局变量等)
+
+  2.一般开发在Action目录和App.js进行。Action目录按功能模块分类，大模块下小模块也逐层细分。
+  例如：
+  Action-----登录模块
+          |     |---登录
+          |     |---注册
+          |     |---找回密码
+          |
+          |--订单模块
+          |--用户中心模块
+
+   3.命名规范
+   如果仅有android/ios其中一端的功能，文件末尾加_android/_ios，例如：KeyBoard_android.js。
+   杜绝1、2、3、one、two、three、之类名称，用功能命名。
+
+   4.调用原生
+   android/ios都写在同一个.js文件内，
+   如果是Dialog之类的用途广泛的，可放在BaseView文件夹上，否则放在Action对应的业务文件夹内
