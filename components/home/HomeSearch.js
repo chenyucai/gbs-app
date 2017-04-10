@@ -30,23 +30,19 @@ export default class HomeSearchComponent extends Component {
     return (
       <View style={styles.wrapper}>
         <View style={styles.header}>
-          <View style={styles.header_left}>
-            <View style={styles.input_wrapper}>
-              <Image source={require('./image/icon_search2.png')} style={{
-                marginLeft:10, marginRight:10
-              }}/>
-              <TextInput
-                style={styles.input}
-                underlineColorAndroid="transparent"
-                placeholder="输入您心仪的产品试试看"
-              />
-            </View>
+          <View style={styles.input_wrapper}>
+            <Image source={require('./image/icon_search2.png')} style={{
+              marginLeft:10, marginRight:10
+            }}/>
+            <TextInput
+              style={styles.input}
+              underlineColorAndroid="transparent"
+              placeholder="输入您心仪的产品试试看"
+            />
           </View>
-          <View style={styles.header_right}>
-            <TouchableOpacity onPress={this._cancel.bind(this)}>
-              <Text style={styles.cancel}>取消</Text>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity onPress={this._cancel.bind(this)} style={{marginHorizontal:15}}>
+            <Text style={styles.cancel}>取消</Text>
+          </TouchableOpacity>
         </View>
 
         <ScrollView style={styles.body}>
@@ -94,32 +90,28 @@ const styles = StyleSheet.create({
     height: 64,
     backgroundColor:'#23232E',
     flexDirection:'row',
-    paddingTop: 28
-  },
-  header_left:{
-    flex:1,
-  },
-  header_right:{
-    width: 50
+    // paddingTop: 28,
+    alignItems:'center'
   },
   cancel:{
     color:'#fff',
     fontSize:14,
     alignSelf:'center',
-    paddingTop:7
   },
   input_wrapper:{
     backgroundColor:'#fff',
     flexDirection:'row',
-    height:28,
+    alignItems:'center',
+    flex:1,
     marginLeft:12,
-    alignItems:'center'
+    paddingVertical:8
   },
   input:{
     flex:1,
     color:'#B8B8B8',
     fontSize:14,
-    height:28
+    alignItems:'center',
+    paddingVertical:0
   },
   block:{
     paddingLeft:12,
