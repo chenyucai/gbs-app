@@ -19,7 +19,7 @@ import BackIconComponent from '../common/BackIcon'
 
 import ScreenUtils from '../../utils/ScreenUtils';
 
-export default class defaultComponent extends Component {
+export default class UserDetailComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
