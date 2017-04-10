@@ -34,6 +34,10 @@ export default class PersonalInfo extends Component {
     };
   }
 
+  componentWillUnMount(){
+    this.timer && clearTimeout(this.timer);
+  }
+
   _createDateData() {
       let date = [];
       for(let i=1950;i<2050;i++){
@@ -225,12 +229,12 @@ export default class PersonalInfo extends Component {
       pickerBg:[240,239,245,1],
       onPickerConfirm: data => {
           console.log(data);
-          this.out();
+          this.setState({maskShow: false}, this.out);
           this.setState({pos: data});
       },
       onPickerCancel: data => {
           console.log(data);
-          this.out();
+          this.setState({maskShow: false}, this.out);
       },
       onPickerSelect: data => {
           console.log(data);
@@ -272,17 +276,23 @@ export default class PersonalInfo extends Component {
     Picker.show();
   }
 
+  renderMask(){
+    if (this.state.maskShow) {
+      return (
+        <Animated.View style={ styles.mask } >
+        </Animated.View>
+      )
+    } else {
+      return null
+    }
+  }
+
   render () {
     return (
       <View style={styles.container}>
         {
-          this.state.maskShow
-            ?
-              <Animated.View style={ styles.mask } >
-              </Animated.View>
-            : null
+          this.state.maskShow ? <Animated.View style={ styles.mask }></Animated.View> : null
         }
-
         <BaseNavigationBar
             data={{
                 title: "资料详情",
@@ -413,6 +423,8 @@ export default class PersonalInfo extends Component {
             </TouchableOpacity>
           </View>
         </ScrollView>
+
+
       </View>
     )
   }
