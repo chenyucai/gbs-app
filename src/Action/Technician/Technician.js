@@ -1,3 +1,6 @@
+/**
+ * page 技师
+ */
 import React, { Component } from 'react'
 import {
   StyleSheet,
@@ -15,12 +18,9 @@ import {
 import ScreenUtils from '../../Utils/ScreenUtils/ScreenUtils';
 
 import BaseNavigationBar from '../../BaseView/BaseNavigationBar/BaseNavigationBar';
-import StoreItemComponent from '../../BaseView/StoreListItem/StoreItem';
+import TechnicianItemComponent from './TechnicianItem';
 
-export default class RecommendStoreListComponent extends Component {
-  static defaultProps = {
-    title: '推荐商家'
-  }
+export default class TechnicianListComponent extends Component {
   constructor(props) {
     super(props);
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -47,13 +47,13 @@ export default class RecommendStoreListComponent extends Component {
   }
 
   renderRow(rowData){
-    let ProductItemInfo = {
-      width: ScreenUtils.scaleSize(170),
-      height:ScreenUtils.scaleSize(130)
+    let itemInfo = {
+      width: ScreenUtils.scaleSize(142),
+      height:ScreenUtils.scaleSize(142)
     }
     return (
       <View style={styles.item}>
-        <StoreItemComponent {...ProductItemInfo} nav={this.props.nav}/>
+        <TechnicianItemComponent {...itemInfo} nav={this.props.nav}/>
       </View>
     )
   }
@@ -84,7 +84,7 @@ export default class RecommendStoreListComponent extends Component {
 
 const styles = StyleSheet.create({
   wrapper: {
-    backgroundColor: '#F0EFF5',
+    backgroundColor: '#fff',
     flex: 1
   },
   list:{
@@ -98,6 +98,8 @@ const styles = StyleSheet.create({
     paddingBottom:5,
   },
   item:{
-    marginBottom:10
+    marginBottom:10,
+    paddingHorizontal:12,
+    paddingVertical: 12
   },
 });

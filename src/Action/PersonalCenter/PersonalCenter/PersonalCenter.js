@@ -8,7 +8,8 @@ import {
   Text,
   Image,
   TouchableOpacity,
-  Dimensions
+  Dimensions,
+  StatusBar
 } from 'react-native'
 
 import ScreenUtils from '../../../Utils/ScreenUtils/ScreenUtils';
@@ -33,6 +34,9 @@ export default class PersoncenterComponent extends Component {
   render () {
     return (
       <View style={styles.wrapper}>
+        <StatusBar
+                    barStyle={'light-content'}
+                />
         <View style={styles.header}>
           <Image style={styles.header_img} source={require('./assets/BG.png')}/>
           <View style={styles.header_signin_box}>

@@ -8,14 +8,6 @@ import {
 } from 'react-native'
 
 import {scaleSize,setSpText} from '../../../Utils/ScreenUtils/ScreenUtils';
-// import PhotoelectricbeautyComponent from '../beauty/Photoelectricbeauty';
-// import MicroplasticComponent from '../microplastic/Microplastic';
-// import DiaryListComponent from '../beauty/DiaryList';
-// import RecommendStoreListComponent from './RecommendStoreList'
-// import PreferentialcircleComponent from '../preferential/Preferentialcircle'
-// import MagazineComponent from '../magazine/Magazine'
-// import BeautifulwomanComponent from '../beautifulwoman/Beautifulwoman'
-// import CommunityComponent from '../community/Community';
 
 export default class HomeModulesComponent extends Component {
   constructor(props) {
@@ -25,74 +17,85 @@ export default class HomeModulesComponent extends Component {
     };
   }
 
-  _goPhotoelectricBeauty(){
+  _goPhotoelectricBeauty(title){
+    // const { nav } = this.props;
+    // if (nav) {
+    //   nav.push({
+    //     name: 'Photoelectricbeauty',
+    //     component: PhotoelectricbeautyComponent
+    //   });
+    // }
     const { nav } = this.props;
     if (nav) {
       nav.push({
-        name: 'Photoelectricbeauty',
-        component: PhotoelectricbeautyComponent
+        id: 'Photoelectricbeauty',
+        title: title
       });
     }
   }
 
-  _goMicroplastic(){
+  _goMicroplastic(title){
     const { nav } = this.props;
     if (nav) {
       nav.push({
-        name: 'Microplastic',
-        component: MicroplasticComponent
+        id: 'Microplastic',
+        title: title
       });
     }
   }
 
-  _goBeautifulwoman(){
+  _goBeautifulwoman(title){
     const { nav } = this.props;
     if (nav) {
       nav.push({
-        name: 'Beautifulwoman',
-        component: BeautifulwomanComponent
+        id: 'Beautifulwoman',
+        title: title
       });
     }
   }
 
-  _goDairy(){
+  _goDairy(title){
     const { nav } = this.props;
     if (nav) {
       nav.push({
-        id: 'DiaryList'
+        id: 'DiaryList',
+        title: title
       });
     }
   }
 
-  _goStore(){
+  _goStore(title){
     this.props.nav.push({
-      id: 'CityStoreList'
+      id: 'CityStoreList',
+      title: title
     });
   }
 
-  _goPreferentialcircle(){
+  _goPreferentialcircle(title){
     const { nav } = this.props;
     if (nav) {
       nav.push({
-        name: 'Preferentialcircle',
-        component: PreferentialcircleComponent
+        id: 'Preferentialcircle',
+        title: title
       });
     }
   }
-  _goCommunity(){
+  _goCommunity(title){
     const { nav } = this.props;
     if (nav) {
       nav.push({
-        id: 'Community'
+        id: 'Community',
+        title: title
       });
     }
   }
 
-  _goMagazine(){
+  _goMagazine(title){
     const { nav } = this.props;
     if (nav) {
       nav.push({
-        id: 'Magazine'
+        id: 'Magazine',
+        title: title
       });
     }
   }
@@ -101,19 +104,19 @@ export default class HomeModulesComponent extends Component {
     return (
       <View style={styles.wrapper}>
         <View style={styles.item_line}>
-          <TouchableOpacity style={styles.item} onPress={this._goPhotoelectricBeauty.bind(this)}>
+          <TouchableOpacity style={styles.item} onPress={this._goPhotoelectricBeauty.bind(this, '光电美容')}>
             <Image style={styles.item_icon} source={require('../assets/icon_Cosmetology.png')}/>
             <Text style={styles.item_title}>光电美容</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.item} onPress={this._goMicroplastic.bind(this)}>
+          <TouchableOpacity style={styles.item} onPress={this._goMicroplastic.bind(this, '微整形')}>
             <Image style={styles.item_icon} source={require('../assets/icon_plastic.png')}/>
             <Text style={styles.item_title}>微整形</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.item} onPress={this._goBeautifulwoman.bind(this)}>
+          <TouchableOpacity style={styles.item} onPress={this._goBeautifulwoman.bind(this, '丽人')}>
             <Image style={styles.item_icon} source={require('../assets/icon_beauty.png')}/>
             <Text style={styles.item_title}>丽人</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.item} onPress={this._goPreferentialcircle.bind(this)}>
+          <TouchableOpacity style={styles.item} onPress={this._goPreferentialcircle.bind(this, '特惠圈')}>
             <Image style={styles.item_icon} source={require('../assets/icon_discount.png')}/>
             <Text style={styles.item_title}>特惠圈</Text>
           </TouchableOpacity>

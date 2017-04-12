@@ -22,7 +22,83 @@ import HomeSearch from './Action/Home/HomeSearch';
 /**
  * 光电美容
  */
-// import Photoelectricbeauty from '../beauty/Photoelectricbeauty';
+import Photoelectricbeauty from './Action/Beauty/Photoelectricbeauty/Photoelectricbeauty';
+/**
+ * 光电美容面部模块
+ */
+import Facialshaping from './Action/Beauty/Photoelectricbeauty/Facialshaping';
+/**
+ * 光电门店
+ */
+import Optoelectronicstore from './Action/Beauty/Optoelectronicstore/Optoelectronicstore';
+/**
+ * 光电学堂
+ */
+import Photoelectricschoollist from './Action/Beauty/Photoelectricschool/Photoelectricschoollist';
+/**
+ * 学堂详情
+ */
+import Photoelectricschooldetail from './Action/Beauty/Photoelectricschool/Photoelectricschooldetail';
+/**
+ * 微整形
+ */
+import Microplastic from './Action/Microplastic/Microplastic';
+/**
+ * 皮肤美容
+ */
+import Skinbeauty from './Action/Microplastic/Skinbeauty/Skinbeauty';
+/**
+ * 手艺人
+ */
+import Technician from './Action/Technician/Technician';
+/**
+ * 用户日记
+ */
+import Userdiary from './Action/Beauty/Userdiary/Userdiary';
+/**
+ * 丽人
+ */
+import Beautifulwoman from './Action/Beautifulwoman/Beautifulwoman';
+/**
+ * 推荐商家列表
+ */
+import RecommendStoreList from './Action/Home/RecommendStoreList';
+/**
+ * 特惠圈
+ */
+import Preferentialcircle from './Action/Preferential/Preferentialcircle/Preferentialcircle';
+/**
+ * 特惠圈
+ */
+import Requiredpackages from './Action/Preferential/Required/Requiredpackages';
+/**
+ * 特惠圈
+ */
+import Purchaserequired from './Action/Preferential/Purchaserequired/Purchaserequired';
+/**
+ * 特惠圈
+ */
+import Requiredspecial from './Action/Preferential/Required/Requiredspecial';
+/**
+ * 特惠圈
+ */
+import Special from './Action/Preferential/Special/Special';
+/**
+ * 特惠圈
+ */
+import Grouppurchase from './Action/Preferential/Group/Grouppurchase';
+/**
+ * 特惠圈
+ */
+import ComboDetail from './Action/Preferential/ComboDetail/ComboDetail';
+/**
+ * 特惠圈
+ */
+import Packagelist from './Action/Preferential/Package/Packagelist';
+/**
+ * 特惠圈
+ */
+import GroupDetail from './Action/Preferential/Group/GroupDetail';
 /**
  * 同城门店
  */
@@ -191,6 +267,13 @@ export default class App extends Component {
                     <ModifyPsd nav={navigator} params={route}/>
                 );
             /**
+             *  光电美容
+             * */
+            case 'Photoelectricbeauty':
+                return (
+                    <Photoelectricbeauty nav={navigator} params={route}/>
+                );
+            /**
              * 同城门店
              */
             case 'CityStoreList':
@@ -288,7 +371,139 @@ export default class App extends Component {
                 return (
                     <OrderList nav={navigator} params={route}/>
                 );
-
+            /**
+             * 光电美容面部塑形
+             */
+            case 'Facialshaping':
+                return (
+                    <Facialshaping nav={navigator} params={route}/>
+                );
+            /**
+             * 光电门店
+             */
+            case 'Optoelectronicstore':
+                return (
+                    <Optoelectronicstore nav={navigator} params={route}/>
+                );
+            /**
+             * 光电学堂
+             */
+            case 'Photoelectricschoollist':
+                return (
+                    <Photoelectricschoollist nav={navigator} params={route}/>
+                );
+            /**
+             * 学堂详情
+             */
+            case 'Photoelectricschooldetail':
+                return (
+                    <Photoelectricschooldetail nav={navigator} params={route}/>
+                );
+            /**
+             * 用户日记
+             */
+            case 'Userdiary':
+                return (
+                    <Userdiary nav={navigator} params={route}/>
+                );
+            /**
+             * 微整形
+             */
+            case 'Microplastic':
+                return (
+                    <Microplastic nav={navigator} params={route}/>
+                );
+            /**
+             * 皮肤美容
+             */
+            case 'Skinbeauty':
+                return (
+                    <Skinbeauty nav={navigator} params={route}/>
+                );
+            /**
+             * 手艺人列表
+             */
+            case 'Technician':
+                return (
+                    <Technician nav={navigator} params={route}/>
+                );
+            /**
+             * 丽人
+             */
+            case 'Beautifulwoman':
+                return (
+                    <Beautifulwoman nav={navigator} params={route}/>
+                );
+            /**
+             * 推荐商家列表
+             */
+            case 'RecommendStoreList':
+                return (
+                    <RecommendStoreList nav={navigator} params={route}/>
+                );
+            /**
+             * 特惠圈
+             */
+            case 'Preferentialcircle':
+                return (
+                    <Preferentialcircle nav={navigator} params={route}/>
+                );
+            /**
+             * 特惠圈
+             */
+            case 'Requiredpackages':
+                return (
+                    <Requiredpackages nav={navigator} params={route}/>
+                );
+              /**
+               * 特惠圈
+               */
+            case 'Purchaserequired':
+                return (
+                    <Purchaserequired nav={navigator} params={route}/>
+                );
+            /**
+             * 特惠圈
+             */
+            case 'Requiredspecial':
+                return (
+                    <Requiredspecial nav={navigator} params={route}/>
+                );
+            /**
+             * 特惠圈
+             */
+            case 'Special':
+                return (
+                    <Special nav={navigator} params={route}/>
+                );
+              /**
+               * 特惠圈
+               */
+            case 'Grouppurchase':
+                return (
+                    <Grouppurchase nav={navigator} params={route}/>
+                );
+            /**
+             * 特惠圈
+             */
+            case 'ComboDetail':
+                return (
+                    <ComboDetail nav={navigator} params={route}/>
+                );
+            /**
+             * 特惠圈
+             */
+            case 'GroupDetail':
+                return (
+                    <GroupDetail nav={navigator} params={route}/>
+                );
+            /**
+             * 特惠圈
+             */
+            case 'Packagelist':
+                return (
+                    <Packagelist nav={navigator} params={route}/>
+                );
             default:
                 return null;
         }
