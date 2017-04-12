@@ -12,10 +12,9 @@ import {
   Dimensions
 } from 'react-native'
 
-import ScreenUtils from '../../../Utils/ScreenUtils/ScreenUtils';
-
-// import TopNavComponent from '../common/TopNav';
-import ProductItemComponent from '../../../BaseView/ProductListItem/ProductItem';
+import ScreenUtils from '../../Utils/ScreenUtils/ScreenUtils';
+import BaseNavigationBar from '../../BaseView/BaseNavigationBar/BaseNavigationBar';
+import ProductItemComponent from '../../BaseView/ProductListItem/ProductItem';
 
 export default class HomeSaleListComponent extends Component {
   constructor(props) {
@@ -50,7 +49,7 @@ export default class HomeSaleListComponent extends Component {
     }
     return (
       <View style={styles.item}>
-        <ProductItemComponent {...ProductItemInfo} navigator={this.props.navigator}/>
+        <ProductItemComponent {...ProductItemInfo} nav={this.props.nav}/>
       </View>
     )
   }
@@ -59,7 +58,16 @@ export default class HomeSaleListComponent extends Component {
 
     return (
       <View style={styles.wrapper}>
-        {/* <TopNavComponent title="促销产品" navigator={this.props.navigator}/> */}
+        <BaseNavigationBar
+            data={{
+                title: "促销产品",
+                leftbtn: {
+                    type: BaseNavigationBar.TYPE._IMG,
+                    onClick: ()=> {
+                        this.props.nav.pop();
+                    }
+                },
+        }}/>
         <ListView
           dataSource={this.state.dataSource}
           renderRow={this.renderRow.bind(this)}

@@ -18,9 +18,8 @@ import HomeHeaderComponent from './components/HomeHeader';
 import HomeModulesComponent from './components/HomeModules';
 import HomeBlockTitleComponent from './components/HomeBlockTitle';
 import ProductItemComponent from '../../BaseView/ProductListItem/ProductItem';
-import HomeSaleListComponent from './components/HomeSaleList';
-import RecommendStoreListComponent from './RecommendStoreList';
-import SpecialColumnComponent from './components/SpecialColumn';
+// import RecommendStoreListComponent from './RecommendStoreList';
+// import SpecialColumnComponent from './components/SpecialColumn';
 
 import ScreenUtils from '../../Utils/ScreenUtils/ScreenUtils';
 
@@ -125,8 +124,7 @@ export default class HomeComponent extends Component {
     const { nav } = this.props;
     if (nav) {
       nav.push({
-        name: 'recommendStoreList',
-        component: HomeSaleListComponent
+        id: 'HomeSaleList'
       });
     }
   }
@@ -135,8 +133,7 @@ export default class HomeComponent extends Component {
     const { nav } = this.props;
     if (nav) {
       nav.push({
-        name: 'saleList',
-        component: RecommendStoreListComponent
+        id: 'StoreList'
       });
     }
   }
@@ -145,8 +142,16 @@ export default class HomeComponent extends Component {
     const { nav } = this.props;
     if (nav) {
       nav.push({
-        name: 'saleList',
-        component: SpecialColumnComponent
+        id: 'SpecialColumn'
+      });
+    }
+  }
+
+  _goMagazine(){
+    const { nav } = this.props;
+    if (nav) {
+      nav.push({
+        id: 'Magazine'
       });
     }
   }
@@ -191,9 +196,11 @@ export default class HomeComponent extends Component {
 
           {/* 杂志社 */}
           <View style={styles.magazine_wrapper}>
-            <View style={styles.block_title_wrapper}>
-              <HomeBlockTitleComponent titleEn="Magazine Agency" titleZh="杂志社"/>
-            </View>
+            <TouchableHighlight style={styles.block_title_wrapper} onPress={this._goMagazine.bind(this)}>
+              <View>
+                <HomeBlockTitleComponent titleEn="Magazine Agency" titleZh="杂志社"/>
+              </View>
+            </TouchableHighlight>
             <View style={styles.magazine_body}>
               <View style={styles.magazine_top}>
                 <Image source={require('./assets/C29105FA-A819-40D0-831E-C7AB324AB618.png')}

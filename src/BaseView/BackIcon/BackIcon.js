@@ -18,9 +18,9 @@ export default class BackIconComponent extends Component {
   }
 
   _back(){
-    const { navigator } = this.props;
-    if (navigator) {
-      navigator.pop();
+    const { nav } = this.props;
+    if (nav) {
+      nav.pop();
     }
   }
 

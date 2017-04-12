@@ -20,7 +20,6 @@ import ScreenUtils from '../../Utils/ScreenUtils/ScreenUtils';
 import BaseNavigationBar from '../../BaseView/BaseNavigationBar/BaseNavigationBar';
 
 import CommunityItemComponent from './CommunityItem';
-import PublishComponent from './PublishDiary'
 
 export default class CommunityComponent extends Component {
   static defaultProps = {
@@ -43,10 +42,6 @@ export default class CommunityComponent extends Component {
           id:1,
           name:'12312'
         },
-        // {
-        //   id:1,
-        //   name:'12312'
-        // }
       ])
     };
   }

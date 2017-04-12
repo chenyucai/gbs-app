@@ -14,12 +14,12 @@ import {
 
 import ScreenUtils from '../../Utils/ScreenUtils/ScreenUtils';
 
-// import TopNavComponent from '../common/TopNav';
+import BaseNavigationBar from '../../BaseView/BaseNavigationBar/BaseNavigationBar';
 import StoreItemComponent from '../../BaseView/StoreListItem/StoreItem';
 
 export default class RecommendStoreListComponent extends Component {
   static defaultProps = {
-    title: '推荐商家'
+
   }
   constructor(props) {
     super(props);
@@ -53,7 +53,7 @@ export default class RecommendStoreListComponent extends Component {
     }
     return (
       <View style={styles.item}>
-        <StoreItemComponent {...ProductItemInfo} navigator={this.props.navigator}/>
+        <StoreItemComponent {...ProductItemInfo} nav={this.props.nav}/>
       </View>
     )
   }
@@ -62,7 +62,16 @@ export default class RecommendStoreListComponent extends Component {
 
     return (
       <View style={styles.wrapper}>
-        {/* <TopNavComponent title={this.props.title} navigator={this.props.navigator}/> */}
+        <BaseNavigationBar
+            data={{
+                title: "商家",
+                leftbtn: {
+                    type: BaseNavigationBar.TYPE._IMG,
+                    onClick: ()=> {
+                        this.props.nav.pop();
+                    }
+                },
+        }}/>
         <ListView
           dataSource={this.state.dataSource}
           renderRow={this.renderRow.bind(this)}

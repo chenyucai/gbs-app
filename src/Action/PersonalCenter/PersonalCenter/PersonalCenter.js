@@ -8,7 +8,8 @@ import {
   Text,
   Image,
   TouchableOpacity,
-  Dimensions
+  Dimensions,
+  ScrollView
 } from 'react-native'
 
 import ScreenUtils from '../../../Utils/ScreenUtils/ScreenUtils';
@@ -60,22 +61,22 @@ export default class PersoncenterComponent extends Component {
                   <Image source={require('./assets/icon_allOrder.png')}/>
                   <Text style={styles.content_header_list_item_text}>全部订单</Text>
                 </TouchableOpacity>
-                <View style={styles.content_header_list_item}>
+                <TouchableOpacity style={styles.content_header_list_item} onPress={this._goOrderstatus.bind(this)}>
                   <Image source={require('./assets/icon_Not start.png')}/>
                   <Text style={styles.content_header_list_item_text}>未开始</Text>
-                </View>
-                <View style={styles.content_header_list_item}>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.content_header_list_item} onPress={this._goOrderstatus.bind(this)}>
                   <Image source={require('./assets/icon_evaluate.png')}/>
                   <Text style={styles.content_header_list_item_text}>进行中／评价</Text>
-                </View>
-                <View style={styles.content_header_list_item}>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.content_header_list_item} onPress={this._goOrderstatus.bind(this)}>
                   <Image source={require('./assets/icon_complete.png')}/>
                   <Text style={styles.content_header_list_item_text}>已完成</Text>
-                </View>
-                <View style={styles.content_header_list_item}>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.content_header_list_item} onPress={this._goOrderstatus.bind(this)}>
                   <Image source={require('./assets/icon_refund.png')}/>
                   <Text style={styles.content_header_list_item_text}>退款订单</Text>
-                </View>
+                </TouchableOpacity>
               </View>
               <View style={styles.content_header_balancepoint}>
                 <View style={styles.content_header_balance}>
@@ -89,46 +90,74 @@ export default class PersoncenterComponent extends Component {
               </View>
             </View>
           </View>
-          <View style={styles.content_list_box}>
+          <ScrollView style={styles.content_list_box}>
             <View style={styles.content_list}>
-              <View style={[styles.content_list_item,styles.bottomrightborder]}>
+              <TouchableOpacity style={[styles.content_list_item,styles.bottomrightborder]} onPress={() => {
+                this.props.nav.push({
+                  id: 'PersonalInfo'
+                })
+              }}>
                 <Image style={styles.content_list_item_img} source={require('./assets/icon_information.png')}/>
                 <Text style={styles.content_list_item_text}>个人信息</Text>
-              </View>
-              <View style={[styles.content_list_item,styles.bottomrightborder]}>
+              </TouchableOpacity>
+              <TouchableOpacity style={[styles.content_list_item,styles.bottomrightborder]} onPress={() => {
+                this.props.nav.push({
+                  id: 'MyConcern'
+                })
+              }}>
                 <Image style={styles.content_list_item_img} source={require('./assets/icon_follow.png')}/>
                 <Text style={styles.content_list_item_text}>我的关注</Text>
-              </View>
-              <View style={[styles.content_list_item,styles.bottomborder]}>
+              </TouchableOpacity>
+              <TouchableOpacity style={[styles.content_list_item,styles.bottomborder]} onPress={() => {
+                this.props.nav.push({
+                  id: 'MyDiary'
+                })
+              }}>
                 <Image style={styles.content_list_item_img} source={require('./assets/icon_Diary.png')}/>
                 <Text style={styles.content_list_item_text}>我的日记本</Text>
-              </View>
-              <View style={[styles.content_list_item,styles.bottomrightborder]}>
+              </TouchableOpacity>
+              <TouchableOpacity style={[styles.content_list_item,styles.bottomrightborder]} onPress={() => {
+                this.props.nav.push({
+                  id: 'MyCollection'
+                })
+              }}>
                 <Image style={styles.content_list_item_img} source={require('./assets/icon_Collection.png')}/>
                 <Text style={styles.content_list_item_text}>我的收藏</Text>
-              </View>
+              </TouchableOpacity>
               <View style={[styles.content_list_item,styles.bottomrightborder]}>
                 <Image style={styles.content_list_item_img} source={require('./assets/icon_Coupon.png')}/>
                 <Text style={styles.content_list_item_text}>我的优惠券</Text>
               </View>
-              <View style={[styles.content_list_item,styles.bottomborder]}>
+              <TouchableOpacity style={[styles.content_list_item,styles.bottomborder]} onPress={() => {
+                this.props.nav.push({
+                  id: 'Profit'
+                })
+              }}>
                 <Image style={styles.content_list_item_img} source={require('./assets/icon_share.png')}/>
                 <Text style={styles.content_list_item_text}>分享·获利</Text>
-              </View>
-              <View style={[styles.content_list_item,styles.rightborder]}>
+              </TouchableOpacity>
+              <TouchableOpacity style={[styles.content_list_item,styles.rightborder]} onPress={() => {
+                this.props.nav.push({
+                  id: 'MyTopic'
+                })
+              }}>
                 <Image style={styles.content_list_item_img} source={require('./assets/icon_conversation.png')}/>
                 <Text style={styles.content_list_item_text}>我的话题</Text>
-              </View>
-              <View style={[styles.content_list_item,styles.rightborder]}>
+              </TouchableOpacity>
+              <TouchableOpacity style={[styles.content_list_item,styles.rightborder]} onPress={() => {
+                this.props.nav.push({
+                  id: 'MyComment'
+                })
+              }}>
                 <Image style={styles.content_list_item_img} source={require('./assets/icon_comment.png')}/>
                 <Text style={styles.content_list_item_text}>我的评论</Text>
-              </View>
+              </TouchableOpacity>
               <View style={styles.content_list_item}>
                 <Image style={styles.content_list_item_img} source={require('./assets/icon_news.png')}/>
                 <Text style={styles.content_list_item_text}>我的消息</Text>
               </View>
             </View>
-          </View>
+          </ScrollView>
         </View>
 
       </View>

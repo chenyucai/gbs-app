@@ -20,6 +20,14 @@ import Index from './Action/Index/Index';
  */
 import HomeSearch from './Action/Home/HomeSearch';
 /**
+ * 欢乐优促
+ */
+import HomeSaleList from './Action/Home/HomeSaleList';
+/**
+ * 华丽变身
+ */
+import SpecialColumn from './Action/Home/SpecialColumn';
+/**
  * 光电美容
  */
 // import Photoelectricbeauty from '../beauty/Photoelectricbeauty';
@@ -28,9 +36,17 @@ import HomeSearch from './Action/Home/HomeSearch';
  */
 import CityStoreList from './Action/CityStore/CityStoreList';
 /**
+ * 商家列表
+ */
+import StoreList from './Action/Home/RecommendStoreList';
+/**
  * 门店详情
  */
 import StoreDetail from './Action/Beauty/StoreDetail/StoreDetail';
+/**
+ * 用户详情
+ */
+import UserDetail from './Action/Beauty/UserDetail/UserDetail';
 /**
  * 在线留言
  */
@@ -83,6 +99,50 @@ import PayComplete from './Action/Pay/PayComplete';
  * 个人中心 - 订单列表
  */
 import OrderList from './Action/PersonalCenter/PersonalCenter/OrderList';
+/**
+ * 个人信息
+ */
+import PersonalInfo from './Action/PersonalCenter/PersonalInfo/PersonalInfo';
+/**
+ * 分享获利
+ */
+import Profit from './Action/PersonalCenter/Profit/Profit';
+/**
+ * 代理人列表
+ */
+import AgentList from './Action/PersonalCenter/Profit/AgentList';
+/**
+ * 奖励红包
+ */
+import ProfitDetail from './Action/PersonalCenter/Profit/ProfitDetail';
+/**
+ * 我的关注
+ */
+import MyConcern from './Action/PersonalCenter/MyConcern/MyConcern';
+/**
+ * 我的收藏
+ */
+import MyCollection from './Action/PersonalCenter/MyCollection/MyCollection';
+/**
+ * 我的话题
+ */
+import MyTopic from './Action/PersonalCenter/MyTopic/MyTopic';
+/**
+ * 话题详情
+ */
+import TopicDetail from './Action/Beauty/TopicDetail/TopicDetail';
+/**
+ * 我的评论
+ */
+import MyComment from './Action/PersonalCenter/MyComment/MyComment';
+/**
+ * 我的日记本
+ */
+import MyDiary from './Action/PersonalCenter/MyDiary/MyDiary';
+/**
+ * 日记详情
+ */
+import DiaryDetail from './Action/Beauty/Diary/DiaryDetail';
 
 /**
  * 全局宽和高
@@ -170,6 +230,27 @@ export default class App extends Component {
                     <HomeSearch nav={navigator} params={route}/>
                 );
             /**
+             * 欢乐优促
+             */
+            case 'HomeSaleList':
+                return (
+                    <HomeSaleList nav={navigator} params={route}/>
+                );
+            /**
+             * 华丽变身
+             */
+            case 'SpecialColumn':
+                return (
+                    <SpecialColumn nav={navigator} params={route}/>
+                );
+            /**
+             * 商家列表
+             */
+            case 'StoreList':
+                return (
+                    <StoreList nav={navigator} params={route}/>
+                );
+            /**
              *  用户登录
              * */
             case 'UserLogin':
@@ -205,6 +286,13 @@ export default class App extends Component {
                     <StoreDetail nav={navigator} params={route}/>
                 );
             /**
+             * 用户详情
+             */
+            case 'UserDetail':
+                return (
+                    <UserDetail nav={navigator} params={route}/>
+                );
+            /**
              * 在线留言
              */
             case 'LeaveMessage':
@@ -231,6 +319,13 @@ export default class App extends Component {
             case 'DiaryListDetail':
                 return (
                     <DiaryListDetail nav={navigator} params={route}/>
+                );
+            /**
+             * 日记详情
+             */
+            case 'DiaryDetail':
+                return (
+                    <DiaryDetail nav={navigator} params={route}/>
                 );
             /**
              * 网上社区
@@ -281,12 +376,83 @@ export default class App extends Component {
                 return (
                     <PayComplete nav={navigator} params={route}/>
                 );
+            /*---- 个人中心 ----*/
+            /**
+             * 个人信息
+             */
+            case 'PersonalInfo':
+                return (
+                    <PersonalInfo nav={navigator} params={route}/>
+                );
             /**
              * 订单列表
              */
             case 'OrderList':
                 return (
                     <OrderList nav={navigator} params={route}/>
+                );
+            /**
+             * 分享获利
+             */
+            case 'Profit':
+                return (
+                    <Profit nav={navigator} params={route}/>
+                );
+            /**
+             * 代理人列表
+             */
+            case 'AgentList':
+                return (
+                    <AgentList nav={navigator} params={route}/>
+                );
+            /**
+             * 奖励红包
+             */
+            case 'ProfitDetail':
+                return (
+                    <ProfitDetail nav={navigator} params={route}/>
+                );
+            /**
+             * 我的关注
+             */
+            case 'MyConcern':
+                return (
+                    <MyConcern nav={navigator} params={route}/>
+                );
+            /**
+             * 我的收藏
+             */
+            case 'MyCollection':
+                return (
+                    <MyCollection nav={navigator} params={route}/>
+                );
+            /**
+             * 我的话题
+             */
+            case 'MyTopic':
+                return (
+                    <MyTopic nav={navigator} params={route}/>
+                );
+            /**
+             * 话题详情
+             */
+            case 'TopicDetail':
+                return (
+                    <TopicDetail nav={navigator} params={route}/>
+                );
+            /**
+             * 我的评论
+             */
+            case 'MyComment':
+                return (
+                    <MyComment nav={navigator} params={route}/>
+                );
+            /**
+             * 我的日记本
+             */
+            case 'MyDiary':
+                return (
+                    <MyDiary nav={navigator} params={route}/>
                 );
 
             default:

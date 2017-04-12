@@ -18,7 +18,7 @@ import MagazineItemComponent from './MagazineItem';
 
 export default class MagazineComponent extends Component {
   static defaultProps = {
-    title: '推荐商家'
+    
   }
   constructor(props) {
     super(props);
@@ -63,7 +63,7 @@ export default class MagazineComponent extends Component {
       <View style={styles.wrapper}>
         <BaseNavigationBar
             data={{
-                title: "日记本",
+                title: "杂志社",
                 leftbtn: {
                     type: BaseNavigationBar.TYPE._IMG,
                     onClick: ()=> {

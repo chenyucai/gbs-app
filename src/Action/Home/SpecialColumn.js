@@ -11,10 +11,10 @@ import {
   Dimensions
 } from 'react-native'
 
-import ScreenUtils from '../../../Utils/ScreenUtils/ScreenUtils';
+import ScreenUtils from '../../Utils/ScreenUtils/ScreenUtils';
 
-import ProductItemComponent from '../../../BaseView/ProductListItem/ProductItem';
-import BackIconComponent from '../../../BaseView/BackIcon/BackIcon';
+import ProductItemComponent from '../../BaseView/ProductListItem/ProductItem';
+import BackIconComponent from '../../BaseView/BackIcon/BackIcon';
 
 export default class SpecialColumnComponent extends Component {
   constructor(props) {
@@ -34,9 +34,9 @@ export default class SpecialColumnComponent extends Component {
         <ScrollView>
           <View style={styles.header}>
             <View style={styles.back}>
-              <BackIconComponent navigator={this.props.navigator}/>
+              <BackIconComponent nav={this.props.nav}/>
             </View>
-            <Image source={require('../assets/8832F62B-2070-45C5-96E3-2BCB4F5CBE3F.png')}
+            <Image source={require('./assets/8832F62B-2070-45C5-96E3-2BCB4F5CBE3F.png')}
               style={{
                 width: ScreenUtils.scaleSize(375),
                 height: ScreenUtils.scaleSize(230)
@@ -50,16 +50,16 @@ export default class SpecialColumnComponent extends Component {
 
           <View style={styles.body}>
             <View style={styles.body_item}>
-              <ProductItemComponent {...ProductItemInfo}/>
+              <ProductItemComponent {...ProductItemInfo} nav={this.props.nav}/>
             </View>
             <View style={styles.body_item}>
-              <ProductItemComponent {...ProductItemInfo}/>
+              <ProductItemComponent {...ProductItemInfo} nav={this.props.nav}/>
             </View>
             <View style={styles.body_item}>
-              <ProductItemComponent {...ProductItemInfo}/>
+              <ProductItemComponent {...ProductItemInfo} nav={this.props.nav}/>
             </View>
             <View style={styles.body_item}>
-              <ProductItemComponent {...ProductItemInfo}/>
+              <ProductItemComponent {...ProductItemInfo} nav={this.props.nav}/>
             </View>
           </View>
         </ScrollView>

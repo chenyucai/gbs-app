@@ -6,7 +6,8 @@ import {
   StyleSheet,
   View,
   Text,
-  Image
+  Image,
+  TouchableOpacity
 } from 'react-native'
 
 export default class CommunityItemComponent extends Component {
@@ -19,7 +20,11 @@ export default class CommunityItemComponent extends Component {
 
   render () {
     return (
-      <View style={styles.wrapper}>
+      <TouchableOpacity style={styles.wrapper} onPress={() => {
+        this.props.nav.push({
+          id: 'TopicDetail'
+        })
+      }}>
         <View style={styles.header}>
           <Image source={require('../../../img/WX20170329-103150@2x.png')} style={styles.icon}/>
           <View style={styles.user_box}>
@@ -45,7 +50,7 @@ export default class CommunityItemComponent extends Component {
           <Text style={styles.title} numberOfLines={1}>大家觉得什么样的美甲图案最适合职业装</Text>
           <Text style={styles.content} numberOfLines={2}>每一个爱美的男女，都希望得到旁边的关注和仰慕，现在，光博士启动了新一轮COSPLAY会展，让爱美的你得到最闪耀的关注届...</Text>
         </View>
-      </View>
+      </TouchableOpacity>
     )
   }
 }

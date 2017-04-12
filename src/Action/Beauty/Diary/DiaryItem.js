@@ -19,7 +19,11 @@ export default class DiaryItemComponent extends Component {
 
   render () {
     return(
-      <View style={styles.diary_wrapper}>
+      <TouchableOpacity style={styles.diary_wrapper} onPress={() => {
+        this.props.nav.push({
+          id: 'DiaryDetail'
+        })
+      }}>
         <View style={styles.diary_header}>
           <View style={styles.diary_header_left}>
             <Image style={styles.diary_header_left_img} source={require('../assets/g.jpg')} />
@@ -54,7 +58,7 @@ export default class DiaryItemComponent extends Component {
             <Text style={styles.diary_footer_right_text}>2017.3.27</Text>
           </View>
         </View>
-      </View>
+      </TouchableOpacity>
     )
   }
 }

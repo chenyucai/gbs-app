@@ -33,16 +33,22 @@ export default class UserListItemComponent extends Component {
         </TouchableOpacity>;
 
     return (
-      <View style={styles.wrapper}>
-        <Image source={require('../home/image/C29105FA-A819-40D0-831E-C7AB324AB618.png')} style={styles.icon}/>
-        <View style={styles.info}>
-          <View style={styles.name_wrapper}>
-            <Text style={styles.name} numberOfLines={1}>忆巴黎</Text>
-            <Image source={require('../beauty/image/icon_Grade2.png')}/>
+      <View style={styles.container}>
+        <TouchableOpacity style={styles.wrapper} onPress={() => {
+          this.props.nav.push({
+            id: 'UserDetail'
+          })
+        }}>
+          <Image source={require('../../../img/WX20170329-103150@2x.png')} style={styles.icon}/>
+          <View style={styles.info}>
+            <View style={styles.name_wrapper}>
+              <Text style={styles.name} numberOfLines={1}>忆巴黎</Text>
+              <Image source={require('./assets/icon_Grade2.png')}/>
+            </View>
+            <Text style={styles.desc} numberOfLines={1}>嫩肤系列   皮肤管理   净肤系列</Text>
           </View>
-          <Text style={styles.desc} numberOfLines={1}>嫩肤系列   皮肤管理   净肤系列</Text>
-        </View>
-        {renderBtn}
+          {renderBtn}
+        </TouchableOpacity>
       </View>
     )
   }
@@ -52,7 +58,11 @@ const styles = StyleSheet.create({
   wrapper:{
     flexDirection:'row',
     alignItems:'center',
-    paddingVertical: 15
+    paddingVertical: 15,
+    backgroundColor:'#fff',
+    borderBottomWidth:0.5,
+    borderBottomColor:'#d7d7d7',
+    paddingHorizontal:12
   },
   icon:{
     width: 60,
