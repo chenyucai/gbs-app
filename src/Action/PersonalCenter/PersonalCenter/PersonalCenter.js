@@ -9,7 +9,7 @@ import {
   Image,
   TouchableOpacity,
   Dimensions,
-  ScrollView
+  ScrollView,
   StatusBar
 } from 'react-native'
 
