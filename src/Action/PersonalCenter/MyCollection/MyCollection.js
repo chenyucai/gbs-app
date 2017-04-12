@@ -39,17 +39,25 @@ export default class defaultComponent extends Component {
   }
 
   renderProductRow(rowData){
+    let ProductItemInfo = {
+      width: ScreenUtils.scaleSize(170),
+      height:ScreenUtils.scaleSize(180)
+    }
     return (
       <View style={{marginBottom:10}}>
-        <ProductListItem nav={this.props.nav}/>
+        <ProductListItem nav={this.props.nav} {...ProductItemInfo}/>
       </View>
     )
   }
 
   renderStoreRow(rowData){
+    let ProductItemInfo = {
+      width: ScreenUtils.scaleSize(170),
+      height:ScreenUtils.scaleSize(180)
+    }
     return (
       <View style={{marginBottom:10}}>
-        <StoreListItem nav={this.props.nav}/>
+        <StoreListItem nav={this.props.nav} {...ProductItemInfo}/>
       </View>
     )
   }
