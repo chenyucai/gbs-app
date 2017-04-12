@@ -57,7 +57,8 @@ export default class PersoncenterComponent extends Component {
             <Image style={styles.sex_img} source={require('../../Beauty/assets/icon_female.png')}/>
           </View>
         </View>
-        <View style={styles.content}>
+
+        <ScrollView style={[styles.content, {flex:1}]}>
           <View style={styles.content_header_box}>
             <View style={styles.content_header}>
               <View style={styles.content_header_list}>
@@ -94,7 +95,7 @@ export default class PersoncenterComponent extends Component {
               </View>
             </View>
           </View>
-          <ScrollView style={styles.content_list_box}>
+          <View style={styles.content_list_box}>
             <View style={styles.content_list}>
               <TouchableOpacity style={[styles.content_list_item,styles.bottomrightborder]} onPress={() => {
                 this.props.nav.push({
@@ -161,8 +162,8 @@ export default class PersoncenterComponent extends Component {
                 <Text style={styles.content_list_item_text}>我的消息</Text>
               </View>
             </View>
-          </ScrollView>
-        </View>
+          </View>
+        </ScrollView>
 
       </View>
     )
@@ -170,6 +171,9 @@ export default class PersoncenterComponent extends Component {
 }
 
 const styles = StyleSheet.create({
+  wrapper:{
+    flex:1
+  },
   header: {
     width: ScreenUtils.scaleSize(375),
     height: ScreenUtils.scaleSize(180)
@@ -265,9 +269,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   content_header_balancepoint: {
-    height: 50,
     paddingVertical: 10,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    flex:1
   },
   content_header_balance: {
     flex: 1,
