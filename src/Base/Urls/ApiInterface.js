@@ -31,201 +31,207 @@ let ApiInterface = {
   Search: '/AppHome/Search',
 
   /**
+   * 首页-光电
+   */
+   // 光电门店-列表
+   GetStoreList: '/AppHome/GetStoreList',
+
+  /**
    * 商品&杂志社
    */
   //商品
     //产品详情
-  GetGoodsDetail: 'AppGoods/GetGoodsDetail',
-  GetCollectionUserList: 'AppGoods/GetCollectionUserList',
-  GetCollectionUserDetail: 'AppGoods/GetCollectionUserDetail',
+  GetGoodsDetail: '/AppGoods/GetGoodsDetail',
+  GetCollectionUserList: '/AppGoods/GetCollectionUserList',
+  GetCollectionUserDetail: '/AppGoods/GetCollectionUserDetail',
   //门店
     //门店详情
-  GetStoreDetail: 'AppStore/GetStoreDetail',
+  GetStoreDetail: '/AppStore/GetStoreDetail',
   //杂志社
     //杂志社详情
-  GetMagazineDetail: 'AppMagazine/GetMagazineDetail',
+  GetMagazineDetail: '/AppMagazine/GetMagazineDetail',
   //手艺人
-  GetBeauticianListByStoreId: 'AppBeautician/GetBeauticianListByStoreId',
-  GetBeauticianDetailByBeauticianId: 'AppBeautician/GetBeauticianDetailByBeauticianId',
-  GetDiaryListByBeauticianId: 'AppBeautician/GetDiaryListByBeauticianId',
-  GetDiaryDetailByDiaryId: 'AppBeautician/GetDiaryDetailByDiaryId',
-  GetDiaryCommentListByDiaryId: 'AppBeautician/GetDiaryCommentListByDiaryId',
-  SaveDiaryComment: 'AppBeautician/SaveDiaryComment',
+  GetBeauticianListByStoreId: '/AppBeautician/GetBeauticianListByStoreId',
+  GetBeauticianDetailByBeauticianId: '/AppBeautician/GetBeauticianDetailByBeauticianId',
+  GetDiaryListByBeauticianId: '/AppBeautician/GetDiaryListByBeauticianId',
+  GetDiaryDetailByDiaryId: '/AppBeautician/GetDiaryDetailByDiaryId',
+  GetDiaryCommentListByDiaryId: '/AppBeautician/GetDiaryCommentListByDiaryId',
+  SaveDiaryComment: '/AppBeautician/SaveDiaryComment',
   //日记本
-  getDiaryGroupByUserId: 'AppDiaryController/getDiaryGroupByUserId',
-  getDiaryGroupByGoodsId: 'AppDiaryController/getDiaryGroupByGoodsId',
+  getDiaryGroupByUserId: '/AppDiaryController/getDiaryGroupByUserId',
+  getDiaryGroupByGoodsId: '/AppDiaryController/getDiaryGroupByGoodsId',
 
   /**
    * 登陆
    */
   //获取验证码
-  GetAuthCode: 'AppLogin/GetAuthCode',
+  GetAuthCode: '/AppLogin/GetAuthCode',
   //注册
-  Register: 'AppLogin/Register',
+  Register: '/AppLogin/Register',
   //登陆
-  Login: 'AppLogin/Login',
+  Login: '/AppLogin/Login',
   //忘记密码
-  ForgetPassword: 'AppLogin/ForgetPassword',
-  Post: 'AppLogin/Post',
+  ForgetPassword: '/AppLogin/ForgetPassword',
+  Post: '/AppLogin/Post',
   //绑定手机号
-  BindTel: 'AppLogin/BindTel',
+  BindTel: '/AppLogin/BindTel',
 
   /**
    * 个人中心
    */
   //首页
-  GetPersonalCenter: 'AppPersonal/GetPersonalCenter',
+  GetPersonalCenter: '/AppPersonal/GetPersonalCenter',
   //个人信息
-  GetPersonalDetail: 'AppPersonal/GetPersonalDetail',
+  GetPersonalDetail: '/AppPersonal/GetPersonalDetail',
   //签到
-  SetPersonalSign: 'AppPersonal/SetPersonalSign',
+  SetPersonalSign: '/AppPersonal/SetPersonalSign',
   //保存头像
-  SavePersonalIcon: 'AppPersonal/SavePersonalIcon',
+  SavePersonalIcon: '/AppPersonal/SavePersonalIcon',
   //保存信息
-  SavePersonalDetail: 'AppPersonal/SavePersonalDetail',
+  SavePersonalDetail: '/AppPersonal/SavePersonalDetail',
   //分享获利
-  GetInviteInformation: 'AppPersonal/GetInviteInformation',
+  GetInviteInformation: '/AppPersonal/GetInviteInformation',
   //代理人列表
-  GetInviteList: 'AppPersonal/GetInviteList',
+  GetInviteList: '/AppPersonal/GetInviteList',
   //红包列表
-  GetRedPacketList: 'AppPersonal/GetRedPacketList',
+  GetRedPacketList: '/AppPersonal/GetRedPacketList',
   //领取红包
-  RecieveRedPacket: 'AppPersonal/RecieveRedPacket',
+  RecieveRedPacket: '/AppPersonal/RecieveRedPacket',
   //获取我的账号余额（账号余额+赠送）
-  GetMyAmount: 'AppPersonal/GetMyAmount',
+  GetMyAmount: '/AppPersonal/GetMyAmount',
   //获取我的积分
-  GetPoint: 'AppPersonal/GetPoint',
+  GetPoint: '/AppPersonal/GetPoint',
   //获取我的优惠券
-  GetMyCoupon: 'AppPersonal/GetMyCoupon',
+  GetMyCoupon: '/AppPersonal/GetMyCoupon',
   //获取我的消息
-  GetMyMessages: 'AppPersonal/GetMyMessages',
+  GetMyMessages: '/AppPersonal/GetMyMessages',
   //获取我的收藏
-  GetMyCollection: 'AppPersonal/GetMyCollection',
+  GetMyCollection: '/AppPersonal/GetMyCollection',
   //获取关于我们的信息
-  GetAboutUsExplain: 'AppPersonal/GetAboutUsExplain',
+  GetAboutUsExplain: '/AppPersonal/GetAboutUsExplain',
   //获取余额说明
-  GetAmountExplain: 'AppPersonal/GetAmountExplain',
+  GetAmountExplain: '/AppPersonal/GetAmountExplain',
   //获取优惠券说明
-  GetCouponExplain: 'AppPersonal/GetCouponExplain',
+  GetCouponExplain: '/AppPersonal/GetCouponExplain',
   //获取积分规则
-  GetPointExplain: 'AppPersonal/GetPointExplain',
+  GetPointExplain: '/AppPersonal/GetPointExplain',
   //获取用户手机号
-  GetUserMobile: 'AppPersonal/GetUserMobile',
+  GetUserMobile: '/AppPersonal/GetUserMobile',
   //检查是否设置了支付密码
-  IsPayPasswordSetted: 'AppPersonal/IsPayPasswordSetted',
+  IsPayPasswordSetted: '/AppPersonal/IsPayPasswordSetted',
   //设置支付密码
-  SetPayPassword: 'AppPersonal/SetPayPassword',
+  SetPayPassword: '/AppPersonal/SetPayPassword',
   //修改支付密码
-  ModifyPayPassword: 'AppPersonal/ModifyPayPassword',
+  ModifyPayPassword: '/AppPersonal/ModifyPayPassword',
   //修改账号密码
-  ModifyPassword: 'AppPersonal/ModifyPassword',
-  GetOpinionList: 'AppPersonal/GetOpinionList',
-  SaveOpinion: 'AppPersonal/SaveOpinion',
+  ModifyPassword: '/AppPersonal/ModifyPassword',
+  GetOpinionList: '/AppPersonal/GetOpinionList',
+  SaveOpinion: '/AppPersonal/SaveOpinion',
   //实名认证
-  AuthUserName: 'AppPersonal/AuthUserName',
+  AuthUserName: '/AppPersonal/AuthUserName',
   //我的日记本-列表
-  GetDiaryGroupList: 'AppPersonal/GetDiaryGroupList',
+  GetDiaryGroupList: '/AppPersonal/GetDiaryGroupList',
   //我的日记本-获取日记本详情
-  GetDiaryGroupDetail: 'AppPersonal/GetDiaryGroupDetail',
+  GetDiaryGroupDetail: '/AppPersonal/GetDiaryGroupDetail',
   //我的日记本-保存日记本
-  SaveDiaryGroup: 'AppPersonal/SaveDiaryGroup',
+  SaveDiaryGroup: '/AppPersonal/SaveDiaryGroup',
   //我的日记本-关联产品列表
-  GetDiaryGroupGoodsList: 'AppPersonal/GetDiaryGroupGoodsList',
+  GetDiaryGroupGoodsList: '/AppPersonal/GetDiaryGroupGoodsList',
   //日记列表
-  GetDiaryList: 'AppPersonal/GetDiaryList',
+  GetDiaryList: '/AppPersonal/GetDiaryList',
   //日记详情
-  GetDiaryDetail: 'AppPersonal/GetDiaryDetail',
+  GetDiaryDetail: '/AppPersonal/GetDiaryDetail',
   //日记编辑
-  SaveDiary: 'AppPersonal/SaveDiary',
+  SaveDiary: '/AppPersonal/SaveDiary',
   //我的话题列表
-  GetDiaryList: 'AppPersonal/GetDiaryList',
+  GetDiaryList: '/AppPersonal/GetDiaryList',
   //我的评论
-  GetCollectionList: 'AppPersonal/GetCollectionList',
+  GetCollectionList: '/AppPersonal/GetCollectionList',
   //我的关注
-  MyCommentList: 'AppPersonal/MyCommentList',
+  MyCommentList: '/AppPersonal/MyCommentList',
   //我的关注-粉丝
-  MyFansList: 'AppPersonal/MyFansList',
+  MyFansList: '/AppPersonal/MyFansList',
 
   /**
    *通用接口
    */
   //收藏
-  SetClearCollectionZan: 'AppCommon/SetClearCollectionZan',
+  SetClearCollectionZan: '/AppCommon/SetClearCollectionZan',
   //分享
-  Share: 'AppCommon/Share',
+  Share: '/AppCommon/Share',
   //保存评论
-  SaveComments: 'AppCommon/SaveComments',
+  SaveComments: '/AppCommon/SaveComments',
   //获取微信配置
-  GetWeixinConfig: 'AppCommon/GetWeixinConfig',
+  GetWeixinConfig: '/AppCommon/GetWeixinConfig',
   //获取关于的信息
-  GetAbountUsRule: 'AppCommon/GetAbountUsRule',
+  GetAbountUsRule: '/AppCommon/GetAbountUsRule',
   //上传文件
-  UploadPicture: 'AppCommon/UploadPicture',
+  UploadPicture: '/AppCommon/UploadPicture',
 
   /**
    *订单
    */
   //订单管理
-  CreateOrder: 'AppOrderManage/CreateOrder',
-  UpdateOrder: 'AppOrderManage/UpdateOrder',
-  GetRemainingBalanceByUserId: 'AppOrderManage/GetRemainingBalanceByUserId',
-  SetAssessmentsGoods: 'AppOrderManage/SetAssessmentsGoods',
+  CreateOrder: '//AppOrderManage/CreateOrder',
+  UpdateOrder: '//AppOrderManage/UpdateOrder',
+  GetRemainingBalanceByUserId: '//AppOrderManage/GetRemainingBalanceByUserId',
+  SetAssessmentsGoods: '//AppOrderManage/SetAssessmentsGoods',
 
   /**
    *订单查询
    */
   //获取美丽库数据
-  GetOrderListJson: 'AppOrder/GetOrderListJson',
+  GetOrderListJson: '/AppOrder/GetOrderListJson',
   //获取完成订单
-  GetOrderCompleteListJson: 'AppOrder/GetOrderCompleteListJson',
+  GetOrderCompleteListJson: '/AppOrder/GetOrderCompleteListJson',
   //获取预约列表
-  GetReservationListJson: 'AppOrder/GetReservationListJson',
+  GetReservationListJson: '/AppOrder/GetReservationListJson',
   //获取订单详情
-  GetOrderDetails: 'AppOrder/GetOrderDetails',
+  GetOrderDetails: '/AppOrder/GetOrderDetails',
   //获取套餐详情
-  GetTCGoodsDetails: 'AppOrder/GetTCGoodsDetails',
+  GetTCGoodsDetails: '/AppOrder/GetTCGoodsDetails',
 
   /**
    *优惠券
    */
   //领取优惠券
-  GetCouponListByGoodsIdAndUserId: 'AppCoupon/GetCouponListByGoodsIdAndUserId',
-  SaveGettedCoupon: 'AppCoupon/SaveGettedCoupon',
+  GetCouponListByGoodsIdAndUserId: '/AppCoupon/GetCouponListByGoodsIdAndUserId',
+  SaveGettedCoupon: '/AppCoupon/SaveGettedCoupon',
   //使用优惠券
-  GetUserCouponListByOrderId: 'AppCoupon/GetUserCouponListByOrderId',
+  GetUserCouponListByOrderId: '/AppCoupon/GetUserCouponListByOrderId',
 
   /**
    *支付
    */
   //余额支付
-  PayByBalance: 'AppPay/PayByBalance',
+  PayByBalance: '/AppPay/PayByBalance',
   //微信支付
-  GetWxInfo: 'AppPay/GetWxInfo',
-  PrePayByWeixin: 'AppPay/PrePayByWeixin',
+  GetWxInfo: '/AppPay/GetWxInfo',
+  PrePayByWeixin: '/AppPay/PrePayByWeixin',
   //支付成功
-  PayByWeixinSuccess: 'AppPay/PayByWeixinSuccess',
+  PayByWeixinSuccess: '/AppPay/PayByWeixinSuccess',
 
   /**
    *预约
    */
-  GetAllCategoryList: 'AppAssess/GetAllCategoryList',
+  GetAllCategoryList: '/AppAssess/GetAllCategoryList',
   //检查是否预约
-  checkGoodsHasReservation: 'AppAssess/checkGoodsHasReservation',
-  GetAllCategoryItemList: 'AppAssess/GetAllCategoryItemList',
-  GetAssessCategoryList: 'AppAssess/GetAssessCategoryList',
+  checkGoodsHasReservation: '/AppAssess/checkGoodsHasReservation',
+  GetAllCategoryItemList: '/AppAssess/GetAllCategoryItemList',
+  GetAssessCategoryList: '/AppAssess/GetAssessCategoryList',
   //保存评价信息
-  SaveAssessItemList: 'AppAssess/SaveAssessItemList',
-  UploadPicture: 'AppAssess/UploadPicture',
-  
+  SaveAssessItemList: '/AppAssess/SaveAssessItemList',
+  UploadPicture: '/AppAssess/UploadPicture',
+
   /**
    *购物车
    */
   //购物车列表
-  GetShoppingCartList: 'AppGoods/GetShoppingCartList',
+  GetShoppingCartList: '/AppGoods/GetShoppingCartList',
   //加入购物车
-  AddShoppingCart: 'AppGoods/AddShoppingCart',
+  AddShoppingCart: '/AppGoods/AddShoppingCart',
   //编辑商品数量
-  EditShoppingCart: 'AppGoods/EditShoppingCart',
+  EditShoppingCart: '/AppGoods/EditShoppingCart',
   //删除商品
 
 };
