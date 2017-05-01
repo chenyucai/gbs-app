@@ -19,5 +19,6 @@ let Model = {
     FetchUtil.fetchGetJson(ApiConst.Versions().BaseUrl + ApiInterface.GetHomeCategoryList, params, response, _err);
   },
 
+
 };
 export default Model;

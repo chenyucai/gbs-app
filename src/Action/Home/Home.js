@@ -46,11 +46,7 @@ export default class HomeComponent extends Component {
       UserId: ''
     };
     Model.GetHomeCategoryList(params,(res)=>{
-        this.setState({
-          CategoryList: res
-        })
-    },(err)=>{
-
+      console.log(res);
     });
   }
 
