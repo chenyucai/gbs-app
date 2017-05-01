@@ -48,24 +48,24 @@ export default class ProductItemComponent extends Component {
           <Image style={{
             width: this.props.width,
             height: this.props.height
-          }} source={require('../assets/AF89940B-AB2E-480F-ABF4-F7FE9B3A6C0D.png')}/>
+          }} source={{uri: this.props.Image}}/>
         </View>
 
         <View style={styles.item_content}>
           <View style={styles.item_title}>
             <Text style={styles.item_title_text} numberOfLines={2}>
-              <Text style={{color:'#363334'}}>【紧肤系列】</Text>
-              <Text style={{color:'#292929'}}>润白颜水光针2ml+伊肤泉无菌修复美颜</Text>
+              <Text style={{color:'#363334'}}>【{this.props.CategoryName}】</Text>
+              <Text style={{color:'#292929'}}>{this.props.Title}</Text>
             </Text>
           </View>
           <View style={styles.item_footer}>
             <View style={styles.item_price}>
-              <Text style={styles.item_price_now}>￥1000</Text>
-              <Text style={styles.item_price_old}>¥1500</Text>
+              <Text style={styles.item_price_now}>￥{this.props.SellPrice}</Text>
+              <Text style={styles.item_price_old}>¥{this.props.MarketPrice}</Text>
             </View>
             <View style={styles.item_sale}>
               <Text style={{fontSize:10}}>已售</Text>
-              <Text style={styles.item_count}>2000</Text>
+              <Text style={styles.item_count}>{this.props.SellCount}</Text>
             </View>
           </View>
         </View>
@@ -118,7 +118,8 @@ const styles = StyleSheet.create({
   },
   item_price_old:{
     fontSize:10,
-    color:'#C9C6C6'
+    color:'#C9C6C6',
+    textDecorationLine: 'line-through'
   },
   item_count:{
     fontSize:10

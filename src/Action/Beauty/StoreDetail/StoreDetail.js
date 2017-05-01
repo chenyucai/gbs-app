@@ -28,6 +28,10 @@ export default class StoreDetailComponent extends Component {
     };
   }
 
+  componentDidMount() {
+    console.log(this.props.route.params.id);
+  }
+
   _goMesaage(){
     var { nav } = this.props;
     if (nav) {
