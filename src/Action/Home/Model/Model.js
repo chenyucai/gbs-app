@@ -18,7 +18,33 @@ let Model = {
     var _err = error || null;
     FetchUtil.fetchGetJson(ApiConst.Versions().BaseUrl + ApiInterface.GetHomeCategoryList, params, response, _err);
   },
-
-
+  GetHomeDiscountedGoodsList(pa, response, error){
+    var params = {
+      ...pa
+    };
+    var _err = error || null;
+    FetchUtil.fetchGetJson(ApiConst.Versions().BaseUrl + ApiInterface.GetHomeDiscountedGoodsList, params, response, _err);
+  },
+  GetHomeStarGoodsList(pa, response, error){
+    var params = {
+      ...pa
+    };
+    var _err = error || null;
+    FetchUtil.fetchGetJson(ApiConst.Versions().BaseUrl + ApiInterface.GetHomeStarGoodsList, params, response, _err);
+  },
+  GetHomeBannerList(pa, response, error){
+    var params = {
+      ...pa
+    };
+    var _err = error || null;
+    FetchUtil.fetchGetJson(ApiConst.Versions().BaseUrl + ApiInterface.GetHomeBannerList, params, response, _err);
+  },
+  GetHomeInformationList(pa, response, error){
+    var params = {
+      ...pa
+    };
+    var _err = error || null;
+    FetchUtil.fetchGetJson(ApiConst.Versions().BaseUrl + ApiInterface.GetHomeInformationList, params, response, _err);
+  },
 };
 export default Model;
