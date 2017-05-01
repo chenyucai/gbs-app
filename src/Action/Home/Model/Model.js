@@ -46,5 +46,15 @@ let Model = {
     var _err = error || null;
     FetchUtil.fetchGetJson(ApiConst.Versions().BaseUrl + ApiInterface.GetHomeInformationList, params, response, _err);
   },
+  /**
+   * 同城门店
+   */
+  GetSameCityStoreList(pa, response, error){
+    var params = {
+      ...pa
+    };
+    var _err = error || null;
+    FetchUtil.fetchGetJson(ApiConst.Versions().BaseUrl + ApiInterface.GetSameCityStoreList, params, response, _err);
+  },
 };
 export default Model;

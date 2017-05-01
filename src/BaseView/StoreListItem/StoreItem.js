@@ -26,7 +26,10 @@ export default class StoreItemComponent extends Component {
     var { nav } = this.props;
     if (nav) {
       nav.push({
-        id: 'StoreDetail'
+        id: 'StoreDetail',
+        params: {
+          id: this.props.Id
+        }
       })
     }
   }
@@ -43,7 +46,8 @@ export default class StoreItemComponent extends Component {
             width: this.props.width,
             height: this.props.height
           }}
-            source={require('../../../img/888.png')}
+            // source={require('../../../img/888.png')}
+            source={{uri: this.props.Image}}
             resizeMode="cover"
           />
         </View>
@@ -51,11 +55,11 @@ export default class StoreItemComponent extends Component {
         <View style={styles.item_content}>
           <View style={styles.item_title}>
             <Text style={styles.item_title_text} numberOfLines={1}>
-              <Text style={{fontSize:12}}>STORY  江湾镇水港店sdfasfas</Text>
+              <Text style={{fontSize:12}}>STORY  {this.props.Name}</Text>
             </Text>
           </View>
-          <Text style={styles.item_address}>【浦东新区】</Text>
-          <Text style={styles.item_km}>1.2 KM</Text>
+          <Text style={styles.item_address} numberOfLines={1}>【{this.props.Address}】</Text>
+          {/* <Text style={styles.item_km}>1.2 KM</Text> */}
           <View style={styles.item_star}>
             <StarComponent score="4"/>
           </View>

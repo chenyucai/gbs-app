@@ -18,6 +18,7 @@ import HomeHeaderComponent from './components/HomeHeader';
 import HomeModulesComponent from './components/HomeModules';
 import HomeBlockTitleComponent from './components/HomeBlockTitle';
 import ProductItemComponent from '../../BaseView/ProductListItem/ProductItem';
+import StoreListItem from '../../BaseView/StoreListItem/StoreItem';
 // import RecommendStoreListComponent from './RecommendStoreList';
 // import SpecialColumnComponent from './components/SpecialColumn';
 
@@ -35,12 +36,22 @@ export default class HomeComponent extends Component {
     super(props);
     this.state = {
       show: true,
-      CategoryList: []
+      HomeCategoryList: [],
+      HomeDiscountedGoodsList: [],
+      HomeStarGoodsList: [],
+      HomeInformationList: [],
+      HomeBannerList: [],
+      SameCityStoreList: []
     };
   }
 
   componentDidMount(){
     this.GetHomeCategoryList();
+    this.GetHomeDiscountedGoodsList();
+    this.GetHomeStarGoodsList();
+    this.GetHomeInformationList();
+    this.GetHomeBannerList();
+    this.GetSameCityStoreList();
   }
 
   GetHomeCategoryList() {
@@ -49,7 +60,75 @@ export default class HomeComponent extends Component {
       UserId: USERID
     };
     Model.GetHomeCategoryList(params,(res)=>{
-      
+
+    });
+  }
+  /**
+   * 获取打折商品
+   */
+  GetHomeDiscountedGoodsList() {
+    var params = {
+      CityId: CITYID,
+      UserId: USERID
+    };
+    Model.GetHomeDiscountedGoodsList(params,(res)=>{
+
+    });
+  }
+  /**
+   * 热卖商品
+   */
+  GetHomeStarGoodsList() {
+    var params = {
+      CityId: CITYID,
+      UserId: USERID
+    };
+    Model.GetHomeStarGoodsList(params,(res)=>{
+      this.setState({
+        HomeStarGoodsList: res.StarGoodsList
+      });
+    });
+  }
+  /**
+   * 杂志社
+   */
+  GetHomeInformationList() {
+    var params = {
+      CityId: CITYID,
+      UserId: USERID
+    };
+    Model.GetHomeInformationList(params,(res)=>{
+      this.setState({
+        HomeInformationList: res.InformationList
+      })
+    });
+  }
+  /**
+   * 获取banner
+   */
+  GetHomeBannerList() {
+    var params = {
+      CityId: CITYID,
+      UserId: USERID
+    };
+    Model.GetHomeBannerList(params,(res)=>{
+      this.setState({
+        HomeBannerList: res.BannerList
+      });
+    });
+  }
+  /**
+   * 同城门店
+   */
+  GetSameCityStoreList() {
+    var params = {
+      CityId: CITYID,
+      UserId: USERID
+    };
+    Model.GetSameCityStoreList(params,(res)=>{
+      this.setState({
+        SameCityStoreList: res.StoreList
+      });
     });
   }
 
@@ -72,13 +151,14 @@ export default class HomeComponent extends Component {
   }
 
   renderImg(){
-    var imageViews=[];
-    for(var i=0;i<5;i++){
+    let imageViews = [];
+    for(var i=0;i<this.state.HomeBannerList.length;i++){
+        let item = this.state.HomeBannerList[i];
         imageViews.push(
             <Image
               key={i}
               style={{flex:1}}
-              source={require('./assets/E963873D-7AE4-4662-8E8C-48D79329BDBC.png')}
+              source={{uri: item.ImgUrl}}
               // style={{width:Dimensions.get('window').width, height:Dimensions.get('window').width/1.875}}
               style={{
                 width: ScreenUtils.scaleSize(375),
@@ -113,9 +193,10 @@ export default class HomeComponent extends Component {
 
   renderMagazine() {
     let magazineItems = [];
-    for (var i = 0; i < 6; i++) {
+    for (var i = 0; i < this.state.HomeInformationList.length; i++) {
+      let obj = this.state.HomeInformationList[i]
       magazineItems.push(
-        <Image source={require('./assets/BFABCD35-8EEF-49CB-B5DE-E3042232E816.png')}
+        <Image source={{uri: obj.Image}}
           key={i}
           style={styles.magazine_item}
         />
@@ -137,6 +218,44 @@ export default class HomeComponent extends Component {
             }}
           />
         </TouchableHighlight>
+      )
+    }
+    return items;
+  }
+
+  renderHomeStarGoodsList() {
+    let items = [];
+    for (var i = 0; i < this.state.HomeStarGoodsList.length; i++) {
+      let obj = this.state.HomeStarGoodsList[i];
+      let ProductItemInfo = {
+        width: ScreenUtils.scaleSize(170),
+        height:ScreenUtils.scaleSize(150),
+        ...obj
+      }
+      items.push(
+        <View style={styles.hot_item} key={i}>
+          <ProductItemComponent {...ProductItemInfo} nav={this.props.nav}/>
+        </View>
+      )
+    }
+    return items;
+  }
+
+  renderSameCityStoreList() {
+    let items = [];
+    let length = this.state.SameCityStoreList.length > 4 ? 4 : this.state.SameCityStoreList.length;
+    for (var i = 0; i < length; i++) {
+      let obj = this.state.SameCityStoreList[i];
+      let ItemInfo = {
+        width: ScreenUtils.scaleSize(170),
+        height:ScreenUtils.scaleSize(150),
+        ...obj
+      }
+      items.push(
+        <TouchableOpacity style={styles.store_item} onPress={this._goStoreDetail.bind(this)} key={i}>
+          {/* <Image style={styles.store_img} source={require('./assets/46037860-08A1-4A1B-89BB-9CCB03C63BD5.png')}/> */}
+          <StoreListItem {...ItemInfo} nav={this.props.nav}/>
+        </TouchableOpacity>
       )
     }
     return items;
@@ -251,19 +370,10 @@ export default class HomeComponent extends Component {
               <HomeBlockTitleComponent titleEn="Recommended businesses" titleZh="推荐商家"/>
             </TouchableOpacity>
             <View style={styles.store_body}>
-              {/* {this.renderStore()} */}
-              <TouchableOpacity style={styles.store_item} onPress={this._goStoreDetail.bind(this)}>
+              {this.renderSameCityStoreList()}
+              {/* <TouchableOpacity style={styles.store_item} onPress={this._goStoreDetail.bind(this)}>
                 <Image style={styles.store_img} source={require('./assets/46037860-08A1-4A1B-89BB-9CCB03C63BD5.png')}/>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.store_item} onPress={this._goStoreDetail.bind(this)}>
-                <Image style={styles.store_img} source={require('./assets/46037860-08A1-4A1B-89BB-9CCB03C63BD5.png')}/>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.store_item} onPress={this._goStoreDetail.bind(this)}>
-                <Image style={styles.store_img} source={require('./assets/46037860-08A1-4A1B-89BB-9CCB03C63BD5.png')}/>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.store_item} onPress={this._goStoreDetail.bind(this)}>
-                <Image style={styles.store_img} source={require('./assets/46037860-08A1-4A1B-89BB-9CCB03C63BD5.png')}/>
-              </TouchableOpacity>
+              </TouchableOpacity> */}
             </View>
           </View>
 
@@ -273,18 +383,10 @@ export default class HomeComponent extends Component {
               <HomeBlockTitleComponent titleEn="All the big Tesoo" titleZh="全球大热购"/>
             </View>
             <View style={styles.hot_body}>
-              <View style={styles.hot_item}>
+              {/* <View style={styles.hot_item}>
                 <ProductItemComponent {...ProductItemInfo} nav={this.props.nav}/>
-              </View>
-              <View style={styles.hot_item}>
-                <ProductItemComponent {...ProductItemInfo} nav={this.props.nav}/>
-              </View>
-              <View style={styles.hot_item}>
-                <ProductItemComponent {...ProductItemInfo} nav={this.props.nav}/>
-              </View>
-              <View style={styles.hot_item}>
-                <ProductItemComponent {...ProductItemInfo} nav={this.props.nav}/>
-              </View>
+              </View> */}
+              {this.renderHomeStarGoodsList()}
             </View>
           </View>
         </ScrollView>
@@ -387,17 +489,17 @@ const styles = StyleSheet.create({
   store_body:{
     flexDirection:'row',
     flexWrap:'wrap',
-    justifyContent:'space-around',
+    justifyContent:'space-between',
     alignItems:'center',
-    paddingLeft:5,
-    paddingRight:5,
+    paddingLeft:10,
+    paddingRight:10,
     paddingTop:5,
     paddingBottom:5,
     backgroundColor:'#fff'
   },
   store_item:{
     width: ScreenUtils.scaleSize(170),
-    height: ScreenUtils.scaleSize(170),
+    // height: ScreenUtils.scaleSize(170),
     marginBottom:10
   },
   store_img:{
@@ -407,10 +509,10 @@ const styles = StyleSheet.create({
   hot_body:{
     flexDirection:'row',
     flexWrap:'wrap',
-    justifyContent:'space-around',
+    justifyContent:'space-between',
     alignItems:'center',
-    paddingLeft:5,
-    paddingRight:5,
+    paddingLeft:10,
+    paddingRight:10,
     paddingTop:5,
     paddingBottom:5,
   },

@@ -296,168 +296,168 @@ export default class App extends Component {
              */
             case 'Index':
                 return (
-                    <Index nav={navigator} params={route}/>
+                    <Index nav={navigator} route={route}/>
                 );
             /**
              * 首页搜索
              */
             case 'HomeSearch':
                 return (
-                    <HomeSearch nav={navigator} params={route}/>
+                    <HomeSearch nav={navigator} route={route}/>
                 );
             /**
              * 欢乐优促
              */
             case 'HomeSaleList':
                 return (
-                    <HomeSaleList nav={navigator} params={route}/>
+                    <HomeSaleList nav={navigator} route={route}/>
                 );
             /**
              * 华丽变身
              */
             case 'SpecialColumn':
                 return (
-                    <SpecialColumn nav={navigator} params={route}/>
+                    <SpecialColumn nav={navigator} route={route}/>
                 );
             /**
              * 商家列表
              */
             case 'StoreList':
                 return (
-                    <StoreList nav={navigator} params={route}/>
+                    <StoreList nav={navigator} route={route}/>
                 );
             /**
              *  用户登录
              * */
             case 'UserLogin':
                 return (
-                    <UserLogin nav={navigator} params={route}/>
+                    <UserLogin nav={navigator} route={route}/>
                 );
             /**
              *  忘记密码
              * */
             case 'ForgetPsd':
                 return (
-                    <ForgetPsd nav={navigator} params={route}/>
+                    <ForgetPsd nav={navigator} route={route}/>
                 );
             /**
              *  修改密码
              * */
             case 'ModifyPsd':
                 return (
-                    <ModifyPsd nav={navigator} params={route}/>
+                    <ModifyPsd nav={navigator} route={route}/>
                 );
             /**
              *  光电美容
              * */
             case 'Photoelectricbeauty':
                 return (
-                    <Photoelectricbeauty nav={navigator} params={route}/>
+                    <Photoelectricbeauty nav={navigator} route={route}/>
                 );
             /**
              * 同城门店
              */
             case 'CityStoreList':
                 return (
-                    <CityStoreList nav={navigator} params={route}/>
+                    <CityStoreList nav={navigator} route={route}/>
                 );
             /**
              * 门店详情
              */
             case 'StoreDetail':
                 return (
-                    <StoreDetail nav={navigator} params={route}/>
+                    <StoreDetail nav={navigator} route={route}/>
                 );
             /**
              * 用户详情
              */
             case 'UserDetail':
                 return (
-                    <UserDetail nav={navigator} params={route}/>
+                    <UserDetail nav={navigator} route={route}/>
                 );
             /**
              * 在线留言
              */
             case 'LeaveMessage':
                 return (
-                    <LeaveMessage nav={navigator} params={route}/>
+                    <LeaveMessage nav={navigator} route={route}/>
                 );
             /**
              * 在线留言
              */
             case 'ProductDetail':
                 return (
-                    <ProductDetail nav={navigator} params={route}/>
+                    <ProductDetail nav={navigator} route={route}/>
                 );
             /**
              * 日记本列表
              */
             case 'DiaryList':
                 return (
-                    <DiaryList nav={navigator} params={route}/>
+                    <DiaryList nav={navigator} route={route}/>
                 );
             /**
              * 日记本列表详情
              */
             case 'DiaryListDetail':
                 return (
-                    <DiaryListDetail nav={navigator} params={route}/>
+                    <DiaryListDetail nav={navigator} route={route}/>
                 );
             /**
              * 日记详情
              */
             case 'DiaryDetail':
                 return (
-                    <DiaryDetail nav={navigator} params={route}/>
+                    <DiaryDetail nav={navigator} route={route}/>
                 );
             /**
              * 网上社区
              */
             case 'Community':
                 return (
-                    <Community nav={navigator} params={route}/>
+                    <Community nav={navigator} route={route}/>
                 );
             /**
              * 发布日记
              */
             case 'PublishDiary':
                 return (
-                    <PublishDiary nav={navigator} params={route}/>
+                    <PublishDiary nav={navigator} route={route}/>
                 );
             /**
              * 杂志社
              */
             case 'Magazine':
                 return (
-                    <Magazine nav={navigator} params={route}/>
+                    <Magazine nav={navigator} route={route}/>
                 );
             /**
              * 确认订单（单品）
              */
             case 'ConfirmOrder':
                 return (
-                    <ConfirmOrder nav={navigator} params={route}/>
+                    <ConfirmOrder nav={navigator} route={route}/>
                 );
             /**
              * 确认订单（购物车）
              */
             case 'PayBefore':
                 return (
-                    <PayBefore nav={navigator} params={route}/>
+                    <PayBefore nav={navigator} route={route}/>
                 );
             /**
              * 支付
              */
             case 'Pay':
                 return (
-                    <Pay nav={navigator} params={route}/>
+                    <Pay nav={navigator} route={route}/>
                 );
             /**
              * 支付完成
              */
             case 'PayComplete':
                 return (
-                    <PayComplete nav={navigator} params={route}/>
+                    <PayComplete nav={navigator} route={route}/>
                 );
             /*---- 个人中心 ----*/
             /**
@@ -465,210 +465,210 @@ export default class App extends Component {
              */
             case 'PersonalInfo':
                 return (
-                    <PersonalInfo nav={navigator} params={route}/>
+                    <PersonalInfo nav={navigator} route={route}/>
                 );
             /**
              * 订单列表
              */
             case 'OrderList':
                 return (
-                    <OrderList nav={navigator} params={route}/>
+                    <OrderList nav={navigator} route={route}/>
                 );
             /**
              * 分享获利
              */
             case 'Profit':
                 return (
-                    <Profit nav={navigator} params={route}/>
+                    <Profit nav={navigator} route={route}/>
                 );
             /**
              * 代理人列表
              */
             case 'AgentList':
                 return (
-                    <AgentList nav={navigator} params={route}/>
+                    <AgentList nav={navigator} route={route}/>
                 );
             /**
              * 奖励红包
              */
             case 'ProfitDetail':
                 return (
-                    <ProfitDetail nav={navigator} params={route}/>
+                    <ProfitDetail nav={navigator} route={route}/>
                 );
             /**
              * 我的关注
              */
             case 'MyConcern':
                 return (
-                    <MyConcern nav={navigator} params={route}/>
+                    <MyConcern nav={navigator} route={route}/>
                 );
             /**
              * 我的收藏
              */
             case 'MyCollection':
                 return (
-                    <MyCollection nav={navigator} params={route}/>
+                    <MyCollection nav={navigator} route={route}/>
                 );
             /**
              * 我的话题
              */
             case 'MyTopic':
                 return (
-                    <MyTopic nav={navigator} params={route}/>
+                    <MyTopic nav={navigator} route={route}/>
                 );
             /**
              * 话题详情
              */
             case 'TopicDetail':
                 return (
-                    <TopicDetail nav={navigator} params={route}/>
+                    <TopicDetail nav={navigator} route={route}/>
                 );
             /**
              * 我的评论
              */
             case 'MyComment':
                 return (
-                    <MyComment nav={navigator} params={route}/>
+                    <MyComment nav={navigator} route={route}/>
                 );
             /**
              * 我的日记本
              */
             case 'MyDiary':
                 return (
-                    <MyDiary nav={navigator} params={route}/>
+                    <MyDiary nav={navigator} route={route}/>
                 );
             /**
              * 光电美容面部塑形
              */
             case 'Facialshaping':
                 return (
-                    <Facialshaping nav={navigator} params={route}/>
+                    <Facialshaping nav={navigator} route={route}/>
                 );
             /**
              * 光电门店
              */
             case 'Optoelectronicstore':
                 return (
-                    <Optoelectronicstore nav={navigator} params={route}/>
+                    <Optoelectronicstore nav={navigator} route={route}/>
                 );
             /**
              * 光电学堂
              */
             case 'Photoelectricschoollist':
                 return (
-                    <Photoelectricschoollist nav={navigator} params={route}/>
+                    <Photoelectricschoollist nav={navigator} route={route}/>
                 );
             /**
              * 学堂详情
              */
             case 'Photoelectricschooldetail':
                 return (
-                    <Photoelectricschooldetail nav={navigator} params={route}/>
+                    <Photoelectricschooldetail nav={navigator} route={route}/>
                 );
             /**
              * 用户日记
              */
             case 'Userdiary':
                 return (
-                    <Userdiary nav={navigator} params={route}/>
+                    <Userdiary nav={navigator} route={route}/>
                 );
             /**
              * 微整形
              */
             case 'Microplastic':
                 return (
-                    <Microplastic nav={navigator} params={route}/>
+                    <Microplastic nav={navigator} route={route}/>
                 );
             /**
              * 皮肤美容
              */
             case 'Skinbeauty':
                 return (
-                    <Skinbeauty nav={navigator} params={route}/>
+                    <Skinbeauty nav={navigator} route={route}/>
                 );
             /**
              * 手艺人列表
              */
             case 'Technician':
                 return (
-                    <Technician nav={navigator} params={route}/>
+                    <Technician nav={navigator} route={route}/>
                 );
             /**
              * 丽人
              */
             case 'Beautifulwoman':
                 return (
-                    <Beautifulwoman nav={navigator} params={route}/>
+                    <Beautifulwoman nav={navigator} route={route}/>
                 );
             /**
              * 推荐商家列表
              */
             case 'RecommendStoreList':
                 return (
-                    <RecommendStoreList nav={navigator} params={route}/>
+                    <RecommendStoreList nav={navigator} route={route}/>
                 );
             /**
              * 特惠圈
              */
             case 'Preferentialcircle':
                 return (
-                    <Preferentialcircle nav={navigator} params={route}/>
+                    <Preferentialcircle nav={navigator} route={route}/>
                 );
             /**
              * 特惠圈
              */
             case 'Requiredpackages':
                 return (
-                    <Requiredpackages nav={navigator} params={route}/>
+                    <Requiredpackages nav={navigator} route={route}/>
                 );
               /**
                * 特惠圈
                */
             case 'Purchaserequired':
                 return (
-                    <Purchaserequired nav={navigator} params={route}/>
+                    <Purchaserequired nav={navigator} route={route}/>
                 );
             /**
              * 特惠圈
              */
             case 'Requiredspecial':
                 return (
-                    <Requiredspecial nav={navigator} params={route}/>
+                    <Requiredspecial nav={navigator} route={route}/>
                 );
             /**
              * 特惠圈
              */
             case 'Special':
                 return (
-                    <Special nav={navigator} params={route}/>
+                    <Special nav={navigator} route={route}/>
                 );
               /**
                * 特惠圈
                */
             case 'Grouppurchase':
                 return (
-                    <Grouppurchase nav={navigator} params={route}/>
+                    <Grouppurchase nav={navigator} route={route}/>
                 );
             /**
              * 特惠圈
              */
             case 'ComboDetail':
                 return (
-                    <ComboDetail nav={navigator} params={route}/>
+                    <ComboDetail nav={navigator} route={route}/>
                 );
             /**
              * 特惠圈
              */
             case 'GroupDetail':
                 return (
-                    <GroupDetail nav={navigator} params={route}/>
+                    <GroupDetail nav={navigator} route={route}/>
                 );
             /**
              * 特惠圈
              */
             case 'Packagelist':
                 return (
-                    <Packagelist nav={navigator} params={route}/>
+                    <Packagelist nav={navigator} route={route}/>
                 );
 
             default:
