@@ -33,8 +33,30 @@ let ApiInterface = {
   /**
    * 首页-光电
    */
-   // 光电门店-列表
-   GetStoreList: '/AppHome/GetStoreList',
+  // 光电门店-列表
+  GetStoreList: '/AppHome/GetStoreList',
+  // 光电门店-详情
+  GetStoreDetail: '/AppStore/GetStoreDetail',
+  // 光电学堂-列表
+  GetMagazineList: '/AppHome/GetMagazineList',
+  // 光电学堂-详情
+  GetMagazineDetail: '/AppMagazine/GetMagazineDetail',
+  // 用户日记-列表
+  GetDiaryList: '/AppHome/GetDiaryList',
+  // 用户日记-详情
+  GetDiaryDetailByDiaryId: '/AppBeautician/GetDiaryDetailByDiaryId',
+  // 光电技师日记-列表
+  GetDiaryList: '/AppHome/GetDiaryList',
+  // 光电技师日记-详情
+  GetDiaryDetailByDiaryId: '/AppBeautician/GetDiaryDetailByDiaryId',
+  // 光电全部产品-列表
+  GetGoodsListByCatergory: '/AppHome/GetGoodsListByCatergory',
+  // 光电门店-列表
+  SendOnlineMsg: '/AppCommon/SendOnlineMsg',
+  // 日记本
+  getDiaryGroupByGoodsId: '/AppDiaryController/getDiaryGroupByGoodsId',
+  // 加入购物车
+  AddShoppingCart: '/AppGoods/AddShoppingCart',
 
   /**
    * 商品&杂志社

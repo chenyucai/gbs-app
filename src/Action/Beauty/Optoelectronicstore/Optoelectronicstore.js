@@ -12,6 +12,10 @@ import {
 import ScreenUtils from '../../../Utils/ScreenUtils/ScreenUtils';
 import BaseNavigationBar from '../../../BaseView/BaseNavigationBar/BaseNavigationBar';
 import StoreItemComponent from '../../../BaseView/StoreListItem/StoreItem';
+/**
+ * 接口
+ */
+import Model from '../Model/Model';
 
 export default class OptoelectronicstoreComponent extends Component {
   constructor(props) {
@@ -19,6 +23,20 @@ export default class OptoelectronicstoreComponent extends Component {
     this.state = {
 
     };
+  }
+
+  componentDidMount(){
+    this.GetStoreList();
+  }
+
+  GetStoreList() {
+    var params = {
+      userId: '',
+      Type: 1
+    };
+    Model.GetStoreList(params,(res)=>{
+      console.log(res);
+    });
   }
 
   _goStoreDetail() {

@@ -10,6 +10,10 @@ import {
 
 import BaseNavigationBar from '../../../BaseView/BaseNavigationBar/BaseNavigationBar';
 import PhotoelectricschoollistPhotoComponent from './components/PhotoelectricschoollistPhoto'
+/**
+ * 接口
+ */
+import Model from '../Model/Model';
 
 export default class PhotoelectricschoollistComponent extends Component {
   constructor(props) {
@@ -17,6 +21,20 @@ export default class PhotoelectricschoollistComponent extends Component {
     this.state = {
 
     };
+  }
+
+  componentDidMount(){
+    this.GetMagazineList();
+  }
+
+  GetMagazineList() {
+    var params = {
+      userId: '',
+      Type: 2
+    };
+    Model.GetMagazineList(params,(res)=>{
+      console.log(res);
+    });
   }
 
   _goPhotoelectricschooldetail(title) {
