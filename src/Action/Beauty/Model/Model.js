@@ -38,6 +38,15 @@ let Model = {
     var _err = error || null;
     FetchUtil.fetchGetJson(ApiConst.Versions().BaseUrl + ApiInterface.GetMagazineDetail, params, response, _err);
   },
-
+  /**
+   * 用户日记-列表
+   */
+  GetDiaryList(pa, response, error){
+    var params = {
+      ...pa
+    };
+    var _err = error || null;
+    FetchUtil.fetchGetJson(ApiConst.Versions().BaseUrl + ApiInterface.GetDiaryList, params, response, _err);
+  },
 };
 export default Model;
