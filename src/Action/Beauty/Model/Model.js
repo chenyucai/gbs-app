@@ -28,7 +28,16 @@ let Model = {
     var _err = error || null;
     FetchUtil.fetchGetJson(ApiConst.Versions().BaseUrl + ApiInterface.GetMagazineList, params, response, _err);
   },
-
+  /**
+   * 门店详情
+   */
+  GetMagazineList(pa, response, error){
+    var params = {
+      ...pa
+    };
+    var _err = error || null;
+    FetchUtil.fetchGetJson(ApiConst.Versions().BaseUrl + ApiInterface.GetMagazineList, params, response, _err);
+  },
 
 };
 export default Model;

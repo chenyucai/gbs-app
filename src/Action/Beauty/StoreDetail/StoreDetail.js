@@ -32,6 +32,10 @@ export default class StoreDetailComponent extends Component {
     console.log(this.props.route.params.id);
   }
 
+  getDetail() {
+    
+  }
+
   _goMesaage(){
     var { nav } = this.props;
     if (nav) {
