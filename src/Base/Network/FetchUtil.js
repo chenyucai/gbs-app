@@ -1,7 +1,7 @@
 /**
  * Created by leung on 2016/9/27.
  */
-import MyDialog from '../../BaseView/Dialog/MyDialog';
+// import MyDialog from '../../BaseView/Dialog/MyDialog';
 import BaseError from './BaseError';
 import BaseCallback from './BaseCallback';
 import {Platform, ToastAndroid} from 'react-native';
@@ -88,27 +88,30 @@ let FetchUtil = {
 	 * 参数 - URL上
 	 * 返回 - Json
 	 */
-	fetchGetJson(url, callback, err) {
-		fetch(
-			url,
-			{
-				method: 'GET',
-				headers: {
-					'Accept': 'application/json',
-				},
-			}
-		).then((response) => {
-				if (response.ok)
-					return response.json();
-				else
-					err("error");
-			}
-		).then((responseJson) => {
-			callback(responseJson);
-		}).catch((error) => {
-			err(error);
-		}).done();
-	},
+	 fetchGetJson(url, params, callback, err) {
+		console.log("----fecth url---" + url + '?' + this.toQueryString(params));
+ 		fetch(
+ 			url + '?' + this.toQueryString(params),
+ 			{
+ 				method: 'get',
+ 				headers: {
+ 				// 	'Accept': 'application/json'
+ 				}
+ 			}
+ 		).then((response) => {
+       return response;
+     }).then((response) => {
+ 				if (response.ok)
+ 					return response.json();
+ 				else
+           err && err(response);
+ 			}
+ 		).then((responseJson) => {
+ 			callback(responseJson);
+ 		}).catch((error) => {
+       console.log('request failed ---- ' + error);
+     });
+ 	},
 	/**
 	 * POST
 	 * 参数 - FormData
@@ -186,9 +189,11 @@ let FetchUtil = {
 					BaseError.errorByNetwork();
 				}
 			}
-            console.log("----fecth response---" + JSON.stringify(response));
+            // console.log("----fecth response---" + JSON.stringify(response));
 		}).then((responseJson) => {
-            console.log("----fecth response---" + JSON.stringify(responseJson));
+            // console.log("----fecth response---" + JSON.stringify(responseJson));
+            console.log("----fecth response---");
+						console.log(responseJson);
 			if (responseJson != null){
 				callback(responseJson);
 			}else{
