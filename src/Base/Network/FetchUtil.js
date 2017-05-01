@@ -82,10 +82,11 @@ const FetchUtil = {
  	 * 返回 - Json
  	 */
  	fetchGetJson(url, params, callback, err) {
-     this.beforeSend();
-     var timer = setTimeout(() => {
-       this.timeout();
-     }, TIME_OUT * 1000);
+    this.beforeSend();
+    var timer = setTimeout(() => {
+      this.timeout();
+    }, TIME_OUT * 1000);
+    console.log('request url ---- ' + url + '?' + this.toQueryString(params));
  		fetch(
  			url + '?' + this.toQueryString(params),
  			{
@@ -102,9 +103,12 @@ const FetchUtil = {
  				if (response.ok)
  					return response.json();
  				else
+          console.log('------- failure -------');
           err && err(response);
  			}
  		).then((responseJson) => {
+      console.log('------- success -------');
+      console.log(responseJson);
  			callback(responseJson);
  		}).catch((error) => {
        console.log('request failed ---- ' + error);
@@ -117,10 +121,12 @@ const FetchUtil = {
  	 * 返回 - Json
  	 */
  	fetchFormPostJson(url, params, callback, err) {
-     this.beforeSend();
-     var timer = setTimeout(() => {
-       this.timeout();
-     }, TIME_OUT * 1000);
+    this.beforeSend();
+    var timer = setTimeout(() => {
+      this.timeout();
+    }, TIME_OUT * 1000);
+    console.log('request url ---- ' + url);
+    console.log('request url ---- ' + JSON.stringify(params));
  		fetch(
        url,
        {
@@ -138,9 +144,12 @@ const FetchUtil = {
  				if (response.ok)
  					return response.json();
  				else
-           err && err(response);
+          console.log('------- failure -------');
+          err && err(response);
  			}
  		).then((responseJson) => {
+      console.log('------- success -------');
+      console.log(responseJson);
  			callback(responseJson);
  		}).catch((error) => {
        console.log('request failed ---- ' + error);
@@ -153,10 +162,12 @@ const FetchUtil = {
  	 * 返回 - Json
  	 */
  	fetchJsonPostJson(url, params, callback, err) {
-     this.beforeSend();
-     var timer = setTimeout(() => {
-       this.timeout();
-     }, TIME_OUT * 1000);
+    this.beforeSend();
+    var timer = setTimeout(() => {
+      this.timeout();
+    }, TIME_OUT * 1000);
+    console.log('request url ---- ' + url);
+    console.log('request url ---- ' + JSON.stringify(params));
  		fetch(
        url,
        {
@@ -174,9 +185,12 @@ const FetchUtil = {
  				if (response.ok)
  					return response.json();
  				else
-           err && err(response);
+          console.log('------- failure -------');
+          err && err(response);
  			}
  		).then((responseJson) => {
+      console.log('------- success -------');
+      console.log(responseJson);
  			callback(responseJson);
  		}).catch((error) => {
        console.log('request failed ---- ' + error);

@@ -27,6 +27,9 @@ import ScreenUtils from '../../Utils/ScreenUtils/ScreenUtils';
  */
 import Model from './Model/Model';
 
+const CITYID = '';
+const USERID = '';
+
 export default class HomeComponent extends Component {
   constructor(props) {
     super(props);
@@ -42,11 +45,11 @@ export default class HomeComponent extends Component {
 
   GetHomeCategoryList() {
     var params = {
-      CityId: '',
-      UserId: ''
+      CityId: CITYID,
+      UserId: USERID
     };
     Model.GetHomeCategoryList(params,(res)=>{
-      console.log(res);
+      
     });
   }
 
