@@ -11,16 +11,38 @@ import ScreenUtils from '../../../Utils/ScreenUtils/ScreenUtils';
 import BaseNavigationBar from '../../../BaseView/BaseNavigationBar/BaseNavigationBar';
 
 // import TopNavWithActionsComponent from '../common/TopNavWithActions'
+/**
+ * 接口
+ */
+import Model from '../Model/Model';
+
+const USERID = '';
 
 export default class PhotoelectricschooldetailComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      MagazineDetail: []
     };
   }
 
+  componentDidMount(){
+    this.GetMagazineDetail();
+  }
+
+  GetMagazineDetail() {
+    console.log(this.props.params.params.id);
+    var params = {
+      id: this.props.params.params.id,
+      userId: USERID,
+    };
+    Model.GetMagazineDetail(params,(res)=>{
+      this.setState({MagazineDetail:res})
+    });
+  }
+
   render () {
+    var data = this.state.MagazineDetail;
     return (
       <View style={styles.wrapper}>
         <BaseNavigationBar
@@ -36,32 +58,32 @@ export default class PhotoelectricschooldetailComponent extends Component {
         <ScrollView>
           <View style={styles.header}>
             <View style={styles.header_title}>
-              <Text style={styles.header_title_text}>秋季卸妆方法不对，皮肤老十岁？</Text>
+              <Text style={styles.header_title_text}>{data.Title}</Text>
             </View>
             <View style={styles.header_icon_box}>
               <Image style={styles.header_icon} source={require('../assets/icon_see2.png')}/>
-              <Text style={{marginLeft: 6}}>999+</Text>
+              <Text style={{marginLeft: 6}}>{data.Click}</Text>
               <Image style={[styles.header_icon,{marginLeft: 16}]} source={require('../assets/icon_Fabulous2.png')}/>
-              <Text style={{marginLeft: 6}}>213</Text>
+              <Text style={{marginLeft: 6}}>{data.Zan}</Text>
             </View>
             <View style={styles.header_timesource}>
-              <Text style={{fontSize: 10,color: '#656565'}}>发布时间：2016年9月20</Text>
+              <Text style={{fontSize: 10,color: '#656565'}}>发布时间：{data.CreatorTime}</Text>
               <Text style={{fontSize: 10,marginLeft: 10,color: '#656565'}}>来源：美容护肤实验室</Text>
             </View>
           </View>
           <View style={styles.content}>
-            <Image style={styles.content_headerimg} source={require('../../../../img/WX20170329-101844.png')}/>
+            <Image style={styles.content_headerimg} source={{uri: data.Image}}/>
             <Text style={styles.content_text}>
-              如果说不会化妆的女生是折翼的天使，那么，不会卸妆的女生肯定就是脸先着地的天使。虽然很多女生都会陷入“护肤——化妆——卸妆”的恶性循环，但是，看别人的妆容晶莹剔透，自己的妆容却惨不忍睹？别人卸了妆皮肤很紧致，自己卸了妆立马老十岁？
+              {data.Content}
             </Text>
-            <Image style={styles.content_headerimg} source={require('../../../../img/WX20170329-101844.png')}/>
+            {/* <Image style={styles.content_headerimg} source={require('../../../../img/WX20170329-101844.png')}/>
             <Text style={styles.content_text}>
               众所周知，再好的化妆品也不能在我们的肌肤上停留过久，如果卸妆工作没有做好，护肤工作就白费，画上去的妆容甚至导致你开始怀疑人生...其实，是你的方法没有get对。
             </Text>
             <View style={styles.content_footerimg_box}>
               <Image style={styles.content_footerimg} source={require('../../../../img/WX20170329-103150.png')}/>
               <Image style={styles.content_footerimg} source={require('../../../../img/WX20170329-103150.png')}/>
-            </View>
+            </View> */}
             <View style={styles.content_footer}>
               <View style={styles.content_footer_header}>
                 <View style={{width: 15,height: 15,backgroundColor: '#363334'}}></View>

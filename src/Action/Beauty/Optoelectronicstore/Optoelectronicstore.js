@@ -17,6 +17,8 @@ import StoreItemComponent from '../../../BaseView/StoreListItem/StoreItem';
  */
 import Model from '../Model/Model';
 
+const USERID = '';
+
 export default class OptoelectronicstoreComponent extends Component {
   constructor(props) {
     super(props);
@@ -31,7 +33,7 @@ export default class OptoelectronicstoreComponent extends Component {
 
   GetStoreList() {
     var params = {
-      userId: '',
+      userId: USERID,
       Type: 1
     };
     Model.GetStoreList(params,(res)=>{
