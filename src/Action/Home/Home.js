@@ -72,7 +72,9 @@ export default class HomeComponent extends Component {
       UserId: USERID
     };
     Model.GetHomeDiscountedGoodsList(params,(res)=>{
-
+      this.setState({
+        HomeDiscountedGoodsList: res.DiscountedGoodsList
+      })
     });
   }
   /**
@@ -132,11 +134,14 @@ export default class HomeComponent extends Component {
     });
   }
 
-  _goProductDetail(){
+  _goProductDetail(goods){
     const { nav } = this.props;
     if (nav) {
       nav.push({
-        id: 'ProductDetail'
+        id: 'ProductDetail',
+        params: {
+          id: goods.Id
+        }
       });
     }
   }
@@ -172,17 +177,18 @@ export default class HomeComponent extends Component {
 
   renderSale() {
     let saleItems = [];
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < this.state.HomeDiscountedGoodsList.length; i++) {
+      var obj = this.state.HomeDiscountedGoodsList[i];
       saleItems.push(
-        <TouchableOpacity style={styles.sale_item} key={i} onPress={this._goProductDetail.bind(this)}>
+        <TouchableOpacity style={styles.sale_item} key={i} onPress={this._goProductDetail.bind(this, obj)}>
           <View style={styles.sale_img}>
-            <Image style={{width:160,height:160,resizeMode:Image.resizeMode.cover}} source={require('./assets/40D00A1F-CAC8-47DB-BCB9-D17B59098F1A.png')}/>
+            <Image style={{width:160,height:160,resizeMode:Image.resizeMode.cover}} source={{uri: obj.ImgPath}}/>
           </View>
           <View style={styles.sale_content}>
-            <Text style={styles.sale_title}>铂翡紧颜滋润AA面霜</Text>
+            <Text style={styles.sale_title}>{obj.Title}</Text>
             <View style={styles.sale_price}>
-              <Text style={styles.sale_price_now}>￥1,088.00</Text>
-              <Text style={styles.sale_price_old}>¥1599.00</Text>
+              <Text style={styles.sale_price_now}>￥{obj.SellPrice}</Text>
+              <Text style={styles.sale_price_old}>¥{obj.MarketPrice}</Text>
             </View>
           </View>
         </TouchableOpacity>
