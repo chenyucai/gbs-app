@@ -22,13 +22,36 @@ import ProductItemComponent from '../../BaseView/ProductListItem/ProductItem';
 // import SpecialColumnComponent from './components/SpecialColumn';
 
 import ScreenUtils from '../../Utils/ScreenUtils/ScreenUtils';
+/**
+ * 接口
+ */
+import Model from './Model/Model';
 
 export default class HomeComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      show: true
+      show: true,
+      CategoryList: []
     };
+  }
+
+  componentDidMount(){
+    this.GetHomeCategoryList();
+  }
+
+  GetHomeCategoryList() {
+    var params = {
+      CityId: '',
+      UserId: ''
+    };
+    Model.GetHomeCategoryList(params,(res)=>{
+        this.setState({
+          CategoryList: res
+        })
+    },(err)=>{
+
+    });
   }
 
   _goProductDetail(){

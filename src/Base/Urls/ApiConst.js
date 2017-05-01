@@ -15,14 +15,14 @@ let ApiConst = {
 		/**
 		 * 网址都写在这里,如下
 		 */
-        BaseUrl: "http://english.xuexicheng.cn",
-		ImageBaseUrl:"http://english.xuexicheng.cn/jlJavaPlat/pub/admin/upload/"
+    BaseUrl: "http://www.missnefer.com:9000",
+		ImageBaseUrl:""
 	},
 	TEST: {
 		/**
 		 * 网址都写在这里,如下
 		 */
-        BaseUrl: "http://channeltest.sunaw.com:35",
+    BaseUrl: "",
 	},
 	PRODUCT: {
 		/**
