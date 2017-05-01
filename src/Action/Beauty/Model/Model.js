@@ -19,6 +19,26 @@ let Model = {
     FetchUtil.fetchGetJson(ApiConst.Versions().BaseUrl + ApiInterface.GetStoreList, params, response, _err);
   },
   /**
+   * 门店详情
+   */
+  GetStoreDetail(pa, response, error){
+    var params = {
+      ...pa
+    };
+    var _err = error || null;
+    FetchUtil.fetchGetJson(ApiConst.Versions().BaseUrl + ApiInterface.GetStoreDetail, params, response, _err);
+  },
+  /**
+   * 产品详情
+   */
+  GetGoodsDetail(pa, response, error){
+    var params = {
+      ...pa
+    };
+    var _err = error || null;
+    FetchUtil.fetchGetJson(ApiConst.Versions().BaseUrl + ApiInterface.GetGoodsDetail, params, response, _err);
+  },
+  /**
    * 光电学堂-列表
    */
   GetMagazineList(pa, response, error){

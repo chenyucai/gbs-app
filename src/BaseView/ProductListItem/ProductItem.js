@@ -25,7 +25,10 @@ export default class ProductItemComponent extends Component {
     var { nav } = this.props;
     if (nav) {
       nav.push({
-        id: 'ProductDetail'
+        id: 'ProductDetail',
+        params: {
+          id: this.props.Id
+        }
       })
     }
   }

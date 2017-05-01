@@ -21,12 +21,35 @@ import ProductItemComponent from '../../../BaseView/ProductListItem/ProductItem'
 // import ConfirmOrderComponent from './ConfirmOrder';
 import CommentItemComponent from '../../../BaseView/CommentListItem/CommentItem';
 
+import Model from '../Model/Model';
+
+const USERID = '';
+
 export default class ProductDetailComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      AssessmentsList: [],
+      CollectionUserList: [],
+      ImageList: [],
+      StoreList: []
     };
+  }
+
+  componentDidMount() {
+    this.GetGoodsDetail();
+  }
+
+  GetGoodsDetail() {
+    let params = {
+      userId: USERID,
+      Id: this.props.route.params.id
+    };
+    Model.GetGoodsDetail(params, (res) => {
+      this.setState({
+        ...res
+      })
+    });
   }
 
   _goMesaage(){
@@ -74,23 +97,23 @@ export default class ProductDetailComponent extends Component {
             }}/>
 
         <ScrollView>
-          <Image resizeMode="cover" source={require('../../../../img/25C07421-D400-414E-A865-EF013EC8E9C8.png')} style={{
+          <Image resizeMode="cover" source={{uri: this.state.ImageList[0]}} style={{
             width: ScreenUtils.scaleSize(375),
             height: ScreenUtils.scaleSize(287)
           }}/>
           <View style={styles.header}>
             <View style={styles.header_title_wrapper}>
-              <Text style={styles.header_title}>【 紧肤系列 】</Text>
+              <Text style={styles.header_title}>【 {this.state.CategoryName} 】</Text>
               <Text style={styles.header_title_level}>6个疗程</Text>
             </View>
 
             <Text style={styles.header_intro} numberOfLines={2}>
-              润百颜水光针2ml＋伊肤泉无菌修复美颜＋润百颜水光针2ml＋伊肤泉无菌修复美颜＋保加利亚玫瑰精油36ml+润百颜水光针2ml
+              {this.state.Description}
             </Text>
 
             <View style={styles.header_price}>
-              <Text style={styles.header_price_now}>¥ 699.00</Text>
-              <Text style={styles.header_price_old}>¥ 1599.00</Text>
+              <Text style={styles.header_price_now}>¥ {this.state.SellPrice}</Text>
+              <Text style={styles.header_price_old}>¥ {this.state.MarketPrice}</Text>
             </View>
 
             <View style={styles.header_items}>

@@ -20,20 +20,35 @@ import StarComponent from '../../../BaseView/Star/Star';
 import BlockTitleComponent from '../../../BaseView/BlockTitle/BlockTitle';
 import ProductItemComponent from '../../../BaseView/ProductListItem/ProductItem';
 
+import Model from '../Model/Model';
+
+const USERID = '';
+
 export default class StoreDetailComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      Store: {},
+      GoodsCategory: [],
+      Evaluation: [],
+      DiscountedGoods: []
     };
   }
 
   componentDidMount() {
-    console.log(this.props.route.params.id);
+    this.getDetail();
   }
 
   getDetail() {
-    
+    let params = {
+      userId: USERID,
+      storeId: this.props.route.params.id
+    };
+    Model.GetStoreDetail(params, (res) => {
+      this.setState({
+        ...res
+      })
+    });
   }
 
   _goMesaage(){
@@ -43,6 +58,56 @@ export default class StoreDetailComponent extends Component {
         id:"LeaveMessage"
       })
     }
+  }
+
+  renderCtg() {
+    let items = [];
+    for (var i = 0; i < this.state.GoodsCategory.length; i++) {
+      let obj = this.state.GoodsCategory[i];
+      console.log(obj);
+      items.push(
+        <View tabLabel={obj.FullName} key={i}>
+          <View style={styles.ctg_body}>
+            {/* <View style={styles.ctg_body_item}>
+              <Text style={styles.ctg_body_item_text}>全部</Text>
+            </View> */}
+            {this.renderSubCtg(obj.SubGoodsCategory)}
+          </View>
+        </View>
+      )
+    }
+    return items;
+  }
+
+  renderSubCtg(subCtg) {
+    let items = [];
+    for (var i = 0; i < subCtg.length; i++) {
+      let obj = subCtg[i];
+      items.push(
+        <View style={styles.ctg_body_item} key={'sub_' + i}>
+          <Text style={styles.ctg_body_item_text}>{obj.FullName}</Text>
+        </View>
+      )
+    }
+    return items;
+  }
+
+  renderGoods() {
+    let items = [];
+    for (var i = 0; i < this.state.DiscountedGoods.length; i++) {
+      let obj = this.state.DiscountedGoods[i];
+      let ProductItemInfo = {
+        width: ScreenUtils.scaleSize(170),
+        height:ScreenUtils.scaleSize(150),
+        ...obj
+      }
+      items.push(
+        <View style={styles.hot_item} key={i}>
+          <ProductItemComponent {...ProductItemInfo} nav={this.props.nav}/>
+        </View>
+      )
+    }
+    return items;
   }
 
   render () {
@@ -70,14 +135,14 @@ export default class StoreDetailComponent extends Component {
           }}/>
           <View style={styles.header}>
             <View style={styles.header_title_wrapper}>
-              <Text style={styles.header_title}>MISS  月星环球港店</Text>
+              <Text style={styles.header_title}>{this.state.Store.Name}</Text>
             </View>
 
             <View style={styles.header_star}>
               <StarComponent score="4"/>
             </View>
             <Text style={styles.header_intro} numberOfLines={3}>
-              上海月星环球港,一座欧式的顶级商业综合体购物商场,其建筑灯光工程融合了弧形玻璃穹顶点缀着整体的特色,采自然之光,赋予了建筑生命、阳光和活力。在这繁华的上海月星环球港,一座欧式购
+              {this.state.Store.Description}
             </Text>
             <View style={styles.header_items}>
               <TouchableOpacity style={styles.header_item} onPress={this._goMesaage.bind(this)}>
@@ -135,7 +200,8 @@ export default class StoreDetailComponent extends Component {
             tabBarInactiveTextColor='#B8B8B8'
             tabBarTextStyle={{fontSize: 12}}
           >
-            <View tabLabel='全部'>
+            {this.renderCtg()}
+            {/* <View tabLabel='全部'>
               <View style={styles.ctg_body}>
                 <View style={styles.ctg_body_item}>
                   <Text style={styles.ctg_body_item_text}>全部</Text>
@@ -186,7 +252,7 @@ export default class StoreDetailComponent extends Component {
                   <Text style={styles.ctg_body_item_text}>嫩肤345系列</Text>
                 </View>
               </View>
-            </View>
+            </View> */}
           </ScrollableTabView>
 
 
@@ -220,7 +286,7 @@ export default class StoreDetailComponent extends Component {
             <View style={styles.store_content}>
               <View style={styles.store_item}>
                 <Image source={require('../assets/icon_Orders.png')}/>
-                <Text style={styles.store_count}>2260</Text>
+                <Text style={styles.store_count}>{this.state.Store.Reservation}</Text>
                 <Text style={styles.store_label}>接单数</Text>
               </View>
               <View style={styles.store_item}>
@@ -238,7 +304,7 @@ export default class StoreDetailComponent extends Component {
 
           {/* 地图 */}
           <View style={styles.map_wrapper}>
-            <Text style={styles.map_address}>上海普陀区浦东金沙江路699号月星环球港7号楼5层</Text>
+            <Text style={styles.map_address}>{this.state.Store.Address}</Text>
             <View style={{width:11, height:1, backgroundColor:'#363334',alignSelf:'center',marginBottom:20}}></View>
             <View style={styles.map_content}>
               {/* <Image source={require('../../img/784646AC-7E20-4685-8BD4-FFAC5D78303D.png')} style={{
@@ -266,18 +332,10 @@ export default class StoreDetailComponent extends Component {
               <BlockTitleComponent titleEn="All the big Tesoo" titleZh="全面大热购"/>
             </View>
             <View style={styles.hot_body}>
-              <View style={styles.hot_item}>
+              {/* <View style={styles.hot_item}>
                 <ProductItemComponent {...ProductItemInfo} nav={this.props.nav}/>
-              </View>
-              <View style={styles.hot_item}>
-                <ProductItemComponent {...ProductItemInfo} nav={this.props.nav}/>
-              </View>
-              <View style={styles.hot_item}>
-                <ProductItemComponent {...ProductItemInfo} nav={this.props.nav}/>
-              </View>
-              <View style={styles.hot_item}>
-                <ProductItemComponent {...ProductItemInfo} nav={this.props.nav}/>
-              </View>
+              </View> */}
+              {this.renderGoods()}
             </View>
           </View>
         </ScrollView>
