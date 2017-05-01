@@ -20,17 +20,17 @@ export default class PhotoelectricschoollistPhotoComponent extends Component {
     return (
       <View style={styles.wrapper}>
         <View style={styles.list_img_box}>
-          <Image style={styles.list_img} source={require('../../assets/WX20170328-110633.png')}/>
+          <Image style={styles.list_img} source={{uri: this.props.Img}}/>
         </View>
         <View style={styles.list_text_box}>
           <Text style={styles.list_text} numberOfLines={2}>
-            冬季恋歌~韩式温化冻疮法金刚山地神奇玉之汤
+            {this.props.Title}
           </Text>
           <View style={styles.list_text_box_footer_item}>
             <Image source={require('../../assets/icon_time.png')}/>
             <Text style={{marginLeft: 6}}>2017.3.28</Text>
             <Image style={{marginLeft: 30}} source={require('../../assets/icon_see2.png')}/>
-            <Text style={{marginLeft: 6}}>999+</Text>
+            <Text style={{marginLeft: 6}}>{this.props.Click}</Text>
           </View>
         </View>
       </View>

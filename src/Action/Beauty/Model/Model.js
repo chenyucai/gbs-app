@@ -29,14 +29,14 @@ let Model = {
     FetchUtil.fetchGetJson(ApiConst.Versions().BaseUrl + ApiInterface.GetMagazineList, params, response, _err);
   },
   /**
-   * 门店详情
+   * 光电学堂-详情
    */
-  GetMagazineList(pa, response, error){
+  GetMagazineDetail(pa, response, error){
     var params = {
       ...pa
     };
     var _err = error || null;
-    FetchUtil.fetchGetJson(ApiConst.Versions().BaseUrl + ApiInterface.GetMagazineList, params, response, _err);
+    FetchUtil.fetchGetJson(ApiConst.Versions().BaseUrl + ApiInterface.GetMagazineDetail, params, response, _err);
   },
 
 };
