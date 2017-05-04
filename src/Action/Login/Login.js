@@ -39,6 +39,15 @@ export default class LoginComponent extends Component {
     }
   }
 
+  _resetPassword(){
+    const { nav } = this.props;
+    if (nav) {
+      nav.push({
+        id: 'ResetPassword'
+      })
+    }
+  }
+
   render () {
     return (
       <View style={styles.wrapper}>
@@ -85,7 +94,7 @@ export default class LoginComponent extends Component {
                 <Text style={styles.login_operation_reg}>立即注册</Text>
               </TouchableHighlight>
 
-              <Text style={styles.login_operation_forget}>忘记密码？</Text>
+              <Text style={styles.login_operation_forget} onPress={this._resetPassword.bind(this)}>忘记密码？</Text>
             </View>
             {/* <View style={styles.login_footer}>
               <TouchableOpacity style={styles.login_footer_btn}>

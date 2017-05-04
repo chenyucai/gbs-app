@@ -26,7 +26,7 @@ export default class RegComponent extends Component {
       <View style={styles.wrapper}>
         <BaseNavigationBar
             data={{
-                title: "注册",
+                title: "忘记密码",
                 leftbtn: {
                     type: BaseNavigationBar.TYPE._IMG,
                     onClick: ()=> {
@@ -36,19 +36,6 @@ export default class RegComponent extends Component {
             }}/>
         <ScrollView>
           <View style={styles.reg_wrapper}>
-            <View style={styles.reg_item}>
-              <View style={styles.reg_item_icon_wrapper}>
-                <Image source={require('./image/icon_name.png')} style={styles.reg_item_icon}/>
-              </View>
-              <View style={styles.reg_item_input_wrapper}>
-                <TextInput
-                  style={styles.reg_item_input}
-                  keyboardType="numeric"
-                  underlineColorAndroid="transparent"
-                  placeholder="输入名称，开启美丽之旅"
-                />
-              </View>
-            </View>
             <View style={styles.reg_item}>
               <View style={styles.reg_item_icon_wrapper}>
                 <Image source={require('./image/icon_iPhone.png')} style={styles.reg_item_icon}/>
@@ -87,47 +74,20 @@ export default class RegComponent extends Component {
                   style={styles.reg_item_input}
                   keyboardType="numeric"
                   underlineColorAndroid="transparent"
-                  placeholder="请输入密码"
+                  placeholder="请重新设置密码"
                 />
               </View>
               <TouchableOpacity style={styles.display_pwd}>
                 <Image source={require('./image/icon_UNdisplay.png')}/>
               </TouchableOpacity>
             </View>
-            <View style={{marginTop: 15,width: ScreenUtils.scaleSize(255),alignSelf: 'center',marginLeft: 10}}>
-              <Text style={{color: '#B8B8B8',fontSize: 12}}>我已阅读，并同意<Text style={{color: '#363334',fontSize: 12}}>《用户注册协议》</Text></Text>
-            </View>
-            {/* <View style={styles.reg_footer}>
-              <TouchableOpacity style={styles.reg_footer_btn}>
-                <Text style={styles.reg_footer_btn_text}>确定</Text>
-              </TouchableOpacity>
-            </View> */}
             <View style={styles.reg_footer}>
-              <Image source={require('./image/btn_dis_sign.png')}/>
+              <Image source={require('./image/btn_dis_Determine.png')}/>
             </View>
           </View>
+
           <View style={styles.sp_border}></View>
 
-          <View style={styles.source_wrapper}>
-            <View style={styles.source_left}><Image source={require('./image/line_left.png')}/></View>
-            <View style={styles.source_title}><Text style={{color:'#fff',fontSize:12}}>注册来源</Text></View>
-            <View style={styles.source_right}><Image source={require('./image/line_right.png')}/></View>
-          </View>
-
-          <ScrollView style={styles.s_wrapper} horizontal>
-            <View style={styles.s_item}><Text style={styles.s_item_text}>朋友</Text></View>
-            <View style={styles.s_item}><Text style={styles.s_item_text}>门店</Text></View>
-            <View style={styles.s_item}><Text style={styles.s_item_text}>网络</Text></View>
-            <View style={styles.s_item}><Text style={styles.s_item_text}>活动</Text></View>
-            <View style={styles.s_item}><Text style={styles.s_item_text}>其他</Text></View>
-          </ScrollView>
-
-          <View style={styles.invite_wrapper}>
-            <TextInput style={styles.invite_input}
-              placeholder="点击输入邀请码"
-              placeholderTextColor="#fff"
-            />
-          </View>
         </ScrollView>
       </View>
     )
