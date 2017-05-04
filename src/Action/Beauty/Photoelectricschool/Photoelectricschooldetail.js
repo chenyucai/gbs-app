@@ -31,9 +31,8 @@ export default class PhotoelectricschooldetailComponent extends Component {
   }
 
   GetMagazineDetail() {
-    console.log(this.props.params.params.id);
     var params = {
-      id: this.props.params.params.id,
+      id: this.props.route.params.id,
       userId: USERID,
     };
     Model.GetMagazineDetail(params,(res)=>{

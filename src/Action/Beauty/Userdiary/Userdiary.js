@@ -10,6 +10,12 @@ import {
 
 import BaseNavigationBar from '../../../BaseView/BaseNavigationBar/BaseNavigationBar';
 import DiaryItemComponent from '../Diary/DiaryItem'
+/**
+ * 接口
+ */
+import Model from '../Model/Model';
+
+const USERID = '';
 
 export default class UserdiaryComponent extends Component {
   constructor(props) {
@@ -17,6 +23,20 @@ export default class UserdiaryComponent extends Component {
     this.state = {
 
     };
+  }
+
+  componentDidMount(){
+    this.GetDiaryList();
+  }
+
+  GetDiaryList() {
+    var params = {
+      userId: USERID,
+      Type: 1
+    };
+    Model.GetDiaryList(params,(res)=>{
+      // this.setState({SchoolList:res.SchoolList})
+    });
   }
 
   render () {

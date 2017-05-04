@@ -46,7 +46,7 @@ let ApiInterface = {
   // 用户日记-详情
   GetDiaryDetailByDiaryId: '/AppBeautician/GetDiaryDetailByDiaryId',
   // 光电技师日记-列表
-  GetDiaryList: '/AppHome/GetDiaryList',
+  // GetDiaryList: '/AppHome/GetDiaryList',
   // 光电技师日记-详情
   GetDiaryDetailByDiaryId: '/AppBeautician/GetDiaryDetailByDiaryId',
   // 光电全部产品-列表
@@ -160,13 +160,13 @@ let ApiInterface = {
   //我的日记本-关联产品列表
   GetDiaryGroupGoodsList: '/AppPersonal/GetDiaryGroupGoodsList',
   //日记列表
-  GetDiaryList: '/AppPersonal/GetDiaryList',
+  // GetDiaryList: '/AppPersonal/GetDiaryList',
   //日记详情
   GetDiaryDetail: '/AppPersonal/GetDiaryDetail',
   //日记编辑
   SaveDiary: '/AppPersonal/SaveDiary',
   //我的话题列表
-  GetDiaryList: '/AppPersonal/GetDiaryList',
+  // GetDiaryList: '/AppPersonal/GetDiaryList',
   //我的评论
   GetCollectionList: '/AppPersonal/GetCollectionList',
   //我的关注
