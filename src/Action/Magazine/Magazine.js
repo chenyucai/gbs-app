@@ -13,12 +13,12 @@ import {
 } from 'react-native'
 
 import ScreenUtils from '../../Utils/ScreenUtils/ScreenUtils';
-import BaseNavigationBar from './../../BaseView/BaseNavigationBar/BaseNavigationBar';
+import BaseNavigationBar from '../../BaseView/BaseNavigationBar/BaseNavigationBar';
 import MagazineItemComponent from './MagazineItem';
 
 export default class MagazineComponent extends Component {
   static defaultProps = {
-    
+
   }
   constructor(props) {
     super(props);

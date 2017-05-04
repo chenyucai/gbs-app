@@ -16,6 +16,18 @@ import {
  */
 import Index from './Action/Index/Index';
 /**
+ * 登录
+ */
+import Login from './Action/Login/Login';
+/**
+ * 注册
+ */
+import Register from './Action/Login/Register';
+/**
+ * 找回密码
+ */
+import ResetPassword from './Action/Login/ResetPassword';
+/**
  * 首页搜索
  */
 import HomeSearch from './Action/Home/HomeSearch';
@@ -269,7 +281,7 @@ export default class App extends Component {
             switch (this.props.data.type) {
                 //默认进入首页
                 default:
-                    return ({id: "Index"});
+                    return ({id: "Login"});
             }
         }
     }
@@ -297,6 +309,27 @@ export default class App extends Component {
             case 'Index':
                 return (
                     <Index nav={navigator} route={route} params={route}/>
+                );
+            /**
+             * 登录
+             */
+            case 'Login':
+                return (
+                    <Login nav={navigator} route={route} params={route}/>
+                );
+            /**
+             * 注册
+             */
+            case 'Register':
+                return (
+                    <Register nav={navigator} route={route} params={route}/>
+                );
+            /**
+             * 找回密码
+             */
+            case 'ResetPassword':
+                return (
+                    <ResetPassword nav={navigator} route={route} params={route}/>
                 );
             /**
              * 首页搜索
