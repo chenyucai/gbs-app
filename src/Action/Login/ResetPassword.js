@@ -12,13 +12,57 @@ import {
 
 import BaseNavigationBar from './../../BaseView/BaseNavigationBar/BaseNavigationBar';
 import ScreenUtils from '../../Utils/ScreenUtils/ScreenUtils';
+import MyModal from './MyModal/MyModal';
 
 export default class RegComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '123'
+        title: '123',
+        secure: true,
+        Mobile : "",
+        password : "",
+        authCode : "",
     };
+  }
+
+  getAuthCode(){
+      if(this.state.Mobile !== ""){
+          let params = {
+              Mobile : this.state.Mobile,
+          };
+
+          MyModal.GetAuthCode(params,(res) => {
+              alert(res.AuthCode);
+              this.setState({
+                  authCode : content,
+              });
+          },(err) => {
+
+          })
+      }else{
+          alert("请输入手机号码！");
+      }
+  }
+
+  resetPassword(){
+    let params = {
+        Mobile : this.state.Mobile,
+        AuthCode : this.state.authCode,
+        Password : this.state.password,
+    }
+    MyModal.ForgetPassword(params,(res) => {
+        if(res.Status == 1){
+            alert(res.Message);
+            this.props.nav.push({
+                id : 'Login',
+            });
+        }else{
+            alert(res.Message);
+        }
+    },(err) => {
+
+    });
   }
 
   render () {
@@ -46,6 +90,7 @@ export default class RegComponent extends Component {
                   keyboardType="numeric"
                   underlineColorAndroid="transparent"
                   placeholder="请输入手机号"
+                  onChangeText = {(text) => {this.setState({Mobile : text})}}
                 />
               </View>
             </View>
@@ -59,9 +104,12 @@ export default class RegComponent extends Component {
                   keyboardType="numeric"
                   underlineColorAndroid="transparent"
                   placeholder="请输入验证码"
+                  onChangeText = {(text) => {this.setState({authCode : text})}}
                 />
               </View>
-              <TouchableOpacity style={styles.get_code}>
+              <TouchableOpacity style={styles.get_code} onPress={() => {
+                  this.getAuthCode();
+              }} >
                 <Text style={styles.get_code_text}>获取验证码</Text>
               </TouchableOpacity>
             </View>
@@ -75,15 +123,23 @@ export default class RegComponent extends Component {
                   keyboardType="numeric"
                   underlineColorAndroid="transparent"
                   placeholder="请重新设置密码"
+                  secureTextEntry={this.state.secure}
+                  onChangeText = {(text) => {this.setState({password : text})}}
                 />
               </View>
-              <TouchableOpacity style={styles.display_pwd}>
-                <Image source={require('./image/icon_UNdisplay.png')}/>
+              <TouchableOpacity style={styles.display_pwd} onPress={() => {
+                this.setState({secure : !this.state.secure});
+              }}>
+                <Image source={this.state.secure ? require('./image/icon_UNdisplay.png') : require('./image/icon_display.png')}/>
               </TouchableOpacity>
             </View>
+
             <View style={styles.reg_footer}>
-              <Image source={require('./image/btn_dis_Determine.png')}/>
+              <TouchableOpacity onPress={() => {this.resetPassword();}}>
+                <Image source={require('./image/btn_dis_Determine.png')}/>
+              </TouchableOpacity>
             </View>
+
           </View>
 
           <View style={styles.sp_border}></View>
@@ -127,6 +183,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   reg_item_input: {
+    height:40,
     marginTop: 3,
     fontSize: 12,
     // flex:1,

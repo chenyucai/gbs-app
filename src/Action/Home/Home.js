@@ -162,10 +162,10 @@ export default class HomeComponent extends Component {
         imageViews.push(
             <Image
               key={i}
-              style={{flex:1}}
               source={{uri: item.ImgUrl}}
               // style={{width:Dimensions.get('window').width, height:Dimensions.get('window').width/1.875}}
               style={{
+                flex:1,
                 width: ScreenUtils.scaleSize(375),
                 height: ScreenUtils.scaleSize(200)
               }}

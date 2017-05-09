@@ -36,6 +36,7 @@ export default class StoreItemComponent extends Component {
 
   // props 需要传入图片的宽度和高度
   render () {
+    const rowData = this.props.rowData;
     return (
       <TouchableOpacity style={[styles.item,{width: this.props.width}]} onPress={this._goDetail.bind(this)}>
         <View style={{
@@ -55,7 +56,7 @@ export default class StoreItemComponent extends Component {
         <View style={styles.item_content}>
           <View style={styles.item_title}>
             <Text style={styles.item_title_text} numberOfLines={1}>
-              <Text style={{fontSize:12}}>STORY  {this.props.Name}</Text>
+              <Text style={{fontSize:12}}>STORY  {}</Text>
             </Text>
           </View>
           <Text style={styles.item_address} numberOfLines={1}>【{this.props.Address}】</Text>
@@ -63,7 +64,7 @@ export default class StoreItemComponent extends Component {
           <View style={styles.item_star}>
             <StarComponent score="4"/>
           </View>
-          <Text style={styles.item_count}>预约数：24585</Text>
+          <Text style={styles.item_count}>预约数：{}</Text>
         </View>
       </TouchableOpacity>
     )

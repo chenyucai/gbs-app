@@ -12,7 +12,7 @@ export default class ProductItemComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      collection: false
+      collection: true
     };
   }
 
@@ -40,8 +40,11 @@ export default class ProductItemComponent extends Component {
     })
   }
 
+
   // props 需要传入图片的宽度和高度
   render () {
+    const rowData = this.props.rowData;
+    //alert(JSON.stringify(rowData));
     return (
       <TouchableOpacity style={[styles.item, {width:this.props.width}]} onPress={this._goDetail.bind(this)}>
         <View style={{

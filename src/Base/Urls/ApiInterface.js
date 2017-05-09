@@ -165,8 +165,10 @@ let ApiInterface = {
   GetDiaryDetail: '/AppPersonal/GetDiaryDetail',
   //日记编辑
   SaveDiary: '/AppPersonal/SaveDiary',
+  //话题编辑
+  EditTopic: '/AppCommon/SaveDiary',
   //我的话题列表
-  // GetDiaryList: '/AppPersonal/GetDiaryList',
+  GetDiaryList: '/AppPersonal/GetDiaryList',
   //我的评论
   GetCollectionList: '/AppPersonal/GetCollectionList',
   //我的关注

@@ -10,7 +10,8 @@ import {
   TouchableOpacity,
   ScrollView,
   Dimensions,
-  ListView
+  ListView,
+  AsyncStorage
 } from 'react-native'
 
 import ScreenUtils from '../../../Utils/ScreenUtils/ScreenUtils';
@@ -20,32 +21,87 @@ import ProductListItem from '../../../BaseView/ProductListItem/ProductItem';
 import StoreListItem from '../../../BaseView/StoreListItem/StoreItem';
 import DiaryListItem from '../../../BaseView/DiaryListItem/DiaryListItem';
 import Grid from './Grid';
+import MyModal from './MyModal/MyModal';
 
 const { width, height } = Dimensions.get('window');
 
 export default class defaultComponent extends Component {
+  ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
   constructor(props) {
     super(props);
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+
     this.state = {
-      dataSource: ds.cloneWithRows([
-        {id:1,name:'12312'},
-        {id:1,name:'12312'},
-        {id:1,name:'12312'},
-        {id:1,name:'12312'},
-        {id:1,name:'12312'},
-      ])
+        userId : "",
+        Category : "",
+        Type : "",
+        dataSource1:this.ds,
+        dataSource2:this.ds,
+        dataSource3:this.ds,
     };
   }
 
+  getCollectionList() {
+      //Category: 1,门店(数据不正确-2017/05/06)
+      let params1 = {
+          userId: this.state.userId,
+          Category: 1,
+          Type: 1,
+      };
+      MyModal.GetMyCollection(params1, (res) => {
+          //alert(JSON.stringify(res));
+          this.setState({
+              dataSource1:this.ds.cloneWithRows(res),
+          });
+      }, (err) => {
+
+      });
+      //Category: 2,产品
+      let params2 = {
+          userId: this.state.userId,
+          Category: 2,
+          Type: 1,
+      };
+      MyModal.GetMyCollection(params2, (res) => {
+         //alert(JSON.stringify(res));
+          this.setState({
+              dataSource2:this.ds.cloneWithRows(res),
+          });
+      }, (err) => {
+
+      });
+      //Category: 3,日记
+      let params3 = {
+          userId: this.state.userId,
+          Category: 3,
+          Type: 1,
+      };
+      MyModal.GetMyCollection(params3, (res) => {
+          alert(JSON.stringify(res));
+          this.setState({
+              dataSource3:this.ds.cloneWithRows(res),
+          });
+      }, (err) => {
+
+      });
+  }
+  componentDidMount(){
+      AsyncStorage.getItem("userId",(err,res) => {
+          if(res){
+              this.setState({
+                  userId : res,
+              });
+          }
+          this.getCollectionList();
+      });
+  }
   renderProductRow(rowData){
     let ProductItemInfo = {
       width: ScreenUtils.scaleSize(170),
       height:ScreenUtils.scaleSize(180)
-    }
+    };
     return (
       <View style={{marginBottom:10}}>
-        <ProductListItem nav={this.props.nav} {...ProductItemInfo}/>
+        <ProductListItem nav={this.props.nav} {...ProductItemInfo} rowData = {rowData}/>
       </View>
     )
   }
@@ -54,10 +110,10 @@ export default class defaultComponent extends Component {
     let ProductItemInfo = {
       width: ScreenUtils.scaleSize(170),
       height:ScreenUtils.scaleSize(180)
-    }
+    };
     return (
       <View style={{marginBottom:10}}>
-        <StoreListItem nav={this.props.nav} {...ProductItemInfo}/>
+        <StoreListItem nav={this.props.nav} {...ProductItemInfo} rowData = {rowData}/>
       </View>
     )
   }
@@ -65,7 +121,7 @@ export default class defaultComponent extends Component {
   renderDiaryRow(rowData){
     return (
       <View style={{marginBottom:10}}>
-        <DiaryListItem nav={this.props.nav}/>
+        <DiaryListItem nav={this.props.nav} rowData = {rowData}/>
       </View>
     )
   }
@@ -95,7 +151,7 @@ export default class defaultComponent extends Component {
         >
           <View tabLabel='单品(12)' style={{flex:1}}>
             <ListView
-              dataSource={this.state.dataSource}
+              dataSource={this.state.dataSource2}
               renderRow={this.renderProductRow.bind(this)}
               style={{flex:1}}
               contentContainerStyle={styles.list}
@@ -104,7 +160,7 @@ export default class defaultComponent extends Component {
 
           <View tabLabel='门店(3)' style={{flex:1}}>
             <ListView
-              dataSource={this.state.dataSource}
+              dataSource={this.state.dataSource1}
               renderRow={this.renderStoreRow.bind(this)}
               style={{flex:1}}
               contentContainerStyle={styles.list}
@@ -113,7 +169,7 @@ export default class defaultComponent extends Component {
 
           <View tabLabel='日记(3)' style={{flex:1}}>
             <ListView
-              dataSource={this.state.dataSource}
+              dataSource={this.state.dataSource3}
               renderRow={this.renderDiaryRow.bind(this)}
               style={{flex:1}}
               contentContainerStyle={styles.list}

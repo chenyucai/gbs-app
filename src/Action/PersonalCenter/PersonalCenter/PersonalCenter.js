@@ -12,17 +12,79 @@ import {
   ScrollView,
   StatusBar
 } from 'react-native'
-
+import ApiConst from '../../../Base/Urls/ApiConst';
 import ScreenUtils from '../../../Utils/ScreenUtils/ScreenUtils';
-
 export default class PersoncenterComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      signcount:"",
+      amount:"",
+      point:"",
+      gender:true,
+      name:"",
+      headicon:"",
+      memberlevel:"",
     };
   }
+componentDidMount() {
+  
+     this.getPersonalCenter();
+  }
+  //获取个人中心首页信息
+getPersonalCenter(){
+     let formData = new FormData();
+        formData.append("UserId", "992a9405-be08-4c74-bbcc-a57cf6df84c3");
+        fetch(ApiConst.Versions().BaseUrl + '/AppPersonal/GetPersonalCenter',
+            {
+                method: 'POST',
+                headers: {},
+                body: formData,
+            }).then((response) => {
+                if (response.ok) {
+                    return response.json();
+                }
+            }).then((json) => {
+              // alert(JSON.stringify(json));
+                this.setState({
+                  signcount:json.SignCount,
+                  amount:json.Amount,
+                  point:json.Point,
+                  gender:json.Gender,
+                  name:json.Name,
+                  headicon:json.HeadIcon,
+                  memberlevel:json.MemberLevel,
+                });
+            }
+            ).catch((error) => {
+                console.error(error);
+            });
 
+}
+  //个人中心首页签到
+signUp(){
+     let formData = new FormData();
+        formData.append("UserId", "992a9405-be08-4c74-bbcc-a57cf6df84c3");
+        fetch(ApiConst.Versions().BaseUrl + '/AppPersonal/SetPersonalSign',
+            {
+                method: 'POST',
+                headers: {},
+                body: formData,
+            }).then((response) => {
+                if (response.ok) {
+                    return response.json();
+                }
+            }).then((json) => {
+               alert(JSON.stringify(json));
+              //   this.setState({
+                 
+              //   });
+            }
+            ).catch((error) => {
+                console.error(error);
+            });
+
+}
   _goOrderstatus() {
     const { nav } = this.props;
     if (nav) {
@@ -40,19 +102,22 @@ export default class PersoncenterComponent extends Component {
                 />
         <View style={styles.header}>
           <Image style={styles.header_img} source={require('./assets/BG.png')}/>
-          <View style={styles.header_signin_box}>
-            <Image style={styles.header_signin} source={require('./assets/btn_n_Sign.png')}/>
-            <Text style={styles.header_signin_text}>签到：<Text>24次</Text></Text>
-          </View>
+          <TouchableOpacity  onPress={this.signUp.bind(this)}>
+               <View style={styles.header_signin_box}>
+                <Image style={styles.header_signin} source={require('./assets/btn_n_Sign.png')}/>
+                <Text style={styles.header_signin_text}>签到：<Text>{this.state.signcount}次</Text></Text>
+              </View>
+          </TouchableOpacity>
+         
           <Image style={styles.header_setup} source={require('./assets/icon_evaluate.png')}/>
           <View style={styles.header_headicon}>
-            <Image style={styles.header_headicon_img} source={require('../../../../img/g.jpg')}/>
+            <Image style={styles.header_headicon_img} source={{url:this.state.headicon}}/>
           </View>
-          <Text style={styles.header_name}>小太阳的朋友</Text>
+          <Text style={styles.header_name}>{this.state.name}</Text>
           <View style={styles.header_levelsex}>
             <View style={styles.level}>
               <Image style={styles.level_img} source={require('../../Beauty/assets/icon_Grade2.png')}/>
-              <Text style={styles.level_text}>V8</Text>
+              <Text style={styles.level_text}>V{this.state.memberlevel}</Text>
             </View>
             <Image style={styles.sex_img} source={require('../../Beauty/assets/icon_female.png')}/>
           </View>
@@ -85,11 +150,11 @@ export default class PersoncenterComponent extends Component {
               </View>
               <View style={styles.content_header_balancepoint}>
                 <View style={styles.content_header_balance}>
-                  <Text style={styles.content_header_balance_top}>50.00</Text>
+                  <Text style={styles.content_header_balance_top}>{this.state.amount}</Text>
                   <Text style={styles.content_header_balance_bottom}>余额</Text>
                 </View>
                 <View style={styles.content_header_point}>
-                  <Text style={styles.content_header_point_top}>1224</Text>
+                  <Text style={styles.content_header_point_top}>{this.state.point}</Text>
                   <Text style={styles.content_header_point_bottom}>积分</Text>
                 </View>
               </View>

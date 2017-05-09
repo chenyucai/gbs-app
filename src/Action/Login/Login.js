@@ -12,22 +12,16 @@ import {
 } from 'react-native'
 
 import ScreenUtils from '../../Utils/ScreenUtils/ScreenUtils';
+import MyModal from './MyModal/MyModal';
 
 export default class LoginComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+        Mobile : "",
+        password : "",
+        secure : true,
     };
-  }
-
-  _pressButton(){
-    const { nav } = this.props;
-    if (nav) {
-      nav.push({
-        id: 'Index'
-      })
-    }
   }
 
   _register(){
@@ -48,6 +42,36 @@ export default class LoginComponent extends Component {
     }
   }
 
+  _login(){
+    let params = {
+        Mobile : this.state.Mobile,
+        Password : this.state.password,
+    };
+    MyModal.Login(params, (res) => {
+        //alert(JSON.stringify(res));
+        let status = res.Status;
+        let userId = res.UserId;
+        if(status == 1){
+            const { nav } = this.props;
+            if (nav) {
+                nav.push({
+                    data:{
+                        userId : res.UserId,
+                    },
+                    id: 'Index'
+                })
+            }
+        }else{
+          alert(res.Message);
+        }
+    },(err) => {
+
+    })
+
+  }
+
+
+
   render () {
     return (
       <View style={styles.wrapper}>
@@ -66,6 +90,7 @@ export default class LoginComponent extends Component {
                   keyboardType="numeric"
                   underlineColorAndroid="transparent"
                   placeholder="请输入手机号"
+                  onChangeText = {(text) => {this.setState({Mobile : text})}}
                 />
               </View>
             </View>
@@ -79,10 +104,13 @@ export default class LoginComponent extends Component {
                   keyboardType="numeric"
                   underlineColorAndroid="transparent"
                   placeholder="请输入密码"
+                  secureTextEntry={this.state.secure}
+                  onChangeText = {(text) => {this.setState({password : text})}}
                 />
               </View>
-              <TouchableOpacity style={styles.display_pwd}>
-                <Image source={require('./image/icon_UNdisplay.png')}/>
+              <TouchableOpacity style={styles.display_pwd}
+                                onPress={() => this.setState({secure:!this.state.secure})}>
+                <Image source={this.state.secure ? require('./image/icon_UNdisplay.png') : require('./image/icon_display.png')}/>
               </TouchableOpacity>
             </View>
             <View style={styles.login_operation_wrapper}>
@@ -101,7 +129,7 @@ export default class LoginComponent extends Component {
                 <Text style={styles.login_footer_btn_text}>登陆</Text>
               </TouchableOpacity>
             </View> */}
-            <TouchableOpacity style={styles.login_footer} onPress={this._pressButton.bind(this)}>
+            <TouchableOpacity style={styles.login_footer} onPress={this._login.bind(this)}>
               <Image source={require('./image/btn_dis_sign.png')}/>
             </TouchableOpacity>
           </View>

@@ -9,9 +9,7 @@ import {
  Image,
  TouchableOpacity
 } from 'react-native'
-
 import ScreenUtils from '../../Utils/ScreenUtils/ScreenUtils';
-
 export default class DiaryListItemComponent extends Component {
  constructor(props) {
    super(props);
@@ -33,9 +31,10 @@ export default class DiaryListItemComponent extends Component {
      })
    }
  }
-
+ 
  // props 需要传入图片的宽度和高度
  render () {
+  var rowData=this.props.rowData
    return (
      <TouchableOpacity style={[styles.item, {width:this.props.width}]} onPress={this._goDetail.bind(this)}>
        <View style={{

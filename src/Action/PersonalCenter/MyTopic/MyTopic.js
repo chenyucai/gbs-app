@@ -12,6 +12,7 @@ import {
   Image,
   ScrollView,
   ListView,
+  AsyncStorage,
   Dimensions
 } from 'react-native'
 import ScrollableTabView from 'react-native-scrollable-tab-view';
@@ -20,29 +21,31 @@ import ScreenUtils from '../../../Utils/ScreenUtils/ScreenUtils';
 import BaseNavigationBar from '../../../BaseView/BaseNavigationBar/BaseNavigationBar';
 
 import CommunityItemComponent from '../../Community/CommunityItem';
+import MyModal from '../MyModal/MyModal';
 
 export default class CommunityComponent extends Component {
   static defaultProps = {
 
-  }
+  };
   constructor(props) {
     super(props);
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
-      dataSource: ds.cloneWithRows([
-        {
-          id:1,
-          name:'12312'
-        },
-        {
-          id:1,
-          name:'12312'
-        },
-        {
-          id:1,
-          name:'12312'
-        },
-      ])
+        dataSource: ds.cloneWithRows([
+          {
+            id:1,
+            name:'12312'
+          },
+          {
+            id:1,
+            name:'12312'
+          },
+          {
+            id:1,
+            name:'12312'
+          },
+        ]),
+        userId : "",
     };
   }
 
@@ -61,6 +64,32 @@ export default class CommunityComponent extends Component {
         id:'PublishDiary'
       })
     }
+  }
+
+  topicList(){
+    let params ={
+        userId : this.state.userId,
+        type : 2,
+        keyword : "",
+        pagination : ""
+    };
+      alert(JSON.stringify(params));
+    MyModal.GetDiaryList(params,(res) => {
+      alert(JSON.stringify(res));
+    },(err) => {
+
+    });
+  }
+
+  componentDidMount() {
+      AsyncStorage.getItem("userId",(err,res) => {
+        if(res){
+            this.setState({
+                userId : res,
+            });
+            this.topicList();
+        }
+      });
   }
 
   render () {

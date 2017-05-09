@@ -231,7 +231,10 @@ import MyDiary from './Action/PersonalCenter/MyDiary/MyDiary';
  * 日记详情
  */
 import DiaryDetail from './Action/Beauty/Diary/DiaryDetail';
-
+/**
+ * 我的关联已购商品
+ */
+import Mygoodlist from './Action/PersonalCenter/MyDiary/Mygoodlist';
 /**
  * 全局宽和高
  */
@@ -702,6 +705,13 @@ export default class App extends Component {
             case 'Packagelist':
                 return (
                     <Packagelist nav={navigator} route={route} params={route}/>
+                );
+            /**
+            *我的关联已购商品
+            */
+            case 'Mygoodlist':
+                return (
+                    <Mygoodlist nav={navigator} route={route} params={route}/>
                 );
 
             default:

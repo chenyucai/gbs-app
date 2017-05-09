@@ -17,6 +17,7 @@ import ScreenUtils from '../../../Utils/ScreenUtils/ScreenUtils';
 import BaseNavigationBar from '../../../BaseView/BaseNavigationBar/BaseNavigationBar';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import UserListItem from '../../../BaseView/UserListItem/UserListItem';
+import ApiConst from '../../../Base/Urls/ApiConst';
 
 const { width, height } = Dimensions.get('window');
 
@@ -38,10 +39,117 @@ export default class defaultComponent extends Component {
           id:1,
           name:'12312'
         },
-      ])
+      ]),
+       dataSource2: ds.cloneWithRows([
+        {
+          id:1,
+          name:'12312'
+        },
+        {
+          id:1,
+          name:'12312'
+        },
+        {
+          id:1,
+          name:'12312'
+        },
+      ]),
+      num:0
     };
   }
+  componentDidMount() {
+  
+    //  this.getConcernList();
+     this.getFansList();
 
+  }
+  // //获取关注列表
+  // getConcernList(){
+  //    let params = {
+  //     userId: "89dae63a-168b-4729-bf6f-6eee51a9caba",
+  //   };
+  //   Model.GetConcernList(params, (res) => {
+      
+  //     // this.setState({
+  //     //    dataSource:res.infos
+  //     // });
+  //   //   if (res.result.flag == 1) {
+
+  //   //   } else {
+  //   //     alert(res.result.msg);
+  //   //   }
+  //     }, (err) => {
+  //           alert("55");
+  //    });
+  // }
+  //获取关注列表
+  getConcernList(){
+     let formData = new FormData();
+        formData.append("userId", "992a9405-be08-4c74-bbcc-a57cf6df84c3");
+        fetch(ApiConst.Versions().BaseUrl + '/AppPersonal/MyCommentList',
+            {
+                method: 'POST',
+                headers: {},
+                body: formData,
+            }).then((response) => {
+                 if (response.ok) {
+                     return response.json();
+                 }
+            }).then((json) => {
+               alert(JSON.stringify(json));
+              //   this.setState({
+                 
+              //   });
+            }
+            ).catch((error) => {
+                console.error(error);
+            });
+
+}
+ //获取粉丝列表
+  getFansList(){
+     let formData = new FormData();
+        formData.append("userId", "992a9405-be08-4c74-bbcc-a57cf6df84c3");
+        // formData.append("pagination", {page:1,rows:10,sidx:CreatorTime,sord:asc,});
+        fetch(ApiConst.Versions().BaseUrl + '/AppPersonal/MyFansList',
+            {
+                method: 'POST',
+                headers: {},
+                body: formData,
+            }).then((response) => {
+                 if (response.ok) {
+                     return response.json();
+                 }
+            }).then((json) => {
+               alert(JSON.stringify(json));
+              //   this.setState({
+                 
+              //   });
+            }
+            ).catch((error) => {
+                console.error(error);
+            });
+
+}
+  // //获取粉丝列表
+  // getFansList(){
+  //    let params = {
+  //     userId: "89dae63a-168b-4729-bf6f-6eee51a9caba",
+  //   };
+  //   Model.GetConcernList(params, (res) => {
+  //     alert(JSON.stringify(res));
+  //     // this.setState({
+  //     //    dataSource:res.infos
+  //     // });
+  //   //   if (res.result.flag == 1) {
+
+  //   //   } else {
+  //   //     alert(res.result.msg);
+  //   //   }
+  //     }, (err) => {
+  //           alert("55");
+  //    });
+  // }
   renderRow(rowData){
     return (
       <View style={styles.item}>
@@ -83,7 +191,7 @@ export default class defaultComponent extends Component {
 
           <View tabLabel='粉丝(3)' style={{flex:1}}>
             <ListView
-              dataSource={this.state.dataSource}
+              dataSource={this.state.dataSource2}
               renderRow={this.renderRow.bind(this)}
               style={{flex:1}}
             />

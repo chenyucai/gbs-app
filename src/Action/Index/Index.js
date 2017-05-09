@@ -3,7 +3,8 @@ import {
   StyleSheet,
   View,
   Text,
-  Image
+  Image,
+  AsyncStorage
 } from 'react-native'
 
 import TabNavigator from 'react-native-tab-navigator';
@@ -20,9 +21,15 @@ export default class BottomTabsComponent extends Component {
     super(props);
     BaseBack.HardwareExit();
     this.state = {
-      selectedTab:'home'
+        userId : this.props.params.data.userId,
+        selectedTab:'home'
     };
   }
+
+    componentDidMount() {
+      alert(this.state.userId);
+      AsyncStorage.setItem("userId",this.state.userId);
+    }
 
   render () {
     return (
@@ -77,7 +84,7 @@ export default class BottomTabsComponent extends Component {
                 selectedTitleStyle={styles.selectedTabText}
                 renderIcon={() => <Image style={styles.icon} source={require("./assets/icon_dis_personal.png")} />}
                 renderSelectedIcon={() => <Image style={styles.icon} source={require("./assets/icon_n_personal.png")} />}
-                onPress={() => this.setState({ selectedTab: 'personal' })}>
+                onPress={() => this.setState({ selectedTab: 'personal', })}>
                 <PersoncenterComponent nav={this.props.nav} />
             </TabNavigator.Item>
         </TabNavigator>

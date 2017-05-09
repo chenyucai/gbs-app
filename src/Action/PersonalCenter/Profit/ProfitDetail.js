@@ -16,7 +16,7 @@ import {
 import ScreenUtils from '../../../Utils/ScreenUtils/ScreenUtils';
 import BaseNavigationBar from '../../../BaseView/BaseNavigationBar/BaseNavigationBar';
 import ProfitDetailItem from './ProfitDetailItem';
-
+import ApiConst from '../../../Base/Urls/ApiConst';
 export default class defaultComponent extends Component {
   constructor(props) {
     super(props);
@@ -38,11 +38,60 @@ export default class defaultComponent extends Component {
       ])
     };
   }
+  componentDidMount() {
+    this.getRedPackageList();
 
+  }
+//获取红包列表
+   getRedPackageList(){
+    let formData = new FormData();
+        formData.append("UserId", "992a9405-be08-4c74-bbcc-a57cf6df84c3");
+        fetch(ApiConst.Versions().BaseUrl + '/AppPersonal/GetRedPacketList',
+            {
+                method: 'POST',
+                headers: {},
+                body: formData,
+            }).then((response) => {
+                 if (response.ok) {
+                     return response.json();
+                 }
+            }).then((json) => {
+               alert(JSON.stringify(json));
+               this.setState({
+                //  dataSource:json,
+                });
+            }
+            ).catch((error) => {
+                console.error(error);
+            });
+  }
+  //领取红包
+  recieveRedPacket(){
+    let formData = new FormData();
+        formData.append("Id", "992a9405-be08-4c74-bbcc-a57cf6df84c3");
+        fetch(ApiConst.Versions().BaseUrl + '/AppPersonal/RecieveRedPacket',
+            {
+                method: 'POST',
+                headers: {},
+                body: formData,
+            }).then((response) => {
+                 if (response.ok) {
+                     return response.json();
+                 }
+            }).then((json) => {
+               alert(JSON.stringify(json));
+               this.setState({
+                //  dataSource:json,
+                });
+            }
+            ).catch((error) => {
+                console.error(error);
+            });
+  }
   renderRow(rowData){
     return (
       <View style={styles.item}>
-        <ProfitDetailItem nav={this.props.nav}/>
+        <ProfitDetailItem nav={this.props.nav} rowData={rowData} receive={this.recieveRedPacket.bind(this)}/>
       </View>
     )
   }

@@ -6,19 +6,83 @@ import {
   Image,
   TextInput,
   ScrollView,
-  Dimensions,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
 
 import BaseNavigationBar from './../../BaseView/BaseNavigationBar/BaseNavigationBar';
 import ScreenUtils from '../../Utils/ScreenUtils/ScreenUtils';
+import MyModal from './MyModal/MyModal';
+import RadioModal from 'react-native-radio-master';
+
 
 export default class RegComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '123'
+        title: '123',
+        Mobile : "",
+        authCode: "",
+        userName: "",
+        password: "",
+        InviteCode : "",
+        source : "",
+        secure : true,
+        selected1 : false,
+        selected2 : false,
+        selected3 : false,
+        selected4 : false,
+        selected5 : false,
+        radio : 0,
     };
+  }
+
+  getAuthCode(){
+    if(this.state.Mobile !== ""){
+        let params = {
+            Mobile : this.state.Mobile,
+        };
+
+        MyModal.GetAuthCode(params,(res) => {
+          alert(res.AuthCode);
+            this.setState({
+                authCode : content,
+            });
+        },(err) => {
+
+        })
+    }else{
+      alert("请输入手机号码！");
+    }
+  }
+
+
+  register(){
+    let must = [this.state.name,this.state.Mobile,this.state.authCode,this.state.Password,this.state.Source];
+    let mustText = ["用户名","手机号","验证码","密码","来源"];
+    let params = {
+        name : this.state.userName,
+        Mobile : this.state.Mobile,
+        Password : this.state.password,
+        Source : this.state.source,
+        InviteCode : this.state.InviteCode,
+        AuthCode:this.state.authCode
+    };
+    for(let i = 0;i < must.length;i++){
+        if(must[i] == ""){
+            alert(mustText[i] + "不能为空...")
+        }
+    }
+
+    MyModal.Register(params,(res) => {
+        //alert(JSON.stringify(res));
+        if(res.Status == 1){
+            this.props.nav.push({
+                id : "Login"
+            });
+        }
+    },(err) => {
+
+    });
   }
 
   render () {
@@ -46,6 +110,9 @@ export default class RegComponent extends Component {
                   keyboardType="numeric"
                   underlineColorAndroid="transparent"
                   placeholder="输入名称，开启美丽之旅"
+                  onChangeText={(text) => {this.setState({
+                      userName : text,
+                  })}}
                 />
               </View>
             </View>
@@ -59,6 +126,7 @@ export default class RegComponent extends Component {
                   keyboardType="numeric"
                   underlineColorAndroid="transparent"
                   placeholder="请输入手机号"
+                  onChangeText = {(text) => {this.setState({Mobile : text})}}
                 />
               </View>
             </View>
@@ -67,14 +135,22 @@ export default class RegComponent extends Component {
                 <Image source={require('./image/icon_Code.png')} style={styles.reg_item_icon}/>
               </View>
               <View style={styles.reg_item_input_wrapper}>
-                <TextInput
+                <TextInput ref="myInput"
                   style={styles.reg_item_input}
                   keyboardType="numeric"
                   underlineColorAndroid="transparent"
                   placeholder="请输入验证码"
+                  onChangeText = {(text) => {this.setState({
+                      authCode : text,
+                  })}}
+                  value= {this.state.authCode}
                 />
+
               </View>
-              <TouchableOpacity style={styles.get_code}>
+              <TouchableOpacity style={styles.get_code}
+                                onPress={() => {
+                  this.getAuthCode();
+              }} >
                 <Text style={styles.get_code_text}>获取验证码</Text>
               </TouchableOpacity>
             </View>
@@ -88,10 +164,17 @@ export default class RegComponent extends Component {
                   keyboardType="numeric"
                   underlineColorAndroid="transparent"
                   placeholder="请输入密码"
+                  onChangeText = {(text) => {this.setState({
+                      password : text,
+                  })}}
+                  secureTextEntry={this.state.secure}
                 />
               </View>
-              <TouchableOpacity style={styles.display_pwd}>
-                <Image source={require('./image/icon_UNdisplay.png')}/>
+              <TouchableOpacity style={styles.display_pwd}
+                                onPress={
+                                    () => {this.setState({secure : !this.state.secure})}
+                                }>
+                <Image source={this.state.secure ? require('./image/icon_UNdisplay.png') : require('./image/icon_display.png')}/>
               </TouchableOpacity>
             </View>
             <View style={{marginTop: 15,width: ScreenUtils.scaleSize(255),alignSelf: 'center',marginLeft: 10}}>
@@ -103,7 +186,11 @@ export default class RegComponent extends Component {
               </TouchableOpacity>
             </View> */}
             <View style={styles.reg_footer}>
-              <Image source={require('./image/btn_dis_sign.png')}/>
+              <TouchableOpacity onPress={() => {
+                this.register();
+              }}>
+                <Image source={require('./image/btn_dis_sign.png')}/>
+              </TouchableOpacity>
             </View>
           </View>
           <View style={styles.sp_border}></View>
@@ -115,17 +202,38 @@ export default class RegComponent extends Component {
           </View>
 
           <ScrollView style={styles.s_wrapper} horizontal>
-            <View style={styles.s_item}><Text style={styles.s_item_text}>朋友</Text></View>
-            <View style={styles.s_item}><Text style={styles.s_item_text}>门店</Text></View>
-            <View style={styles.s_item}><Text style={styles.s_item_text}>网络</Text></View>
-            <View style={styles.s_item}><Text style={styles.s_item_text}>活动</Text></View>
-            <View style={styles.s_item}><Text style={styles.s_item_text}>其他</Text></View>
+              <TouchableOpacity onPress={() => {this.setState({source : "1",selected1 : !this.state.selected1,radio : 1})}}>
+                <View style={[styles.s_item,{backgroundColor:this.state.selected1 && this.state.radio == 1 ? "#FC6F99" : "#FFF"}]}>
+                  <Text style={[styles.s_item_text,{color:this.state.selected1 && this.state.radio == 1 ? "#FFF" : "#333"}]}>朋友</Text>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => {this.setState({source : "2",selected2 : !this.state.selected2,radio : 2})}}>
+                <View style={[styles.s_item,{backgroundColor:this.state.selected2 && this.state.radio == 2 ? "#FC6F99" : "#FFF"}]}>
+                  <Text style={[styles.s_item_text,{color:this.state.selected2 && this.state.radio == 2 ? "#FFF" : "#333"}]}>门店</Text>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => {this.setState({source : "3",selected3 : !this.state.selected3,radio : 3})}}>
+                <View style={[styles.s_item,{backgroundColor:this.state.selected3 && this.state.radio == 3 ? "#FC6F99" : "#FFF"}]}>
+                  <Text style={[styles.s_item_text,{color:this.state.selected3 && this.state.radio == 3 ? "#FFF" : "#333"}]}>网络</Text>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => {this.setState({source : "4",selected4 : !this.state.selected4,radio : 4})}}>
+                <View style={[styles.s_item,{backgroundColor:this.state.selected4 && this.state.radio == 4 ? "#FC6F99" : "#FFF"}]}>
+                  <Text style={[styles.s_item_text,{color:this.state.selected4 && this.state.radio == 4 ? "#FFF" : "#333"}]}>活动</Text>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => {this.setState({source : "5",selected5 : !this.state.selected5,radio : 5})}}>
+                <View style={[styles.s_item,{backgroundColor:this.state.selected5 && this.state.radio == 5 ? "#FC6F99" : "#FFF"}]}>
+                  <Text style={[styles.s_item_text,{color:this.state.selected5 && this.state.radio == 5 ? "#FFF" : "#333"}]}>其他</Text>
+                </View>
+              </TouchableOpacity>
           </ScrollView>
 
           <View style={styles.invite_wrapper}>
             <TextInput style={styles.invite_input}
               placeholder="点击输入邀请码"
               placeholderTextColor="#fff"
+              onChangeText = {(text) => {this.setState({InviteCode : text})}}
             />
           </View>
         </ScrollView>
@@ -167,6 +275,8 @@ const styles = StyleSheet.create({
     flex: 1
   },
   reg_item_input: {
+    width: ScreenUtils.scaleSize(255),
+    height:40,
     marginTop: 3,
     fontSize: 12,
     // flex:1,
